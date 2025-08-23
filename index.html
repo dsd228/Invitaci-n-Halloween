@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Intergalactic VR - Daniel & Sabrina</title>
+<title>Invitación Galactic Live VR - Daniel & Sabrina</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
@@ -91,14 +91,21 @@ box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px
 </head>
 <body>
 
+<audio id="bg-music" loop autoplay>
+    <source src="https://assets.mixkit.co/music/preview/mixkit-dark-fantasy-halloween-1050.mp3" type="audio/mpeg">
+</audio>
+<audio id="pop-sound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-jump-coin-216.wav" type="audio/mpeg">
+</audio>
+
 <div class="particle-system"></div>
 <div class="shooting-stars"></div>
 <div class="meteors"></div>
 
 <div class="invitation-container">
-    <div class="card" onclick="launchCosmicVR(event)">
+    <div class="card" onclick="launchGalacticVR(event)">
         <div class="content">
-            <div class="premium-badge">👑 INVITACIÓN INTERGALACTIC VR 👑</div>
+            <div class="premium-badge">👑 INVITACIÓN GALACTIC LIVE VR 👑</div>
             <div class="crown-title">HALLOWEEN FEST</div>
             <div class="elegant-subtitle">Experiencia Interdimensional Épica</div>
 
@@ -121,6 +128,8 @@ box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px
 
 <script>
 const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💀','🔥','🌌','🌠'];
+const bgMusic=document.getElementById('bg-music');
+const popSound=document.getElementById('pop-sound');
 
 function initParticles(){
     const system=document.querySelector('.particle-system');
@@ -160,9 +169,11 @@ setInterval(()=>{
     meteor.animate([{transform:'translateY(0) rotate(0deg)'},{transform:`translateY(120vh) rotate(${Math.random()*720}deg)`}],{duration:2200+Math.random()*800,easing:'linear'}).onfinish=()=>meteors.removeChild(meteor);
 },1500);
 
-function launchCosmicVR(event){
+function launchGalacticVR(event){
     const rect=event.currentTarget.getBoundingClientRect();
     ultraConfetti(rect.left+rect.width/2,rect.top+rect.height/2,150);
+    popSound.currentTime=0;
+    popSound.play();
     setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
 }
 function ultraConfetti(x,y,count=60){
@@ -188,18 +199,20 @@ function ultraConfetti(x,y,count=60){
     }
 }
 
-// Movimiento teléfono - interacción 3D
+// Movimiento teléfono
 if(window.DeviceOrientationEvent){
     window.addEventListener('deviceorientation',e=>{
         const card=document.querySelector('.invitation-container');
-        const x=e.gamma?e.gamma/3:0; // izquierda/derecha
-        const y=e.beta?e.beta/3:0; // adelante/atrás
+        const x=e.gamma?e.gamma/3:0;
+        const y=e.beta?e.beta/3:0;
         card.style.transform=`translateY(-12px) rotateX(${y}deg) rotateY(${x}deg)`;
     });
 }
 
-// Touch para confeti
+// Touch para confeti y sonido
 document.addEventListener('touchstart',e=>{
+    popSound.currentTime=0;
+    popSound.play();
     for(let i=0;i<e.touches.length;i++){
         const t=e.touches[i];
         ultraConfetti(t.clientX,t.clientY,30);

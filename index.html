@@ -3,24 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Ultimate Cosmic Show - Daniel & Sabrina</title>
+<title>Invitación Intergalactic VR - Daniel & Sabrina</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
     font-family:'Montserrat',sans-serif;
-    background:#01001a;
+    background:#000010;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
-    position:relative;
     perspective:4000px;
 }
 
-/* Partículas mágicas y meteoritos */
+/* Sistemas de partículas */
 .particle-system,.shooting-stars,.meteors{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}
 .particle{position:absolute;border-radius:50%;pointer-events:none;}
 .particle-glow{width:6px;height:6px;background:radial-gradient(circle,#ff6b35,transparent);box-shadow:0 0 40px #ff6b35;animation:particleFloat 16s linear infinite;}
@@ -80,7 +79,6 @@ box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px
 .mystical-invitation{font-family:'Great Vibes',cursive;font-size:25px;color:#e6b3ff;margin-bottom:16px;line-height:1.4;}
 .confirmation-note{font-size:16px;color:rgba(255,255,255,0.98);font-style:italic;}
 
-/* Responsive */
 @media(max-width:480px){
 .crown-title{font-size:30px;}
 .elegant-subtitle{font-size:26px;}
@@ -98,11 +96,11 @@ box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px
 <div class="meteors"></div>
 
 <div class="invitation-container">
-    <div class="card" onclick="launchCosmicShow(event)">
+    <div class="card" onclick="launchCosmicVR(event)">
         <div class="content">
-            <div class="premium-badge">👑 INVITACIÓN COSMIC SHOW 👑</div>
+            <div class="premium-badge">👑 INVITACIÓN INTERGALACTIC VR 👑</div>
             <div class="crown-title">HALLOWEEN FEST</div>
-            <div class="elegant-subtitle">Experiencia interdimensional épica</div>
+            <div class="elegant-subtitle">Experiencia Interdimensional Épica</div>
 
             <div class="celebrants-section">
                 <div class="names-display">DANIEL & SABRINA</div>
@@ -124,7 +122,6 @@ box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px
 <script>
 const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💀','🔥','🌌','🌠'];
 
-// Partículas mágicas
 function initParticles(){
     const system=document.querySelector('.particle-system');
     setInterval(()=>{for(let i=0;i<6;i++) createParticle(system);},400);
@@ -139,7 +136,6 @@ function createParticle(container){
     setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},20000);
 }
 
-// Estrellas fugaces
 setInterval(()=>{
     const stars=document.querySelector('.shooting-stars');
     const star=document.createElement('div');
@@ -152,7 +148,6 @@ setInterval(()=>{
     star.animate([{transform:'translateY(0) translateX(0)'},{transform:`translateY(120vh) translateX(${Math.random()*200-100}px)`}],{duration:2000+Math.random()*1000,easing:'ease-in'}).onfinish=()=>stars.removeChild(star);
 },800);
 
-// Meteoritos
 setInterval(()=>{
     const meteors=document.querySelector('.meteors');
     const meteor=document.createElement('div');
@@ -165,8 +160,7 @@ setInterval(()=>{
     meteor.animate([{transform:'translateY(0) rotate(0deg)'},{transform:`translateY(120vh) rotate(${Math.random()*720}deg)`}],{duration:2200+Math.random()*800,easing:'linear'}).onfinish=()=>meteors.removeChild(meteor);
 },1500);
 
-// Confeti épico al pulsar
-function launchCosmicShow(event){
+function launchCosmicVR(event){
     const rect=event.currentTarget.getBoundingClientRect();
     ultraConfetti(rect.left+rect.width/2,rect.top+rect.height/2,150);
     setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
@@ -194,11 +188,25 @@ function ultraConfetti(x,y,count=60){
     }
 }
 
-// Destellos cursor/touch
-document.addEventListener('mousemove',e=>{
-    document.body.style.background=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.08), #01001a 70%)`;
+// Movimiento teléfono - interacción 3D
+if(window.DeviceOrientationEvent){
+    window.addEventListener('deviceorientation',e=>{
+        const card=document.querySelector('.invitation-container');
+        const x=e.gamma?e.gamma/3:0; // izquierda/derecha
+        const y=e.beta?e.beta/3:0; // adelante/atrás
+        card.style.transform=`translateY(-12px) rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+}
+
+// Touch para confeti
+document.addEventListener('touchstart',e=>{
+    for(let i=0;i<e.touches.length;i++){
+        const t=e.touches[i];
+        ultraConfetti(t.clientX,t.clientY,30);
+    }
 });
 document.addEventListener('DOMContentLoaded',initParticles);
 </script>
+
 </body>
 </html>

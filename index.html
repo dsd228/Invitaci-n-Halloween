@@ -1,104 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Premium Halloween - Daniel & Sabrina</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-    font-family: 'Montserrat', sans-serif;
-    background:#000; min-height:100vh; display:flex; justify-content:center; align-items:center;
-    overflow:hidden; perspective:2000px;
-}
-/* Partículas */
-.particle-system{position:absolute;width:100%;height:100%;overflow:hidden;z-index:1;}
-.particle{position:absolute;border-radius:50%;pointer-events:none;}
-.particle-glow{width:4px;height:4px;background:radial-gradient(circle,#ff6b35,transparent);box-shadow:0 0 10px #ff6b35;animation:particleFloat 12s linear infinite;}
-.particle-magic{width:6px;height:6px;background:radial-gradient(circle,#ba55d3,transparent);box-shadow:0 0 15px #ba55d3;animation:particleFloat 15s linear infinite;}
-.particle-star{width:2px;height:2px;background:#fff;box-shadow:0 0 8px #fff;animation:particleFloat 10s linear infinite;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Premium Halloween - Daniel & Sabrina</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-/* Tarjeta */
-.invitation-container{width:400px;height:650px;position:relative;transform-style:preserve-3d;animation:cardLevitate 8s ease-in-out infinite;z-index:10;margin:auto;}
-.card{
-    width:100%;height:100%;
-    background:linear-gradient(135deg, rgba(45,27,105,0.98) 0%, rgba(17,0,28,0.99) 25%, rgba(74,14,78,0.98) 50%, rgba(255,107,53,0.95) 75%, rgba(45,27,105,0.98) 100%);
-    border-radius:30px;
-    box-shadow:0 30px 80px rgba(0,0,0,0.9),0 0 120px rgba(255,107,53,0.4),0 0 200px rgba(186,85,211,0.2);
-    position:relative;overflow:hidden;cursor:pointer;transition:all 0.6s cubic-bezier(0.23,1,0.32,1);backdrop-filter:blur(20px);border:2px solid rgba(255,107,53,0.3);
-}
-.card:hover{transform: translateY(-25px) rotateX(12deg) rotateY(8deg) scale(1.03);box-shadow:0 50px 120px rgba(0,0,0,0.95),0 0 180px rgba(255,107,53,0.6),0 0 300px rgba(186,85,211,0.3);}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Contenido */
-.content{position:relative;z-index:20;padding:35px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;text-align:center;}
-.header-section{position:relative;}
-.premium-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.85);border:2px solid #ff6b35;border-radius:50px;padding:10px 25px;font-size:11px;color:#ffaa80;text-transform:uppercase;letter-spacing:3px;margin-bottom:25px;animation:badgeGlow 3s ease-in-out infinite alternate;font-weight:700;text-shadow:0 1px 1px rgba(0,0,0,0.8),0 0 8px rgba(255,107,53,0.6);}
-.crown-title{font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35,0 0 40px #ff6b35,0 0 60px rgba(255,107,53,0.8);animation:crownPulse 4s ease-in-out infinite, crownFloat 6s ease-in-out infinite; margin-bottom:12px;letter-spacing:2px;line-height:1.1;}
-.elegant-subtitle{font-family:'Great Vibes',cursive;font-size:28px;color:#e6b3ff;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 15px #ba55d3,0 0 30px rgba(186,85,211,0.6);animation:subtitleDance 5s ease-in-out infinite;margin-bottom:10px;}
-.celebrants-section{background:rgba(0,0,0,0.85);border-radius:20px;padding:35px 25px;margin:30px 0;border:2px solid rgba(255,107,53,0.6);box-shadow:inset 0 0 40px rgba(255,107,53,0.1),0 15px 40px rgba(0,0,0,0.6);position:relative;overflow:hidden;min-height:240px;}
-.names-display{font-family:'Cinzel',serif;font-size:28px;font-weight:600;color:#ffaa80;text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35,0 0 40px rgba(255,107,53,0.8),0 0 60px rgba(255,107,53,0.4);margin-bottom:15px;animation:namesGlow 3s ease-in-out infinite alternate;letter-spacing:1px;line-height:1.2;}
-.celebration-type{font-size:18px;color:#f5f5f5;margin-bottom:25px;text-transform:uppercase;letter-spacing:2px;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,0.7);}
-.event-grid{display:grid;gap:15px;}
-.detail-card{display:flex;align-items:center;justify-content:center;gap:15px;color:#f5f5f5;font-size:16px;padding:15px 20px;border-radius:15px;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,0.7);}
-.detail-card:hover{background:rgba(255,107,53,0.15);transform:translateX(8px) scale(1.02);border-color:rgba(255,107,53,0.3);}
-.detail-icon{font-size:24px;animation:iconFloat 3s ease-in-out infinite;}
-.highlight-text{color:#ffaa80;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 10px #ff6b35,0 0 20px rgba(255,107,53,0.6);}
-.location-text{color:#e6b3ff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 10px #ba55d3,0 0 20px rgba(186,85,211,0.6);}
-.action-section{position:relative;margin-top:15px;}
-.mystical-invitation{font-family:'Great Vibes',cursive;font-size:22px;color:#e6b3ff;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 15px #ba55d3,0 0 30px rgba(186,85,211,0.6);animation:mysticalPulse 5s ease-in-out infinite;margin-bottom:10px;line-height:1.4;}
-.confirmation-note{font-size:14px;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:15px;}
-.confirm-button{display:inline-block;padding:15px 30px;background:linear-gradient(135deg,#ff6b35,#ba55d3);color:#fff;font-size:16px;border-radius:25px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(255,107,53,0.6),0 0 40px rgba(186,85,211,0.5);transition:all 0.4s ease-in-out;}
-.confirm-button:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,107,53,0.8),0 0 60px rgba(186,85,211,0.7);}
-@keyframes particleFloat{0%{transform:translateY(100vh) translateX(0) rotate(0deg) scale(0);opacity:0;}5%{opacity:1;transform:scale(1);}95%{opacity:1;}100%{transform:translateY(-100vh) translateX(200px) rotate(720deg) scale(0);opacity:0;}}
-@keyframes cardLevitate{0%,100%{transform:translateY(0px) rotateZ(0deg);}25%{transform:translateY(-8px) rotateZ(0.5deg);}75%{transform:translateY(-12px) rotateZ(-0.5deg);}}
-@keyframes crownPulse{0%,100%{text-shadow:0 0 30px #ff6b35,0 0 60px #ff6b35,0 0 90px #ff6b35,2px 2px 4px rgba(0,0,0,0.8);transform:scale(1);}50%{text-shadow:0 0 40px #ff6b35,0 0 80px #ff6b35,0 0 120px #ff6b35,2px 2px 4px rgba(0,0,0,0.8);transform:scale(1.02);}}
-@keyframes crownFloat{0%,100%{transform:rotateX(0deg) rotateY(0deg);}50%{transform:rotateX(3deg) rotateY(-3deg);}}
-@keyframes subtitleDance{0%,100%{transform:translateY(0px) rotate(0deg);}25%{transform:translateY(-3px) rotate(1deg);}75%{transform:translateY(-5px) rotate(-1deg);}}
-@keyframes namesGlow{0%{text-shadow:0 0 25px #ff6b35,0 0 50px #ff6b35;transform:scale(1);}100%{text-shadow:0 0 35px #ff6b35,0 0 70px #ff6b35,0 0 100px #ff6b35;transform:scale(1.02);}}
-@keyframes iconFloat{0%,100%{transform:translateY(0px) rotate(0deg);}50%{transform:translateY(-5px) rotate(5deg);}}
-@keyframes mysticalPulse{0%,100%{text-shadow:0 0 20px #ba55d3;opacity:0.9;}50%{text-shadow:0 0 30px #ba55d3,0 0 50px #ba55d3;opacity:1;}}
-@keyframes badgeGlow{0%{box-shadow:0 0 15px rgba(255,107,53,0.5),inset 0 0 15px rgba(255,107,53,0.1);}100%{box-shadow:0 0 30px rgba(255,107,53,0.8),inset 0 0 25px rgba(255,107,53,0.2);}}
-</style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            perspective: 2000px;
+        }
+
+        /* Sistema de partículas */
+        .particle-system { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+        .particle { position: absolute; border-radius: 50%; pointer-events: none; }
+        .particle-glow { width: 4px; height: 4px; background: radial-gradient(circle, #ff6b35, transparent); box-shadow: 0 0 10px #ff6b35; animation: particleFloat 12s linear infinite; }
+        .particle-magic { width: 6px; height: 6px; background: radial-gradient(circle, #ba55d3, transparent); box-shadow: 0 0 15px #ba55d3; animation: particleFloat 15s linear infinite; }
+        .particle-star { width: 2px; height: 2px; background: #ffffff; box-shadow: 0 0 8px #ffffff; animation: particleFloat 10s linear infinite; }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg) scale(0); opacity: 0; }
+            5% { opacity: 1; transform: scale(1); }
+            95% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(200px) rotate(720deg) scale(0); opacity: 0; }
+        }
+
+        /* Tarjeta principal */
+        .invitation-container { width: 400px; height: 600px; position: relative; transform-style: preserve-3d; animation: cardLevitate 8s ease-in-out infinite; z-index: 10; margin: auto; }
+        .card {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(45,27,105,0.98) 0%, rgba(17,0,28,0.99) 25%, rgba(74,14,78,0.98) 50%, rgba(255,107,53,0.95) 75%, rgba(45,27,105,0.98) 100%);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 120px rgba(255,107,53,0.4), 0 0 200px rgba(186,85,211,0.2), inset 0 2px 0 rgba(255,255,255,0.1), inset 0 -2px 0 rgba(0,0,0,0.3);
+            position: relative; overflow: hidden; cursor: pointer; transition: all 0.6s cubic-bezier(0.23,1,0.320,1);
+            backdrop-filter: blur(20px); border: 2px solid rgba(255,107,53,0.3);
+        }
+
+        .card:hover { transform: translateY(-25px) rotateX(12deg) rotateY(8deg) scale(1.03);
+            box-shadow: 0 50px 120px rgba(0,0,0,0.95), 0 0 180px rgba(255,107,53,0.6), 0 0 300px rgba(186,85,211,0.3), inset 0 2px 0 rgba(255,255,255,0.2); 
+        }
+
+        @keyframes cardLevitate {
+            0%,100%{ transform: translateY(0px) rotateZ(0deg); }
+            25%{ transform: translateY(-8px) rotateZ(0.5deg); }
+            75%{ transform: translateY(-12px) rotateZ(-0.5deg); }
+        }
+
+        .content { position: relative; z-index: 20; padding: 35px 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+        .header-section { position: relative; }
+        .premium-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.85); border: 2px solid #ff6b35; border-radius: 50px; padding: 10px 25px; font-size: 11px; color: #ffaa80; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; font-weight: 700; text-shadow: 0 1px 1px rgba(0,0,0,0.8),0 0 8px rgba(255,107,53,0.6); animation: badgeGlow 3s ease-in-out infinite alternate; }
+        .crown-title { font-family: 'Cinzel', serif; font-size: 32px; font-weight: 700; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35,0 0 40px #ff6b35,0 0 60px rgba(255,107,53,0.8); animation: crownPulse 4s ease-in-out infinite; margin-bottom: 12px; letter-spacing: 2px; line-height: 1.1; }
+        .elegant-subtitle { font-family: 'Great Vibes', cursive; font-size: 28px; color: #e6b3ff; text-shadow: 0 1px 2px rgba(0,0,0,0.8),0 0 15px #ba55d3,0 0 30px rgba(186,85,211,0.6); animation: subtitleDance 5s ease-in-out infinite; margin-bottom: 10px; }
+
+        @keyframes badgeGlow{0%{box-shadow:0 0 15px rgba(255,107,53,0.5), inset 0 0 15px rgba(255,107,53,0.1);}100%{box-shadow:0 0 30px rgba(255,107,53,0.8), inset 0 0 25px rgba(255,107,53,0.2);}}
+        @keyframes crownPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
+        @keyframes subtitleDance{0%,100%{transform:translateY(0px);}25%{transform:translateY(-3px);}75%{transform:translateY(-5px);}}
+
+        /* Sección celebrantes */
+        .celebrants-section{background: rgba(0,0,0,0.85); border-radius: 20px; padding: 35px 25px; margin: 30px 0; border: 2px solid rgba(255,107,53,0.6); box-shadow: inset 0 0 40px rgba(255,107,53,0.1),0 15px 40px rgba(0,0,0,0.6); position: relative; overflow: hidden; min-height:240px;}
+        .names-display{font-family:'Cinzel',serif;font-size:28px;font-weight:600;color:#ffaa80;text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35,0 0 40px rgba(255,107,53,0.8),0 0 60px rgba(255,107,53,0.4);margin-bottom:15px;letter-spacing:1px;line-height:1.2;}
+        .celebration-type{font-size:18px;color:#f5f5f5;margin-bottom:25px;text-transform:uppercase;letter-spacing:2px;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,0.7);}
+        .event-grid{display:grid;gap:15px;}
+        .detail-card{display:flex;align-items:center;justify-content:center;gap:15px;color:#f5f5f5;font-size:16px;padding:15px 20px;border-radius:15px;background: rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);transition: all 0.4s; font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,0.7);}
+        .detail-card:hover{background: rgba(255,107,53,0.15);transform: translateX(8px) scale(1.02);border-color: rgba(255,107,53,0.3);}
+        .detail-icon{font-size:24px; animation: iconFloat 3s ease-in-out infinite;}
+        @keyframes iconFloat{0%,100%{transform:translateY(0px);}50%{transform:translateY(-5px) rotate(5deg);}}
+
+        /* Botón confirmación épico */
+        .confirm-button{
+            display:inline-block;
+            margin-top:20px;
+            padding:15px 30px;
+            font-size:18px;
+            font-weight:700;
+            color:#fff;
+            background: linear-gradient(135deg,#ff6b35,#ba55d3);
+            border:none;
+            border-radius:50px;
+            cursor:pointer;
+            text-decoration:none;
+            box-shadow:0 5px 15px rgba(0,0,0,0.6);
+            transition:all 0.3s ease-in-out;
+        }
+        .confirm-button:hover{transform:scale(1.1);box-shadow:0 8px 25px rgba(0,0,0,0.8);}
+    </style>
 </head>
 <body>
-<div class="particle-system"></div>
-<div class="invitation-container">
-    <div class="card" onclick="activateUltraMagic()">
-        <div class="content">
-            <div class="header-section">
-                <div class="premium-badge"><span>👑</span>Invitación Exclusiva<span>👑</span></div>
-                <div class="crown-title">HALLOWEEN<br>FEST</div>
-                <div class="elegant-subtitle">Una celebración de ensueño</div>
-            </div>
-            <div class="celebrants-section">
-                <div class="names-display">DANIEL & SABRINA</div>
-                <div class="celebration-type">🎂 Celebración de Cumpleaños Real 🎂</div>
-                <div class="event-grid">
-                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces de Lujo</div>
-                    <div class="detail-card"><span class="detail-icon">📅</span><span class="highlight-text">31 de Octubre - 21:00 hs</span></div>
-                    <div class="detail-card"><span class="detail-icon">📍</span><span class="location-text">Santos Saya Norte 138</span></div>
+    <div class="particle-system"></div>
+
+    <div class="invitation-container">
+        <div class="card">
+            <div class="content">
+                <div class="header-section">
+                    <div class="premium-badge">👑 Invitación Exclusiva 👑</div>
+                    <div class="crown-title">HALLOWEEN FEST</div>
+                    <div class="elegant-subtitle">Una celebración de ensueño</div>
                 </div>
-            </div>
-            <div class="action-section">
-                <div class="mystical-invitation">✨ Los misterios de la noche te convocan... ✨<br>🔮 ¿Aceptarás esta invitación real? 🔮</div>
-                <div class="confirmation-note">Por favor confirmen en el grupo de la familia 👻🎃</div>
-                <a href="https://wa.me/549352515455314?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20Halloween%20Fest" target="_blank" class="confirm-button">✅ Confirmar Asistencia</a>
+                <div class="celebrants-section">
+                    <div class="names-display">DANIEL & SABRINA</div>
+                    <div class="celebration-type">🎂 Celebración de Cumpleaños Real 🎂</div>
+                    <div class="event-grid">
+                        <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces de Lujo</div>
+                        <div class="detail-card"><span class="detail-icon">📅</span>31 de Octubre - 21:00 hs</div>
+                        <div class="detail-card"><span class="detail-icon">📍</span>Santos Saya Norte 138</div>
+                        <div class="detail-card"><span class="detail-icon">🌟</span>Experiencia Inolvidable Garantizada</div>
+                    </div>
+                </div>
+                <a href="https://wa.me/543525455314?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20Halloween%20Fest" target="_blank" class="confirm-button" onclick="launchEpicConfetti(event)">✅ Confirmar Asistencia</a>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-let ultraMagicActive=false;
-function initParticleSystem(){
-const ps=document.querySelector('.particle-system');
-for(let i=0;i<50;i++){const p=document.createElement('div');p.className='particle particle-glow';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle particle-magic';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
-for(let i=0;i<70;i++){const p=document.createElement('div');p.className='particle particle-star';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}}
-function activateUltraMagic(){if(ultraMagicActive)return;ultraMagicActive=true;const ps=document.querySelector('.particle-system');for(let i=0;i<100;i++){const p=document.createElement('div');p.className='particle particle-magic';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
-const audio=new Audio('https://freesound.org/data/previews/535/535607_10304873-lq.mp3');audio.play();}
-initParticleSystem();
-</script>
+    <script>
+        // Confeti épico
+        function launchEpicConfetti(event){
+            event.preventDefault();
+            const link = event.currentTarget.href;
+            const colors = ['#ff6b35','#ba55d3','#ffffff','#ffd700','#ff1493'];
+            for(let i=0;i<100;i++){
+                const conf = document.createElement('div');
+                conf.style.position='fixed';
+                conf.style.width='8px';
+                conf.style.height='8px';
+                conf.style.background=colors[Math.floor(Math.random()*colors.length)];
+                conf.style.left=Math.random()*window.innerWidth+'px';
+                conf.style.top=Math.random()*window.innerHeight+'px';
+                conf.style.pointerEvents='none';
+                conf.style.opacity=Math.random();
+                conf.style.borderRadius='50%';
+                conf.style.zIndex='3000';
+                document.body.appendChild(conf);
+                conf.animate([
+                    {transform:'translateY(0) rotate(0deg)', opacity:conf.style.opacity},
+                    {transform:`translateY(${Math.random()*-500}px) rotate(${Math.random()*720}deg)`, opacity:0}
+                ], {duration:2000 + Math.random()*1000, easing:'cubic-bezier(0.25,0.46,0.45,0.94)'})
+                .onfinish=()=>{document.body.removeChild(conf);}
+            }
+            // Destellos
+            const flash = document.createElement('div');
+            flash.style.position='fixed';
+            flash.style.left='0'; flash.style.top='0';
+            flash.style.width='100%'; flash.style.height='100%';
+            flash.style.background='rgba(255,255,255,0.3)';
+            flash.style.zIndex='2999';
+            document.body.appendChild(flash);
+            flash.animate([{opacity:0.3},{opacity:0}], {duration:500, easing:'ease-out'}).onfinish=()=>{document.body.removeChild(flash);}
+            setTimeout(()=>{window.open(link,'_blank');},300);
+        }
+    </script>
 </body>
 </html>

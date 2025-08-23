@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Nivel Dios Halloween - Daniel & Sabrina</title>
+<title>Invitación Intergaláctica - Daniel & Sabrina</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
@@ -11,170 +11,183 @@
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:#0b0b0b;
+    background:#050014;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow-x:hidden;
+    overflow:hidden;
     position:relative;
-    perspective:2500px;
+    perspective:3500px;
 }
 
-/* Partículas épicas */
+/* Sistema de partículas 3D */
 .particle-system{position:absolute;width:100%;height:100%;overflow:hidden;z-index:1;}
 .particle{position:absolute;border-radius:50%;pointer-events:none;}
-.particle-glow{width:5px;height:5px;background:radial-gradient(circle,#ff6b35,transparent);box-shadow:0 0 20px #ff6b35;animation:particleFloat 12s linear infinite;}
-.particle-magic{width:7px;height:7px;background:radial-gradient(circle,#ba55d3,transparent);box-shadow:0 0 25px #ba55d3;animation:particleFloat 15s linear infinite;}
-.particle-star{width:3px;height:3px;background:#fff;box-shadow:0 0 10px #fff;animation:particleFloat 10s linear infinite;}
+.particle-glow{width:6px;height:6px;background:radial-gradient(circle,#ff6b35,transparent);box-shadow:0 0 30px #ff6b35;animation:particleFloat 15s linear infinite;}
+.particle-magic{width:8px;height:8px;background:radial-gradient(circle,#ba55d3,transparent);box-shadow:0 0 35px #ba55d3;animation:particleFloat 18s linear infinite;}
+.particle-star{width:3px;height:3px;background:#fff;box-shadow:0 0 15px #fff;animation:particleFloat 12s linear infinite;}
 
 @keyframes particleFloat{
 0%{transform:translateY(100vh) translateX(0) rotate(0deg) scale(0);opacity:0;}
 5%{opacity:1;transform:scale(1);}
 95%{opacity:1;}
-100%{transform:translateY(-100vh) translateX(200px) rotate(720deg) scale(0);opacity:0;}
+100%{transform:translateY(-120vh) translateX(200px) rotate(720deg) scale(0);opacity:0;}
 }
 
-/* Tarjeta principal */
-.invitation-container{width:90%;max-width:450px;position:relative;transform-style:preserve-3d;animation:cardLevitate 8s ease-in-out infinite;z-index:10;margin:auto;}
+/* Destellos interactivos */
+.light-flash{position:absolute;width:100%;height:100%;top:0;left:0;background:radial-gradient(circle,rgba(255,255,255,0.15),transparent 70%);pointer-events:none;z-index:2;}
+
+/* Tarjeta flotante 3D */
+.invitation-container{width:90%;max-width:460px;position:relative;transform-style:preserve-3d;animation:cardFloat 6s ease-in-out infinite;z-index:10;margin:auto;}
+@keyframes cardFloat{
+0%{transform:translateY(0px) rotateX(0deg) rotateY(0deg);}
+25%{transform:translateY(-15px) rotateX(8deg) rotateY(6deg);}
+50%{transform:translateY(-20px) rotateX(-8deg) rotateY(-6deg);}
+75%{transform:translateY(-15px) rotateX(6deg) rotateY(8deg);}
+100%{transform:translateY(0px) rotateX(0deg) rotateY(0deg);}
+}
 
 .card{
 width:100%;
 background:linear-gradient(135deg, rgba(45,27,105,0.98), rgba(17,0,28,0.99), rgba(255,107,53,0.95));
-border-radius:40px;
-box-shadow:0 40px 100px rgba(0,0,0,0.95),0 0 180px rgba(255,107,53,0.7),0 0 300px rgba(186,85,211,0.4);
+border-radius:50px;
+box-shadow:0 60px 160px rgba(0,0,0,0.95),0 0 250px rgba(255,107,53,0.9),0 0 400px rgba(186,85,211,0.6);
 position:relative;
 overflow:hidden;
 cursor:pointer;
 transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
-backdrop-filter:blur(25px);
-border:2px solid rgba(255,107,53,0.4);
-padding:25px;
+backdrop-filter:blur(28px);
+border:2px solid rgba(255,107,53,0.55);
+padding:35px;
 }
 
 .card:hover{
-transform:translateY(-30px) rotateX(15deg) rotateY(10deg) scale(1.05);
-box-shadow:0 60px 150px rgba(0,0,0,1),0 0 220px rgba(255,107,53,0.8),0 0 350px rgba(186,85,211,0.5);
+transform:translateY(-35px) rotateX(18deg) rotateY(12deg) scale(1.07);
+box-shadow:0 80px 200px rgba(0,0,0,1),0 0 300px rgba(255,107,53,0.95),0 0 500px rgba(186,85,211,0.7);
 }
 
 /* Contenido */
-.content{position:relative;z-index:20;padding:30px 25px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;}
+.content{position:relative;z-index:20;padding:35px 25px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;}
+.premium-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(0,0,0,0.85);border:2px solid #ff6b35;border-radius:50px;padding:12px 35px;font-size:13px;color:#ffaa80;text-transform:uppercase;letter-spacing:2px;margin-bottom:25px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 15px rgba(255,107,53,0.95);}
+.crown-title{font-family:'Cinzel',serif;font-size:32px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.9),0 0 40px #ff6b35;margin-bottom:14px;}
+.elegant-subtitle{font-family:'Great Vibes',cursive;font-size:25px;color:#e6b3ff;margin-bottom:14px;}
 
-/* Header */
-.premium-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.85);border:2px solid #ff6b35;border-radius:50px;padding:10px 25px;font-size:12px;color:#ffaa80;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;font-weight:800;text-shadow:0 1px 1px rgba(0,0,0,0.8),0 0 10px rgba(255,107,53,0.8);}
-.crown-title{font-family:'Cinzel',serif;font-size:28px;font-weight:900;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,0.9),0 0 30px #ff6b35;margin-bottom:12px;}
-.elegant-subtitle{font-family:'Great Vibes',cursive;font-size:22px;color:#e6b3ff;margin-bottom:12px;}
+.celebrants-section{background:rgba(0,0,0,0.88);border-radius:35px;padding:35px 28px;margin:28px 0;border:2px solid rgba(255,107,53,0.8);box-shadow: inset 0 0 50px rgba(255,107,53,0.3),0 20px 50px rgba(0,0,0,0.8);}
+.names-display{font-family:'Cinzel',serif;font-size:30px;font-weight:700;color:#ffaa80;text-shadow:0 2px 8px rgba(0,0,0,0.9),0 0 40px #ff6b35;margin-bottom:14px;}
+.celebration-type{font-size:19px;color:#f5f5f5;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
 
-/* Celebrantes */
-.celebrants-section{background:rgba(0,0,0,0.85);border-radius:25px;padding:30px 25px;margin:25px 0;border:2px solid rgba(255,107,53,0.7);box-shadow: inset 0 0 40px rgba(255,107,53,0.2),0 15px 40px rgba(0,0,0,0.7);}
-.names-display{font-family:'Cinzel',serif;font-size:26px;font-weight:700;color:#ffaa80;text-shadow:0 2px 6px rgba(0,0,0,0.9),0 0 30px #ff6b35;margin-bottom:12px;}
-.celebration-type{font-size:18px;color:#f5f5f5;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.event-grid{display:flex;flex-direction:column;gap:14px;}
+.detail-card{display:flex;align-items:center;justify-content:center;gap:14px;color:#f5f5f5;font-size:16px;padding:14px 20px;border-radius:18px;background: rgba(255,255,255,0.15);backdrop-filter: blur(14px);border:1px solid rgba(255,255,255,0.25);font-weight:700;transition:0.3s;}
+.detail-card:hover{background: rgba(255,107,53,0.28);transform: translateX(8px) scale(1.04);border-color: rgba(255,107,53,0.48);}
+.detail-icon{font-size:24px;}
 
-/* Grid de detalles */
-.event-grid{display:flex;flex-direction:column;gap:12px;}
-.detail-card{display:flex;align-items:center;justify-content:center;gap:12px;color:#f5f5f5;font-size:15px;padding:12px 18px;border-radius:14px;background: rgba(255,255,255,0.15);backdrop-filter: blur(10px);border:1px solid rgba(255,255,255,0.2);font-weight:600;transition:0.3s;}
-.detail-card:hover{background: rgba(255,107,53,0.2);transform: translateX(5px) scale(1.02);border-color: rgba(255,107,53,0.4);}
-.detail-icon{font-size:22px;}
+.mystical-invitation{font-family:'Great Vibes',cursive;font-size:24px;color:#e6b3ff;margin-bottom:14px;line-height:1.4;}
+.confirmation-note{font-size:15px;color:rgba(255,255,255,0.96);font-style:italic;}
 
-/* Acción */
-.mystical-invitation{font-family:'Great Vibes',cursive;font-size:20px;color:#e6b3ff;margin-bottom:10px;line-height:1.4;}
-.confirmation-note{font-size:14px;color:rgba(255,255,255,0.9);font-style:italic;}
-
-/* Animaciones */
-@keyframes cardLevitate{0%,100%{transform:translateY(0)}25%{transform:translateY(-10px)}75%{transform:translateY(-15px)}}
-
+/* Responsive */
 @media(max-width:480px){
-.crown-title{font-size:24px;}
-.elegant-subtitle{font-size:20px;}
-.names-display{font-size:22px;}
-.celebration-type{font-size:16px;}
-.detail-card{font-size:14px;padding:10px 15px;}
-.content{padding:25px 20px;}
+.crown-title{font-size:28px;}
+.elegant-subtitle{font-size:24px;}
+.names-display{font-size:26px;}
+.celebration-type{font-size:18px;}
+.detail-card{font-size:15px;padding:12px 18px;}
+.content{padding:28px 22px;}
 }
 </style>
 </head>
 <body>
 
-<!-- Partículas -->
 <div class="particle-system"></div>
+<div class="light-flash"></div>
 
 <div class="invitation-container">
-    <div class="card" onclick="launchUltraConfetti(event)">
+    <div class="card" onclick="launchGalaxyConfetti(event)">
         <div class="content">
-            <div class="premium-badge">👑 INVITACIÓN NIVEL DIOS 👑</div>
+            <div class="premium-badge">👑 INVITACIÓN INTERGALÁCTICA 👑</div>
             <div class="crown-title">HALLOWEEN FEST</div>
-            <div class="elegant-subtitle">Una experiencia que desafía la realidad</div>
+            <div class="elegant-subtitle">Una experiencia que trasciende dimensiones</div>
 
             <div class="celebrants-section">
                 <div class="names-display">DANIEL & SABRINA</div>
-                <div class="celebration-type">🎂 Cumpleaños Épico 🎂</div>
+                <div class="celebration-type">🎂 Cumpleaños Legendario 🎂</div>
                 <div class="event-grid">
-                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces Legendaria</div>
+                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces Épica</div>
                     <div class="detail-card"><span class="detail-icon">📅</span>31 de Octubre - 21:00 hs</div>
                     <div class="detail-card"><span class="detail-icon">📍</span>Santos Saya Norte 138</div>
                     <div class="detail-card"><span class="detail-icon">🌟</span>Experiencia Inolvidable Garantizada</div>
                 </div>
             </div>
 
-            <div class="mystical-invitation">✨ Los misterios de la noche te llaman... ✨<br>🔮 ¿Aceptas este desafío? 🔮</div>
+            <div class="mystical-invitation">✨ Los misterios del cosmos te llaman... ✨<br>🔮 ¿Aceptas este desafío estelar? 🔮</div>
             <div class="confirmation-note">Confirmar al +54 3525 45 5314 👻🎃</div>
         </div>
     </div>
 </div>
 
 <script>
-let particleCount = window.innerWidth < 500 ? 40 : 150;
+const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💀','🔥','🌌','🌠'];
+
+// Partículas 3D infinitas
 function initParticles(){
     const system=document.querySelector('.particle-system');
-    setInterval(()=>{
-        for(let i=0;i<3;i++){createParticle(system);}
-    },700);
+    setInterval(()=>{for(let i=0;i<5;i++) createParticle(system);},500);
 }
 function createParticle(container){
     const p=document.createElement('div');
     const types=['particle-glow','particle-magic','particle-star'];
-    const type=types[Math.floor(Math.random()*types.length)];
-    p.className='particle '+type;
+    p.className='particle '+types[Math.floor(Math.random()*types.length)];
     p.style.left=Math.random()*100+'%';
-    p.style.animationDelay='0s';
-    p.style.animationDuration=(Math.random()*5+7)+'s';
+    p.style.animationDuration=(Math.random()*6+8)+'s';
     container.appendChild(p);
-    setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},15000);
+    setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},18000);
 }
 
-function launchUltraConfetti(event){
-    const cardRect=event.currentTarget.getBoundingClientRect();
-    const originX=cardRect.left+cardRect.width/2;
-    const originY=cardRect.top+cardRect.height/2;
-    ultraConfetti(originX,originY);
+// Confeti en espiral periódico
+setInterval(()=>{
+    const rect=document.querySelector('.card').getBoundingClientRect();
+    spiralConfetti(rect.left+rect.width/2,rect.top+rect.height/2,60);
+},2000);
+
+// Confeti al pulsar
+function launchGalaxyConfetti(event){
+    const rect=event.currentTarget.getBoundingClientRect();
+    spiralConfetti(rect.left+rect.width/2,rect.top+rect.height/2,120);
     setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
 }
 
-function ultraConfetti(x,y){
-    const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💀','🔥'];
-    for(let i=0;i<60;i++){
+// Confeti espiral
+function spiralConfetti(x,y,count=50){
+    for(let i=0;i<count;i++){
         const c=document.createElement('div');
         c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
         c.style.position='fixed';
         c.style.left=x+'px';
         c.style.top=y+'px';
-        c.style.fontSize=(Math.random()*30+15)+'px';
+        c.style.fontSize=(Math.random()*32+18)+'px';
         c.style.pointerEvents='none';
-        c.style.zIndex='3000';
+        c.style.zIndex='5000';
         document.body.appendChild(c);
         const angle=Math.random()*2*Math.PI;
-        const distance=250+Math.random()*250;
-        const dx=Math.cos(angle)*distance;
-        const dy=Math.sin(angle)*distance;
+        const distance=200+Math.random()*250;
+        const spiral=Math.sin(i)*50;
+        const dx=Math.cos(angle)*distance+spiral;
+        const dy=Math.sin(angle)*distance+spiral;
         c.animate([
             {transform:'translate(0px,0px) scale(0)',opacity:0},
-            {transform:`translate(${dx/2}px,${dy/2}px) scale(1)`,opacity:1},
-            {transform:`translate(${dx}px,${dy}px) scale(0)`,opacity:0}
-        ],{duration:1800+Math.random()*500,easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
+            {transform:`translate(${dx/2}px,${dy/2}px) scale(1) rotate(${Math.random()*360}deg)`,opacity:1},
+            {transform:`translate(${dx}px,${dy}px) scale(0) rotate(${Math.random()*720}deg)`,opacity:0}
+        ],{duration:2000+Math.random()*600,easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
     }
 }
 
-document.addEventListener('DOMContentLoaded',()=>{initParticles();});
+// Destellos que siguen el cursor
+document.addEventListener('mousemove',e=>{
+    const flash=document.querySelector('.light-flash');
+    flash.style.background=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.25), transparent 60%)`;
+});
+
+document.addEventListener('DOMContentLoaded',initParticles);
 </script>
 
 </body>

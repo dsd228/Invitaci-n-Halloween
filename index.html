@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Ultra Épica Halloween - Daniel & Sabrina</title>
+<title>Invitación Ultra Épica Nivel Dios 2.0</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
@@ -21,7 +21,7 @@ body {
     perspective: 2000px;
 }
 
-/* Sistema de partículas */
+/* Partículas */
 .particle-system { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
 .particle { position: absolute; border-radius: 50%; pointer-events: none; }
 .particle-glow { width: 4px; height: 4px; background: radial-gradient(circle, #ff6b35, transparent); box-shadow: 0 0 10px #ff6b35; animation: particleFloat 12s linear infinite; }
@@ -70,27 +70,22 @@ body {
 /* Contenido */
 .content { position: relative; z-index: 20; padding: 25px 20px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
 
-/* Header */
 .premium-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.85); border: 2px solid #ff6b35; border-radius: 50px; padding: 8px 20px; font-size: 10px; color: #ffaa80; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight:700; text-shadow:0 1px 1px rgba(0,0,0,0.8),0 0 8px rgba(255,107,53,0.6);}
 .crown-title { font-family:'Cinzel', serif; font-size:24px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35; margin-bottom:8px; }
 .elegant-subtitle { font-family:'Great Vibes', cursive; font-size:20px; color:#e6b3ff; margin-bottom:8px; }
 
-/* Celebrantes */
 .celebrants-section { background: rgba(0,0,0,0.85); border-radius:20px; padding:25px 20px; margin:20px 0; border:2px solid rgba(255,107,53,0.6); box-shadow: inset 0 0 30px rgba(255,107,53,0.1),0 10px 30px rgba(0,0,0,0.6); min-height:220px; }
 .names-display { font-family:'Cinzel', serif; font-size:22px; font-weight:600; color:#ffaa80; text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35; margin-bottom:10px; }
 .celebration-type { font-size:16px; color:#f5f5f5; margin-bottom:15px; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
 
-/* Grid de detalles */
 .event-grid { display:flex; flex-direction:column; gap:10px; }
 .detail-card { display:flex; align-items:center; justify-content:center; gap:10px; color:#f5f5f5; font-size:14px; padding:10px 15px; border-radius:12px; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.15); font-weight:500; }
 .detail-card:hover { background: rgba(255,107,53,0.15); transform: translateX(4px) scale(1.01); border-color: rgba(255,107,53,0.3); }
 .detail-icon { font-size:20px; }
 
-/* Sección de acción */
 .mystical-invitation { font-family:'Great Vibes', cursive; font-size:18px; color:#e6b3ff; margin-bottom:8px; line-height:1.4; }
 .confirmation-note { font-size:13px; color:rgba(255,255,255,0.85); font-style:italic; }
 
-/* Animaciones */
 @keyframes cardLevitate { 0%,100%{transform:translateY(0)} 25%{transform:translateY(-8px)} 75%{transform:translateY(-12px)} }
 
 @media (max-width: 480px){
@@ -105,7 +100,7 @@ body {
 </head>
 <body>
 
-<!-- Música de fondo -->
+<!-- Música -->
 <audio id="bg-music" loop>
     <source src="https://assets.mixkit.co/music/preview/mixkit-dark-fantasy-halloween-1050.mp3" type="audio/mpeg">
 </audio>
@@ -140,13 +135,13 @@ body {
 <script>
 let particleCount = window.innerWidth < 500 ? 30 : 100;
 
-// Partículas flotantes
 function initParticles(){
     const system = document.querySelector('.particle-system');
     setInterval(()=>{
         if(Math.random()>0.7){createParticle(system);}
     },1500);
 }
+
 function createParticle(container){
     const p = document.createElement('div');
     const types=['particle-glow','particle-magic','particle-star'];
@@ -159,53 +154,79 @@ function createParticle(container){
     setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},15000);
 }
 
-// Confeti épico y apertura WhatsApp
+// Confeti nivel dios 2.0
 function launchUltraConfetti(event){
-    playMusic(); // Música al primer click si no se reprodujo
+    playMusic(); 
+    vibrate();
+    ultraConfetti(event);
+    ultraFlashes();
+    setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},800);
+}
+
+function ultraConfetti(event){
     const cardRect = event.currentTarget.getBoundingClientRect();
     const originX = cardRect.left + cardRect.width/2;
     const originY = cardRect.top + cardRect.height/2;
-    ultraConfetti(originX, originY);
-    setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
-}
-
-function ultraConfetti(x, y){
     const emojis=['✨','🎃','👻','🦇','🕷️','🌟'];
-    for(let i=0;i<40;i++){
+    for(let i=0;i<50;i++){
         const c=document.createElement('div');
         c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
         c.style.position='fixed';
-        c.style.left=x+'px';
-        c.style.top=y+'px';
-        c.style.fontSize=(Math.random()*25+15)+'px';
+        c.style.left=originX+'px';
+        c.style.top=originY+'px';
+        c.style.fontSize=(Math.random()*35+20)+'px';
         c.style.pointerEvents='none';
         c.style.zIndex='2000';
         document.body.appendChild(c);
         const angle=Math.random()*2*Math.PI;
-        const distance=200+Math.random()*200;
+        const distance=250+Math.random()*250;
         const dx = Math.cos(angle)*distance;
         const dy = Math.sin(angle)*distance;
         c.animate([
             {transform:'translate(0px,0px) scale(0)', opacity:0},
             {transform:`translate(${dx/2}px,${dy/2}px) scale(1)`, opacity:1},
             {transform:`translate(${dx}px,${dy}px) scale(0)`, opacity:0}
-        ],{duration:1500+Math.random()*500, easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
+        ],{duration:2500+Math.random()*500, easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
     }
 }
 
-// Música de fondo (al primer toque)
+// Vibración
+function vibrate(){ if(navigator.vibrate){ navigator.vibrate([100,50,100]); } }
+
+// Flash de luces
+function ultraFlashes(){
+    const flash = document.createElement('div');
+    flash.style.position='fixed';
+    flash.style.top='0';
+    flash.style.left='0';
+    flash.style.width='100%';
+    flash.style.height='100%';
+    flash.style.pointerEvents='none';
+    flash.style.background='radial-gradient(circle, rgba(255,255,255,0.8), transparent)';
+    flash.style.zIndex='3000';
+    document.body.appendChild(flash);
+    flash.animate([{opacity:1},{opacity:0}],{duration:400, iterations:4, direction:'alternate'}).onfinish=()=>{document.body.removeChild(flash);}
+}
+
+// Música con fade-in
 const bgMusic = document.getElementById('bg-music');
 let musicStarted = false;
 function playMusic(){
     if(!musicStarted){
+        bgMusic.volume=0;
         bgMusic.play().catch(()=>{});
+        let vol=0;
+        const fade = setInterval(()=>{
+            vol+=0.02;
+            if(vol>=1){vol=1; clearInterval(fade);}
+            bgMusic.volume=vol;
+        },100);
         musicStarted = true;
     }
 }
-document.addEventListener('touchstart', playMusic, {passive: true});
 
+document.addEventListener('touchstart', playMusic, {passive: true});
 document.addEventListener('DOMContentLoaded',()=>{initParticles();});
 </script>
-
 </body>
 </html>

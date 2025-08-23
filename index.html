@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Premium Halloween - Daniel & Sabrina</title>
+<title>Invitación Ultra Épica Halloween - Daniel & Sabrina</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #000000;
+    background: #000;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@ body {
 .particle { position: absolute; border-radius: 50%; pointer-events: none; }
 .particle-glow { width: 4px; height: 4px; background: radial-gradient(circle, #ff6b35, transparent); box-shadow: 0 0 10px #ff6b35; animation: particleFloat 12s linear infinite; }
 .particle-magic { width: 6px; height: 6px; background: radial-gradient(circle, #ba55d3, transparent); box-shadow: 0 0 15px #ba55d3; animation: particleFloat 15s linear infinite; }
-.particle-star { width: 2px; height: 2px; background: #ffffff; box-shadow: 0 0 8px #ffffff; animation: particleFloat 10s linear infinite; }
+.particle-star { width: 2px; height: 2px; background: #fff; box-shadow: 0 0 8px #fff; animation: particleFloat 10s linear infinite; }
 
 @keyframes particleFloat {
     0% { transform: translateY(100vh) translateX(0) rotate(0deg) scale(0); opacity: 0; }
@@ -109,17 +109,17 @@ body {
 <div class="particle-system"></div>
 
 <div class="invitation-container">
-    <div class="card" onclick="openWhatsAppConfetti()">
+    <div class="card" onclick="launchUltraConfetti(event)">
         <div class="content">
-            <div class="premium-badge">👑 INVITACIÓN EXCLUSIVA 👑</div>
+            <div class="premium-badge">👑 INVITACIÓN ULTRA ÉPICA 👑</div>
             <div class="crown-title">HALLOWEEN FEST</div>
             <div class="elegant-subtitle">Una celebración de ensueño</div>
 
             <div class="celebrants-section">
                 <div class="names-display">DANIEL & SABRINA</div>
-                <div class="celebration-type">🎂 Celebración de Cumpleaños Real 🎂</div>
+                <div class="celebration-type">🎂 Celebración de Cumpleaños 🎂</div>
                 <div class="event-grid">
-                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces de Lujo</div>
+                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces</div>
                     <div class="detail-card"><span class="detail-icon">📅</span>31 de Octubre - 21:00 hs</div>
                     <div class="detail-card"><span class="detail-icon">📍</span>Santos Saya Norte 138</div>
                     <div class="detail-card"><span class="detail-icon">🌟</span>Experiencia Inolvidable Garantizada</div>
@@ -152,28 +152,35 @@ function createParticle(container){
     setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},15000);
 }
 
-function openWhatsAppConfetti(){
-    createConfetti();
-    setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},500);
+function launchUltraConfetti(event){
+    const cardRect = event.currentTarget.getBoundingClientRect();
+    const originX = cardRect.left + cardRect.width/2;
+    const originY = cardRect.top + cardRect.height/2;
+    ultraConfetti(originX, originY);
+    setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
 }
 
-function createConfetti(){
+function ultraConfetti(x, y){
     const emojis=['✨','🎃','👻','🦇','🕷️','🌟'];
-    for(let i=0;i<20;i++){
+    for(let i=0;i<40;i++){
         const c=document.createElement('div');
         c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
         c.style.position='fixed';
-        c.style.fontSize=(Math.random()*20+15)+'px';
-        c.style.left=Math.random()*window.innerWidth+'px';
-        c.style.top=Math.random()*window.innerHeight+'px';
+        c.style.left=x+'px';
+        c.style.top=y+'px';
+        c.style.fontSize=(Math.random()*25+15)+'px';
         c.style.pointerEvents='none';
         c.style.zIndex='2000';
         document.body.appendChild(c);
+        const angle=Math.random()*2*Math.PI;
+        const distance=200+Math.random()*200;
+        const dx = Math.cos(angle)*distance;
+        const dy = Math.sin(angle)*distance;
         c.animate([
-            {transform:'translateY(0) scale(0)',opacity:0},
-            {transform:'translateY(-50px) scale(1)',opacity:1},
-            {transform:`translate(${(Math.random()-0.5)*200}px, ${(Math.random()-0.5)*200}px) scale(0)`,opacity:0}
-        ],{duration:1500,easing:'ease-out'}).onfinish=()=>{document.body.removeChild(c)};
+            {transform:'translate(0px,0px) scale(0)', opacity:0},
+            {transform:`translate(${dx/2}px,${dy/2}px) scale(1)`, opacity:1},
+            {transform:`translate(${dx}px,${dy}px) scale(0)`, opacity:0}
+        ],{duration:1500+Math.random()*500, easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
     }
 }
 

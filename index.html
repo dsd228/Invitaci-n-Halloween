@@ -196,8 +196,6 @@
             text-shadow: 
                 0 1px 1px rgba(0, 0, 0, 0.8),
                 0 0 8px rgba(255, 107, 53, 0.6);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .crown-title {
@@ -214,8 +212,6 @@
             margin-bottom: 12px;
             letter-spacing: 2px;
             line-height: 1.1;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .elegant-subtitle {
@@ -228,22 +224,21 @@
                 0 0 30px rgba(186, 85, 211, 0.6);
             animation: subtitleDance 5s ease-in-out infinite;
             margin-bottom: 10px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Sección de celebrados */
         .celebrants-section {
             background: rgba(0, 0, 0, 0.85);
             border-radius: 20px;
-            padding: 25px 20px;
-            margin: 20px 0;
+            padding: 35px 25px;   /* AUMENTADO */
+            margin: 30px 0;       /* AUMENTADO */
             border: 2px solid rgba(255, 107, 53, 0.6);
             box-shadow: 
                 inset 0 0 40px rgba(255, 107, 53, 0.1),
                 0 15px 40px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
+            min-height: 240px;     /* NUEVO: asegura espacio para todo */
         }
 
         .celebrants-section::before {
@@ -282,8 +277,6 @@
             animation: namesGlow 3s ease-in-out infinite alternate;
             letter-spacing: 1px;
             line-height: 1.2;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .celebration-type {
@@ -294,8 +287,6 @@
             letter-spacing: 2px;
             font-weight: 600;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Detalles del evento premium */
@@ -319,8 +310,6 @@
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             font-weight: 500;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .detail-card:hover {
@@ -352,7 +341,7 @@
                 0 0 20px rgba(186, 85, 211, 0.6);
         }
 
-        /* Sección de acción premium */
+        /* Sección de acción (botón removido) */
         .action-section {
             position: relative;
         }
@@ -366,67 +355,13 @@
                 0 0 15px #ba55d3,
                 0 0 30px rgba(186, 85, 211, 0.6);
             animation: mysticalPulse 5s ease-in-out infinite;
-            margin-bottom: 25px;
+            margin-bottom: 10px; /* reducido para ganar espacio */
             line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .whatsapp-button {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border: none;
-            color: #ffffff;
-            padding: 18px 35px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 
-                0 15px 35px rgba(37, 211, 102, 0.3),
-                0 5px 15px rgba(0, 0, 0, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 auto 15px;
-            position: relative;
-            overflow: hidden;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .whatsapp-button:hover::before {
-            left: 100%;
-        }
-
-        .whatsapp-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 
-                0 25px 50px rgba(37, 211, 102, 0.4),
-                0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .whatsapp-button:active {
-            transform: translateY(-2px) scale(1.02);
         }
 
         .confirmation-note {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
             font-style: italic;
         }
 
@@ -597,8 +532,9 @@
             }
             
             .celebrants-section {
-                padding: 20px 15px;
+                padding: 28px 18px;
                 margin: 15px 0;
+                min-height: 220px; /* un poco más en móvil */
             }
         }
     </style>
@@ -674,21 +610,16 @@
                     </div>
                 </div>
                 
-                <!-- Sección de acción -->
+                <!-- Sección de acción (botón removido) -->
                 <div class="action-section">
                     <div class="mystical-invitation">
                         ✨ Los misterios de la noche te convocan... ✨<br>
                         🔮 ¿Aceptarás esta invitación real? 🔮
                     </div>
                     
-                    <button class="whatsapp-button" onclick="confirmToWhatsApp(event)">
-                        <span>📱</span>
-                        <span>Confirmar al Grupo</span>
-                        <span>✨</span>
-                    </button>
-                    
+                    <!-- Mensaje en lugar del botón -->
                     <div class="confirmation-note">
-                        Se abrirá WhatsApp con mensaje automático
+                        Por favor confirmen en el grupo de la familia 👻🎃
                     </div>
                 </div>
             </div>
@@ -753,48 +684,6 @@
                 card.style.transform = '';
                 card.style.boxShadow = '';
             }, 3000);
-        }
-        
-        function confirmToWhatsApp(event) {
-            event.stopPropagation();
-            
-            const button = event.target.closest('.whatsapp-button');
-            const originalContent = button.innerHTML;
-            
-            // Feedback visual premium
-            button.innerHTML = '<span>✅</span><span>¡Confirmando!</span><span>🎊</span>';
-            button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
-            button.style.transform = 'scale(1.1)';
-            
-            // Crear explosión de confirmación
-            createConfirmationExplosion(button);
-            
-            // Mensaje personalizado para WhatsApp
-            const message = `🎃✨ ¡CONFIRMACIÓN REAL! ✨🎃
-
-👑 Acepto la invitación exclusiva para la celebración de cumpleaños de DANIEL & SABRINA
-
-🎭 Evento: Gala Halloween de Lujo
-📅 Fecha: 31 de Octubre - 21:00 hs
-📍 Lugar: Santos Saya Norte 138
-
-🌟 ¡Estaré ahí con mi mejor disfraz para esta noche mágica!
-
-#HalloweenRoyale #DanielYSabrina #FiestaExclusiva`;
-            
-            // Abrir WhatsApp (reemplaza con el número real del grupo)
-            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            
-            setTimeout(() => {
-                window.open(whatsappURL, '_blank');
-                
-                // Restaurar botón después de un momento
-                setTimeout(() => {
-                    button.innerHTML = originalContent;
-                    button.style.background = 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)';
-                    button.style.transform = '';
-                }, 2000);
-            }, 1000);
         }
         
         function createUltraParticleExplosion() {
@@ -878,54 +767,6 @@
                     easing: 'ease-out'
                 }).onfinish = () => {
                     document.body.removeChild(wave);
-                };
-            }
-        }
-        
-        function createConfirmationExplosion(button) {
-            const rect = button.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.left = centerX + 'px';
-                particle.style.top = centerY + 'px';
-                particle.style.width = '8px';
-                particle.style.height = '8px';
-                particle.style.background = `hsl(${Math.random() * 120 + 100}, 100%, 60%)`;
-                particle.style.borderRadius = '50%';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '2000';
-                particle.style.boxShadow = '0 0 10px currentColor';
-                
-                document.body.appendChild(particle);
-                
-                const angle = (Math.PI * 2 * i) / 15;
-                const distance = Math.random() * 100 + 50;
-                const endX = centerX + Math.cos(angle) * distance;
-                const endY = centerY + Math.sin(angle) * distance;
-                
-                particle.animate([
-                    { 
-                        transform: 'translate(-50%, -50%) scale(0)', 
-                        opacity: 1 
-                    },
-                    { 
-                        transform: 'translate(-50%, -50%) scale(1)', 
-                        opacity: 1, 
-                        offset: 0.1 
-                    },
-                    { 
-                        transform: `translate(${endX - centerX - 4}px, ${endY - centerY - 4}px) scale(0)`, 
-                        opacity: 0 
-                    }
-                ], {
-                    duration: 2000,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                }).onfinish = () => {
-                    document.body.removeChild(particle);
                 };
             }
         }

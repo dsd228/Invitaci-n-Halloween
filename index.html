@@ -3,194 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Ultra God Halloween</title>
+<title>Invitación Ultra Épica Halloween</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&display=swap');
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 body {
-  font-family:'Montserrat',sans-serif;
-  background:#000;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  perspective:2000px;
+    font-family:'Cinzel', serif;
+    background: radial-gradient(circle, #0b0c10, #1f2833);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
 }
 
-.invitation-container { width:90%; max-width:400px; position:relative; transform-style:preserve-3d; animation:cardLevitate 8s ease-in-out infinite; z-index:10; margin:auto; }
-.card {
-  width:100%; background:linear-gradient(135deg, rgba(45,27,105,0.98), rgba(17,0,28,0.99), rgba(74,14,78,0.98), rgba(255,107,53,0.95), rgba(45,27,105,0.98));
-  border-radius:30px; box-shadow:0 30px 80px rgba(0,0,0,0.9),0 0 120px rgba(255,107,53,0.4),0 0 200px rgba(186,85,211,0.2);
-  position:relative; overflow:hidden; cursor:pointer;
-  transition:all 0.6s cubic-bezier(0.23,1,0.32,1); backdrop-filter:blur(20px); border:2px solid rgba(255,107,53,0.3); padding:20px;
+.invitation-container{
+    width:90%;
+    max-width:420px;
+    background:linear-gradient(135deg,#2d1b69,#ff6b35,#ba55d3);
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.9),0 0 120px rgba(255,107,53,0.4);
+    padding:20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    z-index:10;
 }
-.card:hover { transform:translateY(-25px) rotateX(12deg) rotateY(8deg) scale(1.03); box-shadow:0 50px 120px rgba(0,0,0,0.95),0 0 180px rgba(255,107,53,0.6),0 0 300px rgba(186,85,211,0.3); }
 
-.content { position:relative; z-index:20; padding:25px 20px; display:flex; flex-direction:column; justify-content:space-between; text-align:center; }
-.premium-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,0.85); border:2px solid #ff6b35; border-radius:50px; padding:8px 20px; font-size:10px; color:#ffaa80; text-transform:uppercase; letter-spacing:2px; margin-bottom:15px; font-weight:700; text-shadow:0 1px 1px rgba(0,0,0,0.8),0 0 8px rgba(255,107,53,0.6);}
-.crown-title { font-family:'Cinzel', serif; font-size:24px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35; margin-bottom:8px; }
-.elegant-subtitle { font-family:'Great Vibes', cursive; font-size:20px; color:#e6b3ff; margin-bottom:8px; }
+h1{color:#fff;text-shadow:0 0 15px #ff6b35;}
+h2{font-family:'Great Vibes',cursive;color:#e6b3ff;margin-bottom:15px;}
+.detail{background:rgba(255,255,255,0.1);padding:10px 15px;margin:5px 0;border-radius:12px;color:#fff;}
 
-.celebrants-section { background: rgba(0,0,0,0.85); border-radius:20px; padding:25px 20px; margin:20px 0; border:2px solid rgba(255,107,53,0.6); box-shadow: inset 0 0 30px rgba(255,107,53,0.1),0 10px 30px rgba(0,0,0,0.6); min-height:220px; }
-.names-display { font-family:'Cinzel', serif; font-size:22px; font-weight:600; color:#ffaa80; text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 20px #ff6b35; margin-bottom:10px; }
-.celebration-type { font-size:16px; color:#f5f5f5; margin-bottom:15px; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+button{
+    margin-top:10px;padding:12px 20px;border:none;border-radius:20px;
+    cursor:pointer;font-size:16px;color:#fff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
 
-.event-grid { display:flex; flex-direction:column; gap:10px; }
-.detail-card { display:flex; align-items:center; justify-content:center; gap:10px; color:#f5f5f5; font-size:14px; padding:10px 15px; border-radius:12px; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.15); font-weight:500; }
-.detail-card:hover { background: rgba(255,107,53,0.15); transform: translateX(4px) scale(1.01); border-color: rgba(255,107,53,0.3); }
-.detail-icon { font-size:20px; }
+#confettiBtn{background:#ff6b35;}
+#flashBtn{background:#ba55d3;}
+#ghostBtn{background:#00dfff;}
+#whatsappBtn{background:#25D366;}
+button:hover{transform:scale(1.1);}
 
-.button-group { display:flex; justify-content:center; gap:10px; margin-top:15px; flex-wrap:wrap; }
-.btn { background:#ff6b35; color:#fff; padding:10px 18px; border-radius:12px; font-weight:700; cursor:pointer; border:none; transition:all 0.3s ease; }
-.btn:hover { background:#ffaa80; transform:scale(1.05); }
-
-.mystical-invitation { font-family:'Great Vibes', cursive; font-size:18px; color:#e6b3ff; margin-bottom:8px; line-height:1.4; }
-.confirmation-note { font-size:13px; color:rgba(255,255,255,0.85); font-style:italic; }
-
-@keyframes cardLevitate { 0%,100%{transform:translateY(0)} 25%{transform:translateY(-8px)} 75%{transform:translateY(-12px)} }
+.particle{position:absolute;border-radius:50%;pointer-events:none;font-size:20px;}
 </style>
 </head>
 <body>
 
-<audio id="bg-music" loop>
-  <source src="https://assets.mixkit.co/music/preview/mixkit-dark-fantasy-halloween-1050.mp3" type="audio/mpeg">
-</audio>
-
-<div class="particle-system"></div>
+<!-- Música -->
+<audio id="bgMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
 <div class="invitation-container">
-  <div class="card">
-    <div class="content">
-      <div class="premium-badge">👑 INVITACIÓN ULTRA GOD 👑</div>
-      <div class="crown-title">HALLOWEEN FEST</div>
-      <div class="elegant-subtitle">Una celebración de ensueño</div>
+    <h1>HALLOWEEN FEST</h1>
+    <h2>Daniel & Sabrina</h2>
+    <div class="detail">🎂 Cumpleaños – 31 de Octubre, 21:00 hs</div>
+    <div class="detail">📍 Santos Saya Norte 138</div>
+    <div class="detail">🎭 Gala de Disfraces – Experiencia Inolvidable</div>
 
-      <div class="celebrants-section">
-        <div class="names-display">DANIEL & SABRINA</div>
-        <div class="celebration-type">🎂 Celebración de Cumpleaños 🎂</div>
-        <div class="event-grid">
-          <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces</div>
-          <div class="detail-card"><span class="detail-icon">📅</span>31 de Octubre - 21:00 hs</div>
-          <div class="detail-card"><span class="detail-icon">📍</span>Santos Saya Norte 138</div>
-          <div class="detail-card"><span class="detail-icon">🌟</span>Experiencia Inolvidable Garantizada</div>
-        </div>
-      </div>
-
-      <div class="mystical-invitation">✨ Los misterios de la noche te convocan... ✨<br>🔮 ¿Aceptarás esta invitación? 🔮</div>
-      <div class="confirmation-note">Por favor, confirmar al +54 3525 45 5314 👻🎃</div>
-
-      <div class="button-group">
-        <button class="btn" onclick="playConfetti3D()">🎉 Confeti 3D</button>
-        <button class="btn" onclick="playFlashes()">⚡ Flashes Mágicos</button>
-        <button class="btn" onclick="openWhatsApp()">📱 WhatsApp</button>
-      </div>
-
-    </div>
-  </div>
+    <button id="confettiBtn">Confeti Épico 🎉</button>
+    <button id="flashBtn">Destellos Mágicos ✨</button>
+    <button id="ghostBtn">Fantasmas & Murciélagos 👻🦇</button>
+    <button id="whatsappBtn">WhatsApp 📲</button>
 </div>
 
 <script>
-const bgMusic = document.getElementById('bg-music');
-let audioCtx, analyser, dataArray;
+// Reproducir música
+window.addEventListener('load', ()=>{document.getElementById('bgMusic').play().catch(()=>{});});
 
-// Partículas de fondo
-function initParticles(){
-  const system = document.querySelector('.particle-system');
-  setInterval(()=>{
-    if(Math.random()>0.7){createParticle(system);}
-  },1500);
-}
-function createParticle(container){
-  const p = document.createElement('div');
-  const types=['particle-glow','particle-magic','particle-star'];
-  const type = types[Math.floor(Math.random()*types.length)];
-  p.className='particle '+type;
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDelay='0s';
-  p.style.animationDuration=(Math.random()*5+8)+'s';
-  container.appendChild(p);
-  setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},15000);
-}
-
-// Música y analizador
-function playMusic(){
-  if(bgMusic.paused){ bgMusic.play().catch(()=>{}); }
-  if(!audioCtx){
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = audioCtx.createAnalyser();
-    const source = audioCtx.createMediaElementSource(bgMusic);
-    source.connect(analyser);
-    analyser.connect(audioCtx.destination);
-    analyser.fftSize = 64;
-    dataArray = new Uint8Array(analyser.frequencyBinCount);
-    animateEffects();
-  }
+// Confeti
+function createConfetti(){
+    const emojis=['🎉','✨','🎃'];
+    for(let i=0;i<40;i++){
+        const c=document.createElement('div');
+        c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+        c.className='particle';
+        c.style.left=Math.random()*100+'vw';
+        c.style.top='-5vh';
+        c.style.fontSize=(Math.random()*30+15)+'px';
+        document.body.appendChild(c);
+        const dx=Math.random()*200-100;
+        const dy=window.innerHeight+50;
+        c.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},
+                   {transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*720}deg)`,opacity:0}],
+                   {duration:2000+Math.random()*1000,easing:'ease-out'}).onfinish=()=>{c.remove();}
+    }
 }
 
-// Animaciones sincronizadas al beat
-function animateEffects(){
-  analyser.getByteFrequencyData(dataArray);
-  const intensity = dataArray.reduce((a,b)=>a+b)/dataArray.length;
-  document.querySelectorAll('.particle-glow, .particle-magic').forEach(p=>{
-    p.style.transform = `scale(${1+intensity/200})`;
-    p.style.opacity = Math.min(1,intensity/150);
-  });
-  requestAnimationFrame(animateEffects);
+// Destellos
+function createFlash(){
+    const f=document.createElement('div');
+    f.style.position='fixed';
+    f.style.left='0';
+    f.style.top='0';
+    f.style.width='100%';
+    f.style.height='100%';
+    f.style.background='rgba(255,255,255,0.8)';
+    f.style.pointerEvents='none';
+    document.body.appendChild(f);
+    f.animate([{opacity:1},{opacity:0}],{duration:300,easing:'ease-out'}).onfinish=()=>{f.remove();}
 }
 
-// Confeti 3D
-function playConfetti3D(){
-  playMusic();
-  const card = document.querySelector('.card');
-  const rect = card.getBoundingClientRect();
-  const originX = rect.left + rect.width/2;
-  const originY = rect.top + rect.height/2;
-  const emojis=['✨','🎃','👻','🦇','🕷️','🌟'];
-  for(let i=0;i<50;i++){
-    const c=document.createElement('div');
-    c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    c.style.position='fixed';
-    c.style.left=originX+'px';
-    c.style.top=originY+'px';
-    c.style.fontSize=(Math.random()*30+15)+'px';
-    c.style.pointerEvents='none';
-    c.style.zIndex='2000';
-    c.style.transformStyle='preserve-3d';
-    document.body.appendChild(c);
-    const dx = (Math.random()-0.5)*400;
-    const dy = (Math.random()-0.5)*400;
-    const dz = (Math.random()-0.5)*400;
-    c.animate([
-      {transform:'translate3d(0,0,0) rotateY(0deg) scale(0)', opacity:0},
-      {transform:`translate3d(${dx/2}px,${dy/2}px,${dz/2}px) rotateY(180deg) scale(1)`, opacity:1},
-      {transform:`translate3d(${dx}px,${dy}px,${dz}px) rotateY(360deg) scale(0)`, opacity:0}
-    ], {duration:2000+Math.random()*1000, easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c);}
-  }
+// Fantasmas y murciélagos
+function createGhosts(){
+    const entities=['👻','🦇'];
+    for(let i=0;i<20;i++){
+        const g=document.createElement('div');
+        g.textContent=entities[Math.floor(Math.random()*entities.length)];
+        g.className='particle';
+        g.style.fontSize=(Math.random()*40+20)+'px';
+        g.style.left=Math.random()*100+'vw';
+        g.style.top=window.innerHeight+'px';
+        document.body.appendChild(g);
+        const dx=Math.random()*200-100;
+        const dy=-window.innerHeight-50;
+        g.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},
+                   {transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*1080}deg)`,opacity:0}],
+                   {duration:3000+Math.random()*1000,easing:'ease-out'}).onfinish=()=>{g.remove();}
+    }
 }
 
-// Flashes
-function playFlashes(){
-  playMusic();
-  const flash = document.createElement('div');
-  flash.style.position='fixed';
-  flash.style.top='0';
-  flash.style.left='0';
-  flash.style.width='100%';
-  flash.style.height='100%';
-  flash.style.pointerEvents='none';
-  flash.style.background='radial-gradient(circle, rgba(255,255,255,0.8), transparent)';
-  flash.style.zIndex='3000';
-  document.body.appendChild(flash);
-  flash.animate([{opacity:1},{opacity:0}],{duration:400, iterations:6, direction:'alternate'}).onfinish=()=>{document.body.removeChild(flash);}
-}
-
-// WhatsApp
-function openWhatsApp(){ window.open('https://wa.me/543525455314','_blank'); }
-
-document.addEventListener('touchstart', playMusic, {passive:true});
-document.addEventListener('DOMContentLoaded',()=>{initParticles();});
+// Botones
+document.getElementById('confettiBtn').addEventListener('click',createConfetti);
+document.getElementById('flashBtn').addEventListener('click',createFlash);
+document.getElementById('ghostBtn').addEventListener('click',createGhosts);
+document.getElementById('whatsappBtn').addEventListener('click',()=>{
+    window.open('https://wa.me/543525455314','_blank');
+});
 </script>
 
 </body>

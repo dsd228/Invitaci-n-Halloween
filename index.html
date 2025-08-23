@@ -20,7 +20,7 @@ body{
 .particle-star{width:2px;height:2px;background:#fff;box-shadow:0 0 8px #fff;animation:particleFloat 10s linear infinite;}
 
 /* Tarjeta */
-.invitation-container{width:400px;height:600px;position:relative;transform-style:preserve-3d;animation:cardLevitate 8s ease-in-out infinite;z-index:10;margin:auto;}
+.invitation-container{width:400px;height:650px;position:relative;transform-style:preserve-3d;animation:cardLevitate 8s ease-in-out infinite;z-index:10;margin:auto;}
 .card{
     width:100%;height:100%;
     background:linear-gradient(135deg, rgba(45,27,105,0.98) 0%, rgba(17,0,28,0.99) 25%, rgba(74,14,78,0.98) 50%, rgba(255,107,53,0.95) 75%, rgba(45,27,105,0.98) 100%);
@@ -47,9 +47,9 @@ body{
 .location-text{color:#e6b3ff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 10px #ba55d3,0 0 20px rgba(186,85,211,0.6);}
 .action-section{position:relative;margin-top:15px;}
 .mystical-invitation{font-family:'Great Vibes',cursive;font-size:22px;color:#e6b3ff;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 15px #ba55d3,0 0 30px rgba(186,85,211,0.6);animation:mysticalPulse 5s ease-in-out infinite;margin-bottom:10px;line-height:1.4;}
-.confirmation-note{font-size:14px;color:rgba(255,255,255,0.85);font-style:italic;}
-
-/* Animaciones */
+.confirmation-note{font-size:14px;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:15px;}
+.confirm-button{display:inline-block;padding:15px 30px;background:linear-gradient(135deg,#ff6b35,#ba55d3);color:#fff;font-size:16px;border-radius:25px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(255,107,53,0.6),0 0 40px rgba(186,85,211,0.5);transition:all 0.4s ease-in-out;}
+.confirm-button:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(255,107,53,0.8),0 0 60px rgba(186,85,211,0.7);}
 @keyframes particleFloat{0%{transform:translateY(100vh) translateX(0) rotate(0deg) scale(0);opacity:0;}5%{opacity:1;transform:scale(1);}95%{opacity:1;}100%{transform:translateY(-100vh) translateX(200px) rotate(720deg) scale(0);opacity:0;}}
 @keyframes cardLevitate{0%,100%{transform:translateY(0px) rotateZ(0deg);}25%{transform:translateY(-8px) rotateZ(0.5deg);}75%{transform:translateY(-12px) rotateZ(-0.5deg);}}
 @keyframes crownPulse{0%,100%{text-shadow:0 0 30px #ff6b35,0 0 60px #ff6b35,0 0 90px #ff6b35,2px 2px 4px rgba(0,0,0,0.8);transform:scale(1);}50%{text-shadow:0 0 40px #ff6b35,0 0 80px #ff6b35,0 0 120px #ff6b35,2px 2px 4px rgba(0,0,0,0.8);transform:scale(1.02);}}
@@ -59,7 +59,6 @@ body{
 @keyframes iconFloat{0%,100%{transform:translateY(0px) rotate(0deg);}50%{transform:translateY(-5px) rotate(5deg);}}
 @keyframes mysticalPulse{0%,100%{text-shadow:0 0 20px #ba55d3;opacity:0.9;}50%{text-shadow:0 0 30px #ba55d3,0 0 50px #ba55d3;opacity:1;}}
 @keyframes badgeGlow{0%{box-shadow:0 0 15px rgba(255,107,53,0.5),inset 0 0 15px rgba(255,107,53,0.1);}100%{box-shadow:0 0 30px rgba(255,107,53,0.8),inset 0 0 25px rgba(255,107,53,0.2);}}
-
 </style>
 </head>
 <body>
@@ -84,6 +83,7 @@ body{
             <div class="action-section">
                 <div class="mystical-invitation">✨ Los misterios de la noche te convocan... ✨<br>🔮 ¿Aceptarás esta invitación real? 🔮</div>
                 <div class="confirmation-note">Por favor confirmen en el grupo de la familia 👻🎃</div>
+                <a href="https://wa.me/549352515455314?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20Halloween%20Fest" target="_blank" class="confirm-button">✅ Confirmar Asistencia</a>
             </div>
         </div>
     </div>
@@ -91,7 +91,9 @@ body{
 
 <script>
 let ultraMagicActive=false;
-function initParticleSystem(){const ps=document.querySelector('.particle-system');for(let i=0;i<50;i++){const p=document.createElement('div');p.className='particle particle-glow';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
+function initParticleSystem(){
+const ps=document.querySelector('.particle-system');
+for(let i=0;i<50;i++){const p=document.createElement('div');p.className='particle particle-glow';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
 for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle particle-magic';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}
 for(let i=0;i<70;i++){const p=document.createElement('div');p.className='particle particle-star';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}}
 function activateUltraMagic(){if(ultraMagicActive)return;ultraMagicActive=true;const ps=document.querySelector('.particle-system');for(let i=0;i<100;i++){const p=document.createElement('div');p.className='particle particle-magic';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';ps.appendChild(p);}

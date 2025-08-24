@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,7 +48,7 @@ body{
   background-image: 
     radial-gradient(transparent 70%, rgba(0,0,0,.6)), 
     repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 2px, transparent 2px 4px),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,255,255,.05)" stroke-width="1"/></svg>');
   mix-blend-mode:soft-light;opacity:.25
 }
 .fog, .fog:before, .fog:after{
@@ -687,6 +688,105 @@ hr.sep{
     border: 1px solid #ccc;
   }
 }
+/* =========================
+   MINI GAME STYLES
+   ========================= */
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid rgba(255,107,0,0.3);
+  box-shadow: 0 0 30px rgba(255,107,0,0.2);
+}
+.game-header {
+  text-align: center;
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,107,0,0.2);
+}
+.game-title {
+  font-family: 'Creepster', cursive;
+  color: var(--orange-2);
+  font-size: 24px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255,107,0,0.5);
+}
+.score-display {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: rgba(0,0,0,0.6);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 10;
+}
+.game-area {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
+.plant, .zombie, .projectile {
+  position: absolute;
+  z-index: 5;
+}
+.plant {
+  width: 50px;
+  height: 50px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C60,30 70,40 70,50 C70,60 60,70 50,70 C40,70 30,60 30,50 C30,40 40,30 50,10 Z" fill="%234ade80"/><circle cx="50" cy="30" r="8" fill="%23fbbf24"/><circle cx="50" cy="50" r="8" fill="%23fbbf24"/><circle cx="50" cy="70" r="8" fill="%23fbbf24"/></svg>') no-repeat center center;
+  background-size: contain;
+}
+.zombie {
+  width: 60px;
+  height: 80px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,20 C40,10 60,10 70,20 L70,80 C60,90 40,90 30,80 Z" fill="%231f2937"/><path d="M40,30 C45,25 55,25 60,30 L60,50 C55,55 45,55 40,50 Z" fill="%23ef4444"/><circle cx="45" cy="40" r="5" fill="%23ffffff"/><circle cx="55" cy="40" r="5" fill="%23ffffff"/><circle cx="45" cy="40" r="2" fill="%23000000"/><circle cx="55" cy="40" r="2" fill="%23000000"/><path d="M40,60 C45,65 55,65 60,60" stroke="%23ef4444" stroke-width="3" fill="none"/></svg>') no-repeat center center;
+  background-size: contain;
+  animation: zombieWalk 2s linear infinite;
+}
+@keyframes zombieWalk {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.projectile {
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="%23fbbf24"/><circle cx="50" cy="50" r="15" fill="%23f59e0b"/><circle cx="50" cy="50" r="10" fill="%23d97706"/></svg>') no-repeat center center;
+  background-size: contain;
+  animation: shoot 1s linear forwards;
+}
+@keyframes shoot {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100px); opacity: 0; }
+}
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.game-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--orange);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.game-btn:hover {
+  background: var(--orange-2);
+  transform: scale(1.05);
+}
+.game-btn:active {
+  transform: scale(0.95);
+}
 </style>
 </head>
 <body>
@@ -738,6 +838,21 @@ hr.sep{
           </a>
         </div>
         <p class="note" style="margin-top:16px; font-size: 0.95rem">Teléfono para confirmar: <strong>+54 3525 45 5314</strong></p>
+        
+        <!-- Mini Game Section -->
+        <div class="game-container">
+          <div class="game-header">
+            <h3 class="game-title">Pactan vs Zombies</h3>
+          </div>
+          <div class="score-display">Puntos: <span id="score">0</span></div>
+          <div class="game-area" id="gameArea">
+            <!-- Game elements will be added here dynamically -->
+          </div>
+          <div class="game-controls">
+            <button id="plantBtn" class="game-btn">Plantar Pactan</button>
+            <button id="startBtn" class="game-btn">Iniciar Juego</button>
+          </div>
+        </div>
       </div>
       <div class="poster">
         <div class="poster-title" aria-label="Halloween Fest">HALLOWEEN<br>FEST</div>
@@ -991,8 +1106,129 @@ function updateScrollProgress() {
 window.addEventListener('scroll', updateScrollProgress);
 
 /* =========================================================
-   MAIN INITIALIZATION
+   MINI GAME: Plants vs Zombies Style
    ========================================================= */
+class MiniGame {
+  constructor() {
+    this.gameArea = qs('#gameArea');
+    this.scoreDisplay = qs('#score');
+    this.plantBtn = qs('#plantBtn');
+    this.startBtn = qs('#startBtn');
+    
+    this.score = 0;
+    this.gameRunning = false;
+    this.zombies = [];
+    this.plants = [];
+    this.projectiles = [];
+    
+    this.init();
+  }
+  
+  init() {
+    this.plantBtn.addEventListener('click', () => this.plantPactan());
+    this.startBtn.addEventListener('click', () => this.toggleGame());
+  }
+  
+  toggleGame() {
+    if (this.gameRunning) {
+      this.stopGame();
+    } else {
+      this.startGame();
+    }
+  }
+  
+  startGame() {
+    this.gameRunning = true;
+    this.startBtn.textContent = 'Pausar Juego';
+    this.spawnZombies();
+  }
+  
+  stopGame() {
+    this.gameRunning = false;
+    this.startBtn.textContent = 'Iniciar Juego';
+    clearInterval(this.zombieInterval);
+  }
+  
+  plantPactan() {
+    if (this.plants.length >= 3) return; // Limit number of plants
+    
+    const plant = document.createElement('div');
+    plant.className = 'plant';
+    plant.style.bottom = '20px';
+    plant.style.left = `${20 + this.plants.length * 30}%`;
+    this.gameArea.appendChild(plant);
+    
+    this.plants.push({
+      element: plant,
+      lastShot: 0
+    });
+    
+    // Start shooting for this plant
+    this.shootInterval(plant);
+  }
+  
+  shootInterval(plant) {
+    setInterval(() => {
+      if (!this.gameRunning) return;
+      
+      const projectile = document.createElement('div');
+      projectile.className = 'projectile';
+      projectile.style.bottom = '45px';
+      projectile.style.left = '30%';
+      this.gameArea.appendChild(projectile);
+      
+      // Animate projectile
+      setTimeout(() => {
+        projectile.remove();
+      }, 1000);
+    }, 2000);
+  }
+  
+  spawnZombies() {
+    this.zombieInterval = setInterval(() => {
+      if (!this.gameRunning) return;
+      
+      const zombie = document.createElement('div');
+      zombie.className = 'zombie';
+      zombie.style.bottom = '20px';
+      zombie.style.right = '0';
+      this.gameArea.appendChild(zombie);
+      
+      this.zombies.push({
+        element: zombie,
+        health: 3
+      });
+      
+      // Check for collisions
+      this.checkCollisions();
+      
+      // Remove zombie after animation
+      setTimeout(() => {
+        if (zombie.parentElement) {
+          zombie.remove();
+          this.zombies = this.zombies.filter(z => z.element !== zombie);
+          this.score -= 10;
+          this.updateScore();
+        }
+      }, 5000);
+    }, 3000);
+  }
+  
+  checkCollisions() {
+    // This would be more complex in a full game
+    // For simplicity, we'll just update score periodically
+    if (Math.random() > 0.95) {
+      this.score += 5;
+      this.updateScore();
+    }
+  }
+  
+  updateScore() {
+    this.scoreDisplay.textContent = this.score;
+  }
+}
+
+// Initialize the mini game when the page loads
 window.addEventListener('load', () => {
   // Update scroll progress initially
   updateScrollProgress();
@@ -1017,6 +1253,9 @@ window.addEventListener('load', () => {
     lightningAt(e.clientX, e.clientY);
     confettiBurst(e.clientX, e.clientY);
   });
+  
+  // Initialize mini game
+  new MiniGame();
 });
 </script>
 </body>

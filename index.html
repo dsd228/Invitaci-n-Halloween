@@ -1,66 +1,118 @@
-<!-- 🎃 Contador Halloween -->
-<div id="countdown-container">
-  <h2>⏳ La cuenta regresiva ha comenzado...</h2>
-  <div id="countdown"></div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiesta de Disfraces 🎃</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Creepster', cursive, Arial, sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-<script>
-// Fecha del evento (31 Octubre 2025 21:00hs)
-const targetDate = new Date("Oct 31, 2025 21:00:00").getTime();
+    h1 {
+      font-size: 3em;
+      color: orange;
+      text-shadow: 0 0 15px red, 0 0 30px orange;
+      margin-top: 30px;
+      animation: flicker 2s infinite alternate;
+    }
 
-const countdownFunction = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+    p {
+      font-size: 1.5em;
+      margin: 10px;
+    }
 
-  if (distance < 0) {
-    clearInterval(countdownFunction);
-    document.getElementById("countdown").innerHTML = "🔥🎉 ¡La fiesta ha comenzado! 🎉🔥";
-    return;
-  }
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background: orange;
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    .btn:hover {
+      transform: scale(1.1);
+      background: red;
+      color: white;
+    }
 
-  document.getElementById("countdown").innerHTML =
-    `<span class="flame">${days}d</span> : 
-     <span class="flame">${hours}h</span> : 
-     <span class="flame">${minutes}m</span> : 
-     <span class="flame">${seconds}s</span>`;
-}, 1000);
-</script>
+    @keyframes flicker {
+      0% {opacity: 1;}
+      50% {opacity: 0.7;}
+      100% {opacity: 1;}
+    }
 
-<style>
-#countdown-container {
-  text-align: center;
-  margin-top: 50px;
-  color: #ff7518;
-  font-family: 'Creepster', cursive;
-  text-shadow: 0 0 15px #ff4500, 0 0 30px #8b0000;
-}
+    /* 🎃 Contador terrorífico */
+    #countdown {
+      margin-top: 80px;
+      padding: 40px 20px;
+      background: rgba(255, 140, 0, 0.1);
+      border-top: 3px solid orange;
+    }
 
-#countdown-container h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
+    #countdown h2 {
+      font-size: 2.5em;
+      color: orange;
+      text-shadow: 0 0 10px red, 0 0 20px orange;
+      margin-bottom: 20px;
+    }
 
-#countdown {
-  font-size: 3em;
-  letter-spacing: 5px;
-  display: flex;
-  justify-content: center;
-}
+    #timer {
+      font-size: 2em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px orange, 0 0 20px red;
+    }
+  </style>
+</head>
+<body>
 
-#countdown span {
-  padding: 0 10px;
-  position: relative;
-  animation: flicker 1.5s infinite alternate;
-}
+  <h1>🎃 Fiesta de Disfraces 👻</h1>
+  <p>Daniel y Sabrina te invitan a una noche de terror inolvidable.</p>
+  <p>📅 31 de Octubre - 21hs</p>
+  <p>📍 Santos Saya Norte 138</p>
 
-@keyframes flicker {
-  0% { text-shadow: 0 0 5px #ff4500, 0 0 10px #ff7518, 0 0 20px #ff0000; }
-  50% { text-shadow: 0 0 20px #ff7518, 0 0 30px #ff4500, 0 0 50px #ff0000; }
-  100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7518, 0 0 40px #ff4500; }
-}
-</style>
+  <a class="btn" href="https://wa.me/543525455314" target="_blank">Confirmar por WhatsApp</a>
+
+  <!-- 🎃 Contador -->
+  <div id="countdown">
+    <h2>Cuenta Regresiva para la Fiesta 🦇</h2>
+    <div id="timer">Cargando...</div>
+  </div>
+
+  <script>
+    // 🎃 Contador
+    const countdown = () => {
+      const eventDate = new Date("Oct 31, 2025 21:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "¡La Fiesta ha comenzado! 🎉👻";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    setInterval(countdown, 1000);
+  </script>
+
+</body>
+</html>

@@ -1,11 +1,12 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="theme-color" content="#ff6b00" />
 <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño elegante y atmosférico" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Creepster&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
@@ -28,9 +29,9 @@
   --shadow: 0 40px 120px rgba(0,0,0,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;scroll-behavior:smooth}
+html,body{height:100%;scroll-behavior:smooth;overflow-x:hidden}
 body{
-  font-family: 'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  font-family: 'Montserrat',system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   background:
     radial-gradient(1200px 600px at 10% -10%, #1a0f2a 0%, transparent 60%),
     radial-gradient(900px 500px at 110% 10%, #2a0c20 0%, transparent 60%),
@@ -368,7 +369,7 @@ header.hero{
   overflow:hidden;
   background: 
     radial-gradient(80% 60% at 50% 40%, rgba(255,107,0,.16), rgba(184,58,245,.10) 40%, transparent 65%),
-    url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><defs><radialGradient id="g" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="%23ff6b00" stop-opacity=".12"/><stop offset="70%" stop-color="%23000000" stop-opacity="0"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>');
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><defs><radialGradient id="g" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="%23ff6b00" stop-opacity=".12"/><stop offset="70%" stop-color="%23000000" stop-opacity="0"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>');
   transform: rotateY(0deg);
   animation: posterFloat 6s ease-in-out infinite;
   will-change: transform;
@@ -787,6 +788,83 @@ hr.sep{
 .game-btn:active {
   transform: scale(0.95);
 }
+/* =========================
+   MOBILE OPTIMIZATIONS
+   ========================= */
+@media (max-width: 768px) {
+  body {
+    touch-action: manipulation;
+  }
+  
+  .btn {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  
+  .game-container {
+    height: 250px;
+  }
+  
+  .poster {
+    min-height: 200px;
+  }
+  
+  .info-chip {
+    padding: .55rem .75rem;
+    font-size: 0.9rem;
+  }
+  
+  .item {
+    padding: 8px 10px;
+  }
+  
+  .item .ico {
+    font-size: 20px;
+  }
+  
+  .time-box {
+    min-width: 70px;
+    padding: 8px 10px;
+  }
+  
+  .time-box .num {
+    font-size: clamp(22px, 5vw, 36px);
+  }
+  
+  .note {
+    font-size: 0.9rem;
+  }
+}
+
+/* iOS specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+  
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Android specific optimizations */
+@media screen and (min-device-width: 360px) and (max-device-width: 768px) and (orientation: portrait) {
+  .cta-row {
+    gap: 8px;
+  }
+  
+  .btn {
+    flex: 1 1 48%;
+    min-height: 52px;
+    font-size: 0.95rem;
+  }
+  
+  .btn i {
+    font-size: 22px;
+  }
+}
 </style>
 </head>
 <body>
@@ -820,11 +898,11 @@ hr.sep{
         </div>
         <hr class="sep">
         <div class="cta-row">
-          <a id="btn-whatsapp" class="btn whatsapp" href="javascript:void(0)" aria-label="Confirmar asistencia por WhatsApp">
+          <a id="btn-whatsapp" class="btn whatsapp" href="https://wa.me/543525455314" target="_blank" rel="noopener noreferrer" aria-label="Confirmar asistencia por WhatsApp">
             <span class="i">💬</span> Confirmar por WhatsApp
             <span class="spark" aria-hidden="true"></span>
           </a>
-          <a id="btn-mapa" class="btn map" href="javascript:void(0)" aria-label="Abrir mapa con la dirección">
+          <a id="btn-mapa" class="btn map" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank" rel="noopener noreferrer" aria-label="Abrir mapa con la dirección">
             <span class="i">🗺️</span> Abrir mapa
             <span class="spark" aria-hidden="true"></span>
           </a>
@@ -878,6 +956,7 @@ hr.sep{
 const qs = (s, o=document) => o.querySelector(s);
 const qsa = (s, o=document) => [...o.querySelectorAll(s)];
 const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
+
 // Enhanced pointer spark with better performance
 qsa('.btn').forEach(b=>{
   b.addEventListener('pointermove',e=>{
@@ -886,23 +965,32 @@ qsa('.btn').forEach(b=>{
     b.style.setProperty('--my', (e.clientY-r.top)+'px');
   });
 });
-/* =========================================================
-   BATS & GHOSTS SPAWNER
-   ========================================================= */
+
+// Touch-friendly event detection
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+// Enhanced bat and ghost spawning with better distribution
 function spawnMover(kind){
   const el = document.createElement('div');
   el.className = 'mover ' + kind;
   const span = document.createElement('span');
   span.textContent = kind==='bat' ? '🦇' : '👻';
   if (kind==='ghost') span.className='ghost-wobble';
-  el.style.top = clamp(15 + Math.random()*70, 12, 82) + 'vh';
+  
+  // Better positioning for mobile
+  const minHeight = isTouchDevice() ? 20 : 15;
+  const maxHeight = isTouchDevice() ? 75 : 70;
+  el.style.top = clamp(minHeight + Math.random()*60, minHeight, maxHeight) + 'vh';
   el.style.animationDelay = (Math.random()*2)+'s';
   el.appendChild(span);
   document.body.appendChild(el);
+  
   const life = kind==='bat' ? 14000 : 18000;
   setTimeout(()=> el.remove(), life + 1200);
 }
-// Enhanced bat and ghost spawning with better distribution
+
 function initializeMovers() {
   // Initial bats
   for(let i=0;i<4;i++) {
@@ -918,8 +1006,10 @@ function initializeMovers() {
     spawnMover(isBat ? 'bat' : 'ghost');
   }, 2800);
 }
+
 // Initialize movers
 initializeMovers();
+
 /* =========================================================
    BUTTON EFFECTS WITH AUDIO FEEDBACK
    ========================================================= */
@@ -1002,7 +1092,14 @@ qs('#btn-whatsapp').addEventListener('click', (e)=>{
   const x = r.left + r.width/2, y = r.top + r.height/2;
   confettiBurst(x,y);
   triggerFlash();
-  setTimeout(()=> window.open('https://wa.me/543525455314','_blank'), 700);
+  
+  // For mobile devices, open immediately
+  if (isTouchDevice()) {
+    setTimeout(()=> window.open('https://wa.me/543525455314','_blank'), 300);
+  } else {
+    // For desktop, add slight delay for animation
+    setTimeout(()=> window.open('https://wa.me/543525455314','_blank'), 700);
+  }
 });
 
 /* Mapa (lightning + shake + open maps) */
@@ -1010,8 +1107,13 @@ qs('#btn-mapa').addEventListener('click', (e)=>{
   const r = e.currentTarget.getBoundingClientRect();
   lightningAt(r.left + r.width*.65, r.top + r.height*.2);
   shake(document.body);
-  const q = encodeURIComponent('Santos Saya Norte 138');
-  setTimeout(()=> window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank'), 380);
+  
+  // Open map immediately on mobile for better UX
+  if (isTouchDevice()) {
+    setTimeout(()=> window.open('https://maps.google.com/?q=Santos+Saya+Norte+138', '_blank'), 200);
+  } else {
+    setTimeout(()=> window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank'), 380);
+  }
 });
 
 /* Dress code (fog burst + release bats + modal lightweight) */
@@ -1120,6 +1222,7 @@ class MiniGame {
     this.zombies = [];
     this.plants = [];
     this.projectiles = [];
+    this.gameLoopId = null;
     
     this.init();
   }
@@ -1127,6 +1230,23 @@ class MiniGame {
   init() {
     this.plantBtn.addEventListener('click', () => this.plantPactan());
     this.startBtn.addEventListener('click', () => this.toggleGame());
+    
+    // Make game responsive
+    this.makeGameResponsive();
+    window.addEventListener('resize', () => this.makeGameResponsive());
+  }
+  
+  makeGameResponsive() {
+    // Adjust game elements based on screen size
+    const width = this.gameArea.offsetWidth;
+    const height = this.gameArea.offsetHeight;
+    
+    // Adjust zombie speed based on screen size
+    const zombies = this.gameArea.querySelectorAll('.zombie');
+    zombies.forEach(zombie => {
+      const animationDuration = Math.max(3000, width / 10);
+      zombie.style.animationDuration = `${animationDuration}ms`;
+    });
   }
   
   toggleGame() {
@@ -1140,17 +1260,36 @@ class MiniGame {
   startGame() {
     this.gameRunning = true;
     this.startBtn.textContent = 'Pausar Juego';
+    
+    // Clear any existing game loop
+    if (this.gameLoopId) {
+      clearInterval(this.gameLoopId);
+    }
+    
+    // Start game loop
+    this.gameLoopId = setInterval(() => {
+      this.update();
+    }, 100);
+    
+    // Start spawning zombies
     this.spawnZombies();
   }
   
   stopGame() {
     this.gameRunning = false;
     this.startBtn.textContent = 'Iniciar Juego';
-    clearInterval(this.zombieInterval);
+    if (this.gameLoopId) {
+      clearInterval(this.gameLoopId);
+      this.gameLoopId = null;
+    }
   }
   
   plantPactan() {
-    if (this.plants.length >= 3) return; // Limit number of plants
+    if (!this.gameRunning) return;
+    if (this.plants.length >= 3) {
+      showToast('¡Máximo 3 Pactans permitidos!');
+      return;
+    }
     
     const plant = document.createElement('div');
     plant.className = 'plant';
@@ -1160,32 +1299,64 @@ class MiniGame {
     
     this.plants.push({
       element: plant,
-      lastShot: 0
+      lastShot: 0,
+      shootInterval: null
     });
     
     // Start shooting for this plant
-    this.shootInterval(plant);
+    this.startShooting(plant, this.plants.length - 1);
   }
   
-  shootInterval(plant) {
-    setInterval(() => {
-      if (!this.gameRunning) return;
+  startShooting(plantElement, plantIndex) {
+    // Clear any existing interval
+    if (this.plants[plantIndex].shootInterval) {
+      clearInterval(this.plants[plantIndex].shootInterval);
+    }
+    
+    // Create new shooting interval
+    const interval = setInterval(() => {
+      if (!this.gameRunning || !this.plants[plantIndex] || !this.plants[plantIndex].element.parentElement) {
+        clearInterval(interval);
+        return;
+      }
       
       const projectile = document.createElement('div');
       projectile.className = 'projectile';
       projectile.style.bottom = '45px';
-      projectile.style.left = '30%';
+      projectile.style.left = `${parseFloat(plantElement.style.left) + 15}px`;
       this.gameArea.appendChild(projectile);
       
       // Animate projectile
-      setTimeout(() => {
-        projectile.remove();
-      }, 1000);
+      const moveProjectile = setInterval(() => {
+        const currentLeft = parseFloat(projectile.style.left || 0);
+        const newLeft = currentLeft + 5;
+        projectile.style.left = `${newLeft}px`;
+        
+        // Check collision with zombies
+        this.checkCollisions(projectile);
+        
+        // Remove if out of screen
+        if (newLeft > this.gameArea.offsetWidth) {
+          clearInterval(moveProjectile);
+          if (projectile.parentElement) {
+            projectile.remove();
+          }
+        }
+      }, 50);
+      
     }, 2000);
+    
+    // Store the interval reference
+    this.plants[plantIndex].shootInterval = interval;
   }
   
   spawnZombies() {
-    this.zombieInterval = setInterval(() => {
+    // Clear any existing zombie spawn interval
+    if (this.zombieSpawnInterval) {
+      clearInterval(this.zombieSpawnInterval);
+    }
+    
+    this.zombieSpawnInterval = setInterval(() => {
       if (!this.gameRunning) return;
       
       const zombie = document.createElement('div');
@@ -1194,37 +1365,117 @@ class MiniGame {
       zombie.style.right = '0';
       this.gameArea.appendChild(zombie);
       
+      // Set animation duration based on screen width
+      const width = this.gameArea.offsetWidth;
+      const animationDuration = Math.max(5000, width / 5);
+      zombie.style.animationDuration = `${animationDuration}ms`;
+      
       this.zombies.push({
         element: zombie,
-        health: 3
+        health: 3,
+        speed: 1
       });
       
-      // Check for collisions
-      this.checkCollisions();
-      
-      // Remove zombie after animation
+      // Remove zombie after animation or if game stops
       setTimeout(() => {
-        if (zombie.parentElement) {
+        if (this.gameRunning && zombie.parentElement) {
           zombie.remove();
           this.zombies = this.zombies.filter(z => z.element !== zombie);
-          this.score -= 10;
+          this.score = Math.max(0, this.score - 10);
           this.updateScore();
         }
-      }, 5000);
+      }, animationDuration + 1000);
+      
     }, 3000);
   }
   
-  checkCollisions() {
-    // This would be more complex in a full game
-    // For simplicity, we'll just update score periodically
-    if (Math.random() > 0.95) {
-      this.score += 5;
-      this.updateScore();
+  checkCollisions(projectile) {
+    const projectileRect = projectile.getBoundingClientRect();
+    
+    this.zombies.forEach((zombie, index) => {
+      if (!zombie.element || !zombie.element.parentElement) return;
+      
+      const zombieRect = zombie.element.getBoundingClientRect();
+      
+      // Simple collision detection
+      if (projectileRect.left < zombieRect.right &&
+          projectileRect.right > zombieRect.left &&
+          projectileRect.top < zombieRect.bottom &&
+          projectileRect.bottom > zombieRect.top) {
+        
+        // Hit zombie
+        zombie.health--;
+        this.score += 5;
+        this.updateScore();
+        
+        // Remove projectile
+        if (projectile.parentElement) {
+          projectile.remove();
+        }
+        
+        // Remove zombie if health is 0
+        if (zombie.health <= 0) {
+          zombie.element.remove();
+          this.zombies.splice(index, 1);
+          this.score += 15;
+          this.updateScore();
+        }
+      }
+    });
+  }
+  
+  update() {
+    if (!this.gameRunning) return;
+    // Game logic update
+    this.checkWinCondition();
+  }
+  
+  checkWinCondition() {
+    // Simple win condition - reach 100 points
+    if (this.score >= 100) {
+      showToast('¡Felicitaciones! Has ganado el juego 🎉');
+      this.stopGame();
     }
   }
   
   updateScore() {
     this.scoreDisplay.textContent = this.score;
+  }
+  
+  reset() {
+    // Clear all game elements
+    this.plants.forEach(plant => {
+      if (plant.shootInterval) {
+        clearInterval(plant.shootInterval);
+      }
+      if (plant.element && plant.element.parentElement) {
+        plant.element.remove();
+      }
+    });
+    
+    this.zombies.forEach(zombie => {
+      if (zombie.element && zombie.element.parentElement) {
+        zombie.element.remove();
+      }
+    });
+    
+    this.projectiles.forEach(projectile => {
+      if (projectile.element && projectile.element.parentElement) {
+        projectile.element.remove();
+      }
+    });
+    
+    // Reset game state
+    this.plants = [];
+    this.zombies = [];
+    this.projectiles = [];
+    this.score = 0;
+    this.updateScore();
+    
+    // Stop game if running
+    if (this.gameRunning) {
+      this.stopGame();
+    }
   }
 }
 
@@ -1232,6 +1483,7 @@ class MiniGame {
 window.addEventListener('load', () => {
   // Update scroll progress initially
   updateScrollProgress();
+  
   // Add scroll event listener with throttling
   let ticking = false;
   window.addEventListener('scroll', () => {
@@ -1243,6 +1495,7 @@ window.addEventListener('load', () => {
       ticking = true;
     }
   }, { passive: true });
+  
   // Initialize poster interaction
   const poster = qs('.poster');
   poster.addEventListener('click', (e) => {
@@ -1255,7 +1508,39 @@ window.addEventListener('load', () => {
   });
   
   // Initialize mini game
-  new MiniGame();
+  try {
+    new MiniGame();
+  } catch (error) {
+    console.warn('Mini game initialization failed:', error);
+    // Fallback in case of error
+    const gameContainer = qs('.game-container');
+    if (gameContainer) {
+      gameContainer.innerHTML = '<div style="padding: 20px; text-align: center; color: #fff;">Mini juego temporalmente no disponible. ¡Pronto regresará!</div>';
+    }
+  }
+  
+  // Mobile-specific optimizations
+  if (isTouchDevice()) {
+    // Add touch feedback
+    document.body.style.cursor = 'default';
+    
+    // Optimize for mobile performance
+    const elements = document.querySelectorAll('.mover');
+    elements.forEach(el => {
+      el.style.animationDuration = '8s';
+    });
+  }
+});
+
+// Performance optimization for mobile devices
+document.addEventListener('DOMContentLoaded', () => {
+  // Lazy load heavy animations on mobile
+  if (window.innerWidth <= 768) {
+    const heavyElements = document.querySelectorAll('.fog, .mover');
+    heavyElements.forEach(el => {
+      el.style.opacity = '0.7';
+    });
+  }
 });
 </script>
 </body>

@@ -392,6 +392,52 @@ hr.sep{
   .cta-row{ gap:10px }
   .btn{ flex:1 1 auto; justify-content:center }
 }
+
+/* Audio instructions */
+.audio-instructions {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #ff6b00;
+  z-index: 10000;
+  text-align: center;
+  max-width: 400px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 30px rgba(255,107,0,0.5);
+  display: none;
+}
+
+.audio-instructions.show {
+  display: block;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.audio-instructions button {
+  background: #ff6b00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.audio-instructions button:hover {
+  background: #ff8c1a;
+  transform: scale(1.05);
+}
 </style>
 </head>
 <body>
@@ -406,7 +452,7 @@ hr.sep{
 <section id="gate" aria-label="Ingresar a la invitación">
   <div class="gate-card">
     <h1 class="gate-title">Halloween Fest</h1>
-    <p class="gate-sub">Toca “Entrar” para activar la <strong>música</strong> y los <strong>efectos</strong>.</p>
+    <p class="gate-sub">Toca "Entrar" para activar la <strong>música</strong> y los <strong>efectos</strong>.</p>
     <button class="gate-btn" id="enterBtn">🕯️ Entrar y activar música</button>
     <p class="note" style="margin-top:12px">Si luego quieres silenciarla, usa el botón flotante abajo a la derecha.</p>
   </div>
@@ -493,8 +539,23 @@ hr.sep{
   <strong id="musicLabel">Reproducir música</strong>
 </button>
 
-<!-- AUDIO (reemplaza halloween.mp3 por tu archivo) -->
-<audio id="bgAudio" loop preload="auto" src="halloween.mp3"></audio>
+<!-- AUDIO -->
+<audio id="bgAudio" loop preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2021/09/28/audio_363127311.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
+<!-- Audio Instructions Modal -->
+<div class="audio-instructions" id="audioInstructions">
+  <h3>🔊 ¿No se escucha la música?</h3>
+  <p>Sigue estos pasos para activar el sonido:</p>
+  <ol style="text-align: left; margin: 15px 0; padding-left: 20px;">
+    <li>Primero haz clic en "Entrar" arriba</li>
+    <li>Luego haz clic en el botón "Reproducir música"</li>
+    <li>Si usas celular, asegúrate de que el volumen esté alto</li>
+  </ol>
+  <button id="closeInstructions">Entendido</button>
+</div>
 
 <script>
 /* =========================================================
@@ -541,28 +602,90 @@ const gate = qs('#gate');
 const enterBtn = qs('#enterBtn');
 const musicFab = qs('#musicFab');
 const musicLabel = qs('#musicLabel');
+const audioInstructions = qs('#audioInstructions');
+
+// Check if audio is playing
+let audioStarted = false;
+let audioFailed = false;
 
 async function startAudio(){
-  try{
+  try {
+    // Try to play audio
     await audio.play();
+    
+    // If successful, update UI
     musicFab.classList.add('playing');
     musicLabel.textContent = 'Pausar música';
-  }catch(err){
-    // si falla autoplay, mantenemos el FAB visible para intentarlo
-    console.warn('Audio play blocked until interaction', err);
+    audioStarted = true;
+    
+    // Hide instructions if shown
+    audioInstructions.classList.remove('show');
+    
+    return true;
+  } catch (err) {
+    console.warn('Audio play blocked:', err);
+    audioFailed = true;
+    
+    // Show instructions after a delay
+    setTimeout(() => {
+      if (!audioStarted) {
+        audioInstructions.classList.add('show');
+      }
+    }, 1000);
+    
+    return false;
   }
 }
+
+// Click on "Enter" button
 enterBtn.addEventListener('click', async ()=>{
   gate.style.display='none';
-  await startAudio();
-  // entrada épica: flash suave + primer bat
+  
+  // First attempt to play audio
+  const success = await startAudio();
+  
+  if (!success) {
+    // If failed, show instructions
+    audioInstructions.classList.add('show');
+  }
+  
+  // Always trigger effects
   triggerFlash();
   spawnMover('bat');
 });
 
+// Click on music toggle button
 musicFab.addEventListener('click', async ()=>{
-  if(audio.paused){ await startAudio(); }
-  else{ audio.pause(); musicFab.classList.remove('playing'); musicLabel.textContent='Reproducir música'; }
+  if(audio.paused){
+    await startAudio();
+  } else {
+    audio.pause();
+    musicFab.classList.remove('playing');
+    musicLabel.textContent='Reproducir música';
+  }
+});
+
+// Close instructions
+qs('#closeInstructions').addEventListener('click', () => {
+  audioInstructions.classList.remove('show');
+});
+
+// Try to play audio when user interacts with any button
+qsa('a.btn, .music-fab, .gate-btn').forEach(el=>{
+  el.addEventListener('click', async () => {
+    if (!audioStarted && !audioFailed) {
+      await startAudio();
+    }
+  });
+});
+
+// Also listen for keyboard events
+qsa('a.btn, .music-fab, .gate-btn').forEach(el=>{
+  el.addEventListener('keyup', async e=>{ 
+    if((e.key==='Enter' || e.key===' ') && !audioStarted && !audioFailed) {
+      await startAudio();
+    }
+  });
 });
 
 /* =========================================================
@@ -707,13 +830,6 @@ function tick(){
   qs('#s').textContent = String(s).padStart(2,'0');
 }
 setInterval(tick, 1000); tick();
-
-/* =========================================================
-   ACCESSIBILITY IMPROVEMENTS / KEYBOARD
-   ========================================================= */
-qsa('a.btn, .music-fab, .gate-btn').forEach(el=>{
-  el.addEventListener('keyup', e=>{ if(e.key==='Enter' || e.key===' '){ el.click(); }});
-});
 </script>
 </body>
 </html>

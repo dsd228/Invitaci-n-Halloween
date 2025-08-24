@@ -3,239 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b00">
-    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño elegante y atmosférico">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Creepster&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
     <title>Invitación Halloween</title>
     <style>
         :root {
             --bg: #07040a;
-            --bg2: #100718;
             --orange: #ff6b00;
-            --purple: #6b2db5;
-            --pink: #b83af5;
-            --white: #f6f3ff;
-            --muted: #c9b7ff;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--white);
+            font-family: Arial, sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            padding: 0;
+            background: var(--bg);
+            color: var(--white);
+            text-align: center;
         }
 
-        .hero {
-            text-align: center;
-            padding: 2rem;
+        header {
+            padding: 20px;
         }
 
         .title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.5rem;
+            font-size: 24px;
             color: var(--orange);
+            margin-bottom: 10px;
         }
 
         .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffd9b0;
+            font-size: 16px;
+            color: var(--white);
         }
 
         .info-strip {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            margin: 20px 0;
         }
 
         .info-chip {
-            background: rgba(255, 107, 0, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            font-weight: bold;
-            color: #ffd9c0;
-        }
-
-        .main {
-            max-width: 980px;
-            margin: auto;
-            padding: 1rem;
-        }
-
-        .invite {
-            display: flex;
-            gap: 1rem;
-            border: 1px solid var(--muted);
-            border-radius: 12px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .details {
-            flex: 1;
-        }
-
-        .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd7b0;
-        }
-
-        .tagline {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #ffe7d1;
-        }
-
-        .bullets {
-            list-style: none;
-            padding: 0;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
-
-        .poster {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .poster-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            color: var(--orange);
+            display: inline-block;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin: 5px;
+            color: var(--white);
         }
 
         .cta-row {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 20px;
         }
 
         .btn {
-            padding: 0.5rem 1rem;
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
             background: var(--orange);
             color: var(--white);
-            border-radius: 12px;
             text-decoration: none;
-            font-weight: bold;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background: var(--purple);
+            border-radius: 8px;
         }
 
         .countdown {
-            text-align: center;
-            margin-top: 2rem;
+            margin-top: 20px;
+            font-size: 16px;
         }
 
         .timer {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 15px;
+            margin-top: 10px;
         }
 
         .time-box {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
             text-align: center;
         }
 
         .num {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: bold;
-            color: #fff;
         }
 
         .lab {
-            font-size: 0.8rem;
-            color: #ffd9c0;
-        }
-
-        hr.sep {
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-            margin: 1rem 0;
-        }
-
-        .note {
-            color: #d7cfff;
-            font-size: 0.95rem;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <header class="hero" id="top">
-        <span class="badge">👑 Invitación Exclusiva</span>
-        <h1 class="title">Daniel &amp; Sabrina</h1>
-        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
-        <div class="info-strip" role="list">
-            <div class="info-chip" role="listitem">📅 31 de Octubre — 21:00</div>
-            <div class="info-chip" role="listitem">📍 Santos Saya Norte 138</div>
-            <div class="info-chip" role="listitem">🎭 Dress code: ¡Disfraz obligatorio!</div>
+    <header>
+        <h1 class="title">Invitación Halloween</h1>
+        <p class="subtitle">31 de Octubre - 21:00<br>Santos Saya Norte 138</p>
+        <div class="info-strip">
+            <span class="info-chip">🎭 Dress code: Disfraz obligatorio</span>
         </div>
     </header>
-    <main class="main">
-        <section class="invite interactive-hover">
-            <div class="invite-inner">
-                <div class="details">
-                    <h2 class="names">¡Estás invitad@!</h2>
-                    <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
-                    <ul class="bullets">
-                        <li class="item"><span class="ico">🕯️</span>Recepción con luces, humo y ambientación cinematográfica.</li>
-                        <li class="item"><span class="ico">🦇</span>Murciélagos y fantasmas.</li>
-                        <li class="item"><span class="ico">📸</span>Momentos sorpresa con relámpagos y destellos.</li>
-                        <li class="item"><span class="ico">🎁</span>Regalos y sorpresas para todos los asistentes.</li>
-                    </ul>
-                    <hr class="sep">
-                    <div class="cta-row">
-                        <a class="btn whatsapp" href="https://wa.me/543525455314" target="_blank" rel="noopener noreferrer">💬 Confirmar por WhatsApp</a>
-                        <a class="btn map" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank" rel="noopener noreferrer">🗺️ Abrir mapa</a>
-                        <a class="btn dress" href="#">🎭 Dress code</a>
-                        <a class="btn cal" href="#">🗓️ Agregar al calendario</a>
-                    </div>
-                    <p class="note">Teléfono para confirmar: <strong>+54 3525 45 5314</strong></p>
+    <main>
+        <div class="cta-row">
+            <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
+            <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
+        </div>
+        <section class="countdown">
+            <h3>Cuenta regresiva para la fiesta</h3>
+            <div class="timer">
+                <div class="time-box">
+                    <span class="num" id="days">--</span>
+                    <span class="lab">DÍAS</span>
                 </div>
-                <div class="poster">
-                    <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
+                <div class="time-box">
+                    <span class="num" id="hours">--</span>
+                    <span class="lab">HORAS</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="minutes">--</span>
+                    <span class="lab">MIN</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="seconds">--</span>
+                    <span class="lab">SEG</span>
                 </div>
             </div>
         </section>
     </main>
-    <footer>
-        <section class="countdown">
-            <h3>Cuenta regresiva para la fiesta</h3>
-            <div class="timer">
-                <div class="time-box"><span class="num" id="d">--</span><span class="lab">DÍAS</span></div>
-                <div class="time-box"><span class="num" id="h">--</span><span class="lab">HORAS</span></div>
-                <div class="time-box"><span class="num" id="m">--</span><span class="lab">MIN</span></div>
-                <div class="time-box"><span class="num" id="s">--</span><span class="lab">SEG</span></div>
-            </div>
-        </section>
-    </footer>
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2025-10-31T21:00:00');
+            const now = new Date();
+            const timeDiff = eventDate - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>

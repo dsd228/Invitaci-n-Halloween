@@ -1,154 +1,66 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎃 Fiesta de Disfraces 🎭</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Creepster', cursive;
-      background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
-      color: #ff7518;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    h1 {
-      font-size: 3.5rem;
-      text-shadow: 3px 3px 10px black, 0 0 25px red;
-      margin-top: 20px;
-    }
-    h2 {
-      font-size: 2rem;
-      margin: 10px 0;
-      text-shadow: 2px 2px 8px black;
-    }
-    .info {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #fff5e6;
-      text-shadow: 1px 1px 5px #000;
-    }
-    .btn {
-      margin: 20px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background: #ff7518;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #ff7518;
-    }
-    .btn:hover {
-      background: #ff4500;
-      box-shadow: 0 0 30px #ff7518;
-      transform: scale(1.1);
-    }
-    /* Fantasmas */
-    .ghost {
-      position: absolute;
-      width: 80px;
-      animation: floatGhost 10s linear infinite;
-      opacity: 0.8;
-      top: 20%;
-    }
-    @keyframes floatGhost {
-      0% { left: -100px; }
-      50% { top: 30%; }
-      100% { left: 110%; }
-    }
-    /* Murciélagos */
-    .bat {
-      position: absolute;
-      width: 60px;
-      animation: flyBat 8s linear infinite;
-      top: 10%;
-    }
-    @keyframes flyBat {
-      0% { left: 110%; transform: scaleX(1); }
-      50% { top: 20%; }
-      100% { left: -100px; transform: scaleX(-1); }
-    }
-    /* Confeti */
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: orange;
-      top: -10px;
-      animation: fall 5s linear forwards;
-    }
-    @keyframes fall {
-      to { transform: translateY(100vh) rotate(360deg); }
-    }
-    /* Contador */
-    #countdown {
-      margin-top: 40px;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #ffa94d;
-      text-shadow: 2px 2px 5px black;
-    }
-  </style>
-</head>
-<body>
-  <h1>🎃 ¡Fiesta de Disfraces! 👻</h1>
-  <h2>Daniel & Sabrina</h2>
-  <div class="info">
-    📅 31 de Octubre – 21:00 hs <br>
-    📍 Santos Saya Norte 138 <br>
-    📱 Confirma asistencia: +54 3525 45 5314
-  </div>
-
-  <button class="btn" onclick="confettiEffect()">✨ Sorpresa ✨</button>
-  <button class="btn" onclick="openWhatsApp()">📲 Confirmar por WhatsApp</button>
-
+<!-- 🎃 Contador Halloween -->
+<div id="countdown-container">
+  <h2>⏳ La cuenta regresiva ha comenzado...</h2>
   <div id="countdown"></div>
+</div>
 
-  <!-- Fantasmas -->
-  <img src="https://pngimg.com/uploads/ghost/ghost_PNG31.png" class="ghost" style="animation-delay:0s;">
-  <img src="https://pngimg.com/uploads/ghost/ghost_PNG31.png" class="ghost" style="animation-delay:5s; top:40%;">
+<script>
+// Fecha del evento (31 Octubre 2025 21:00hs)
+const targetDate = new Date("Oct 31, 2025 21:00:00").getTime();
 
-  <!-- Murciélagos -->
-  <img src="https://pngimg.com/uploads/bat/bat_PNG8.png" class="bat" style="animation-delay:2s;">
-  <img src="https://pngimg.com/uploads/bat/bat_PNG8.png" class="bat" style="animation-delay:6s; top:30%;">
+const countdownFunction = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
 
-  <script>
-    // Confeti
-    function confettiEffect() {
-      for (let i = 0; i < 40; i++) {
-        let confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.backgroundColor = ["#ff7518","#ffcc00","#ff4500"][Math.floor(Math.random()*3)];
-        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-      }
-    }
-    // WhatsApp
-    function openWhatsApp() {
-      window.open("https://wa.me/543525455314?text=Hola! Confirmo mi asistencia a la fiesta 🎃👻", "_blank");
-    }
-    // Contador Halloween
-    const targetDate = new Date("Oct 31, 2025 21:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-    setInterval(() => {
-      let now = new Date().getTime();
-      let distance = targetDate - now;
-      if (distance < 0) {
-        countdownEl.innerHTML = "¡La fiesta comenzó! 🎉👻";
-        return;
-      }
-      let days = Math.floor(distance / (1000*60*60*24));
-      let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-      let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-      let seconds = Math.floor((distance%(1000*60))/1000);
-      countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-  </script>
-</body>
-</html>
+  if (distance < 0) {
+    clearInterval(countdownFunction);
+    document.getElementById("countdown").innerHTML = "🔥🎉 ¡La fiesta ha comenzado! 🎉🔥";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `<span class="flame">${days}d</span> : 
+     <span class="flame">${hours}h</span> : 
+     <span class="flame">${minutes}m</span> : 
+     <span class="flame">${seconds}s</span>`;
+}, 1000);
+</script>
+
+<style>
+#countdown-container {
+  text-align: center;
+  margin-top: 50px;
+  color: #ff7518;
+  font-family: 'Creepster', cursive;
+  text-shadow: 0 0 15px #ff4500, 0 0 30px #8b0000;
+}
+
+#countdown-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#countdown {
+  font-size: 3em;
+  letter-spacing: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#countdown span {
+  padding: 0 10px;
+  position: relative;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { text-shadow: 0 0 5px #ff4500, 0 0 10px #ff7518, 0 0 20px #ff0000; }
+  50% { text-shadow: 0 0 20px #ff7518, 0 0 30px #ff4500, 0 0 50px #ff0000; }
+  100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7518, 0 0 40px #ff4500; }
+}
+</style>

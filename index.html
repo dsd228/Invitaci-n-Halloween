@@ -1,118 +1,447 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fiesta de Disfraces 🎃</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Creepster', cursive, Arial, sans-serif;
-      background: black;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --halloween:#ff6b35;
+  --violet:#a45de6;
+  --ink:#0b0613;
+  --glass:rgba(255,255,255,.12);
+  --soft:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Montserrat',system-ui,Segoe UI,Roboto,Arial;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    h1 {
-      font-size: 3em;
-      color: orange;
-      text-shadow: 0 0 15px red, 0 0 30px orange;
-      margin-top: 30px;
-      animation: flicker 2s infinite alternate;
-    }
+/* ---------- ESCENA CINEMATOGRÁFICA ---------- */
+.stage{
+  position:relative;min-height:100dvh;display:grid;place-items:center;overflow:hidden;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(180,120,255,.20), transparent 60%),
+    radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
+    #000;
+}
+/* Luna y castillo (look cinematográfico) */
+.moon{
+  position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 35%, #fff, #ddd 40%, #aaa 60%, #777 75%, #666 85%, transparent 86%),
+    radial-gradient(60px 60px at 70% 60%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(40px 40px at 50% 40%, rgba(255,255,255,.09), transparent 60%);
+  box-shadow:0 0 120px 40px rgba(255,255,255,.15);
+  filter:saturate(.9) contrast(1.1);
+  z-index:1;
+}
+.castle{
+  position:absolute;bottom:18vh;left:8vw;width:0;height:0;border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:160px solid #1a1028;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6));opacity:.9;z-index:1;
+}
+.castle:after{
+  content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:
+    140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;
+}
 
-    p {
-      font-size: 1.5em;
-      margin: 10px;
-    }
+/* Niebla */
+.fog{position:absolute;inset:-10% -30%; pointer-events:none; z-index:2;}
+.fog layer{display:block}
+.fog .layer{
+  position:absolute;left:-20%;right:-20%;height:35vh;background:
+    radial-gradient(50% 60% at 50% 50%, rgba(200,200,255,.08), transparent 65%);
+  filter:blur(14px);animation:drift 38s linear infinite;
+}
+.fog .layer.l2{top:20vh;animation-duration:55s;opacity:.7}
+.fog .layer.l3{top:40vh;animation-duration:70s;opacity:.5}
+@keyframes drift{
+  0%{transform:translateX(-10%)} 100%{transform:translateX(10%)}
+}
 
-    .btn {
-      display: inline-block;
-      margin: 15px;
-      padding: 12px 25px;
-      font-size: 1.2em;
-      background: orange;
-      color: black;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+/* Partículas y destellos */
+.particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3}
+.spark{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:#fff;box-shadow:0 0 10px #fff, 0 0 25px var(--violet);
+  animation:rise 6s linear infinite;
+}
+@keyframes rise{
+  from{transform:translateY(20vh) scale(.6);opacity:.0}
+  10%{opacity:.9}
+  to{transform:translateY(-110vh) scale(1.2);opacity:0}
+}
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: red;
-      color: white;
-    }
+/* Murciélagos y Fantasmas */
+.sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
+.bat, .ghost{
+  position:fixed; top:-30px; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
+  animation-timing-function:linear;
+}
+.bat{animation:batfly 10s linear forwards}
+.ghost{animation:ghostFloat 12s ease-in-out forwards}
+@keyframes batfly{
+  0%{transform:translateX(-10vw) translateY(0) rotate(0)} 
+  25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}
+  50%{transform:translateX(55vw) translateY(1vh) rotate(6deg)}
+  75%{transform:translateX(85vw) translateY(-1.5vh) rotate(-4deg)}
+  100%{transform:translateX(120vw) translateY(0) rotate(0)}
+}
+@keyframes ghostFloat{
+  0%{transform:translate(-10vw,15vh) scale(1); opacity:0}
+  10%{opacity:.9}
+  50%{transform:translate(40vw,10vh) scale(1.04)}
+  100%{transform:translate(110vw,18vh) scale(1); opacity:0}
+}
 
-    @keyframes flicker {
-      0% {opacity: 1;}
-      50% {opacity: 0.7;}
-      100% {opacity: 1;}
-    }
+/* ---------- TARJETA ---------- */
+.card{
+  position:relative; z-index:6;
+  width:min(92vw,420px);
+  background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);
+  border-radius:28px; padding:22px; border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.85),
+    0 0 120px rgba(255,107,53,.25),
+    inset 0 0 40px rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+}
+.header{ text-align:center; margin-bottom:12px }
+.badge{
+  display:inline-flex; gap:8px; align-items:center; padding:8px 18px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55);
+  letter-spacing:2px; font-weight:800; font-size:.72rem; color:#ffd7c6; text-transform:uppercase;
+  text-shadow:0 0 10px rgba(255,107,53,.55);
+}
+.title{font-family:'Cinzel',serif; font-size:clamp(28px,7vw,40px); letter-spacing:1px; margin:.3rem 0 .1rem}
+.title span{ color:var(--halloween); text-shadow:0 0 25px rgba(255,107,53,.5)}
+.subtitle{font-family:'Great Vibes',cursive; font-size:clamp(18px,5.2vw,26px); color:#d8b3ff; opacity:.95}
 
-    /* 🎃 Contador terrorífico */
-    #countdown {
-      margin-top: 80px;
-      padding: 40px 20px;
-      background: rgba(255, 140, 0, 0.1);
-      border-top: 3px solid orange;
-    }
+/* Bloque de datos */
+.block{
+  margin:16px 0; padding:16px; border-radius:18px; background:var(--soft);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow: inset 0 0 30px rgba(255,255,255,.05);
+}
+.names{font-family:'Cinzel',serif; font-weight:700; font-size:clamp(20px,6vw,28px); color:#ffcaa8; text-align:center; text-shadow:0 2px 14px rgba(255,107,53,.35)}
+.type{ text-align:center; font-weight:700; opacity:.95; margin-top:4px }
+.grid{ display:grid; gap:10px; margin-top:12px }
+.item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;
+  background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; }
+.item .i{font-size:18px}
 
-    #countdown h2 {
-      font-size: 2.5em;
-      color: orange;
-      text-shadow: 0 0 10px red, 0 0 20px orange;
-      margin-bottom: 20px;
-    }
+/* CTA Botones */
+.cta{
+  display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px
+}
+.btn{
+  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2);
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none;
+  box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn.whatsapp{ grid-column:1 / -1; background:linear-gradient(180deg, rgba(37,211,102,.25), rgba(37,211,102,.08)); border-color:rgba(37,211,102,.35)}
+.btn.light{ border-color:rgba(180,210,255,.35)}
+.btn.fire{ border-color:rgba(255,120,70,.35)}
+.btn.smoke{ border-color:rgba(200,200,200,.35)}
+.btn .shine{ position:absolute; inset:-2px; border-radius:inherit; pointer-events:none; background:
+  radial-gradient(600px 90px at 50% -20%, rgba(255,255,255,.22), transparent 60%),
+  radial-gradient(200px 60px at -20% 50%, rgba(255,255,255,.14), transparent 60%),
+  radial-gradient(200px 60px at 120% 50%, rgba(255,255,255,.14), transparent 60%); mix-blend-mode:screen; opacity:.8}
 
-    #timer {
-      font-size: 2em;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 10px orange, 0 0 20px red;
-    }
-  </style>
+/* Overlay Audio */
+.audio-overlay{
+  position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.65);
+  z-index:999;
+}
+.audio-box{
+  background:#0f0a16; border:1px solid rgba(255,255,255,.2); border-radius:18px; padding:16px 18px; width:min(92vw,420px);
+  text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.6)
+}
+.audio-title{font-weight:800; letter-spacing:.5px; margin-bottom:6px}
+.audio-btn{
+  margin-top:10px; display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.25);
+  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05)); font-weight:900; cursor:pointer
+}
+
+/* Efectos especiales (contenedores) */
+.fx-layer{ position:fixed; inset:0; pointer-events:none; z-index:900 }
+.fx-top{ position:fixed; inset:0; pointer-events:none; z-index:905 }
+.flash{
+  position:fixed; inset:0; background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.9), rgba(255,255,255,.0) 60%);
+  animation:flash .45s ease forwards;
+}
+@keyframes flash{ 0%{opacity:0} 10%{opacity:1} 100%{opacity:0} }
+.lightning{
+  position:fixed; left:50%; top:-10%; width:3px; height:0; background:linear-gradient(#e6f2ff,#c9e0ff,transparent);
+  box-shadow:0 0 20px #cfe2ff; transform:translateX(-50%);
+  animation:bolt .6s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes bolt{
+  0%{height:0; opacity:1} 60%{height:80vh; opacity:1} 100%{height:0; opacity:0}
+}
+.fire-ring{
+  position:fixed; width:10px; height:10px; border-radius:50%; border:2px solid rgba(255,140,60,.9);
+  box-shadow:0 0 30px 8px rgba(255,100,40,.55), inset 0 0 8px rgba(255,200,160,.4);
+  animation:ring 1.6s ease-out forwards;
+}
+@keyframes ring{
+  0%{transform:translate(-50%,-50%) scale(.1); opacity:.95}
+  80%{transform:translate(-50%,-50%) scale(25); opacity:.35}
+  100%{transform:translate(-50%,-50%) scale(30); opacity:0}
+}
+.smoke-plume{
+  position:fixed; width:26px; height:26px; border-radius:50%; background:radial-gradient(circle, rgba(220,220,220,.35), rgba(120,120,120,.08));
+  filter:blur(4px); animation:smoke 2.2s ease-out forwards;
+}
+@keyframes smoke{
+  0%{transform:translate(-50%,-50%) scale(1); opacity:.6}
+  100%{transform:translate(-50%,-200%) scale(3.2); opacity:0}
+}
+
+/* Confeti emojis */
+.confetti{position:fixed; font-size:20px; pointer-events:none; animation:pop 1.4s ease forwards}
+@keyframes pop{
+  0%{transform:translate(0,0) scale(0); opacity:0}
+  15%{transform:translate(0,0) scale(1); opacity:1}
+  100%{transform:var(--t) scale(0.2); opacity:0}
+}
+
+/* Responsive ajustes finos */
+@media (max-width:480px){
+  .btn{font-size:.95rem}
+  .grid .item{font-size:.95rem}
+}
+</style>
 </head>
 <body>
+<div class="stage">
+  <div class="moon" aria-hidden="true"></div>
+  <div class="castle" aria-hidden="true"></div>
 
-  <h1>🎃 Fiesta de Disfraces 👻</h1>
-  <p>Daniel y Sabrina te invitan a una noche de terror inolvidable.</p>
-  <p>📅 31 de Octubre - 21hs</p>
-  <p>📍 Santos Saya Norte 138</p>
-
-  <a class="btn" href="https://wa.me/543525455314" target="_blank">Confirmar por WhatsApp</a>
-
-  <!-- 🎃 Contador -->
-  <div id="countdown">
-    <h2>Cuenta Regresiva para la Fiesta 🦇</h2>
-    <div id="timer">Cargando...</div>
+  <!-- Niebla -->
+  <div class="fog" aria-hidden="true">
+    <div class="layer l1"></div>
+    <div class="layer l2"></div>
+    <div class="layer l3"></div>
   </div>
 
-  <script>
-    // 🎃 Contador
-    const countdown = () => {
-      const eventDate = new Date("Oct 31, 2025 21:00:00").getTime();
-      const now = new Date().getTime();
-      const diff = eventDate - now;
+  <!-- Partículas y destellos -->
+  <div class="sparks" id="sparks" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
 
-      if (diff <= 0) {
-        document.getElementById("timer").innerHTML = "¡La Fiesta ha comenzado! 🎉👻";
-        return;
-      }
+  <!-- Capa de cielo para bats/ghosts -->
+  <div class="sky-layer" id="sky" aria-hidden="true"></div>
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  <!-- TARJETA -->
+  <article class="card" role="region" aria-label="Invitación de Halloween">
+    <header class="header">
+      <div class="badge">👑 Invitación Cinematográfica 👑</div>
+      <h1 class="title">HALLOWEEN <span>FEST</span></h1>
+      <p class="subtitle">Una celebración de ensueño</p>
+    </header>
 
-      document.getElementById("timer").innerHTML = 
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    };
+    <section class="block">
+      <h2 class="names" aria-label="Cumpleaños de Daniel y Sabrina">DANIEL &amp; SABRINA</h2>
+      <p class="type">🎂 Fiesta de Disfraces</p>
+      <div class="grid" role="list">
+        <div class="item" role="listitem"><span class="i">🎭</span> Gala de disfraces</div>
+        <div class="item" role="listitem"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
+        <div class="item" role="listitem"><span class="i">📍</span> Santos Saya Norte 138</div>
+        <div class="item" role="listitem"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
+      </div>
+      <div class="cta" aria-label="Acciones">
+        <button class="btn whatsapp" id="btnWA" type="button" aria-label="Confirmar por WhatsApp">
+          <span>WhatsApp</span> 💬
+          <span class="shine"></span>
+        </button>
+        <button class="btn light" id="btnRayos" type="button" aria-label="Lanzar relámpagos">⚡ Relámpago <span class="shine"></span></button>
+        <button class="btn fire" id="btnFuego" type="button" aria-label="Círculo de fuego">🔥 Llamas <span class="shine"></span></button>
+        <button class="btn smoke" id="btnHumo" type="button" aria-label="Humo misterioso">💨 Humo <span class="shine"></span></button>
+      </div>
+    </section>
 
-    setInterval(countdown, 1000);
-  </script>
+    <p class="subtitle" style="text-align:center;margin-top:10px">✨ Los misterios de la noche te convocan… ✨</p>
+  </article>
+</div>
 
+<!-- AUDIO -->
+<audio id="bgm" src="halloween.mp3" preload="auto" loop playsinline></audio>
+<div class="audio-overlay" id="audioOverlay" role="dialog" aria-modal="true" aria-label="Activar audio">
+  <div class="audio-box">
+    <div class="audio-title">¿Listo para la experiencia completa?</div>
+    <div>Activa el sonido para música épica de terror.</div>
+    <button class="audio-btn" id="btnAudio">🔊 Activar audio</button>
+  </div>
+</div>
+
+<!-- Capas de efectos -->
+<div class="fx-layer" id="fx"></div>
+<div class="fx-top" id="fxTop"></div>
+
+<script>
+/* ---------- AUDIO: reproducción confiable en móvil ---------- */
+const audio = document.getElementById('bgm');
+const audioOverlay = document.getElementById('audioOverlay');
+document.getElementById('btnAudio').addEventListener('click', async()=>{
+  try{
+    await audio.play();
+  }catch(e){
+    console.warn('Autoplay bloqueado:', e);
+  }finally{
+    audioOverlay.style.display='none';
+    // sube suavemente el volumen
+    audio.volume=0; const step=()=>{if(audio.volume<1){audio.volume=Math.min(1, audio.volume+0.08); requestAnimationFrame(step)}};
+    step();
+  }
+});
+// extra: si el usuario toca cualquier parte y aún no inició, intentamos arrancar
+window.addEventListener('pointerdown', async()=>{
+  if(audio.paused){
+    try{ await audio.play(); audioOverlay.style.display='none'; }catch{}
+  }
+},{once:true});
+
+/* ---------- PARTICULAS & DESTELLOS ---------- */
+const sparks = document.getElementById('sparks');
+const particles = document.getElementById('particles');
+function spawnSpark(){
+  const s=document.createElement('div'); s.className='spark';
+  s.style.left = Math.random()*100+'%';
+  s.style.bottom = '-10vh';
+  s.style.animationDuration = (4 + Math.random()*4)+'s';
+  sparks.appendChild(s);
+  setTimeout(()=>s.remove(), 8000);
+}
+function spawnDust(){
+  const d=document.createElement('div'); d.className='spark';
+  d.style.width='3px'; d.style.height='3px';
+  d.style.left=Math.random()*100+'%';
+  d.style.bottom='-5vh';
+  d.style.boxShadow='0 0 8px #ffa96e, 0 0 20px rgba(255,107,53,.8)';
+  d.style.animationDuration=(5+Math.random()*5)+'s';
+  particles.appendChild(d);
+  setTimeout(()=>d.remove(),10000);
+}
+setInterval(spawnSpark, 160);
+setInterval(spawnDust, 260);
+
+/* ---------- MURCIÉLAGOS y FANTASMAS EN OLEADAS ---------- */
+const sky=document.getElementById('sky');
+const batChars = ['🦇','🦇','🦇'];
+const ghostChars = ['👻','👻'];
+function waveBats(){
+  for(let i=0;i<6;i++){
+    const b=document.createElement('div'); b.className='bat'; b.textContent=batChars[i%batChars.length];
+    b.style.top = (10 + Math.random()*40) + 'vh';
+    b.style.left = (-15 - Math.random()*10) + 'vw';
+    b.style.animationDuration = (8 + Math.random()*3)+'s';
+    b.style.fontSize = (18 + Math.random()*10) +'px';
+    sky.appendChild(b); setTimeout(()=>b.remove(), 12000);
+  }
+}
+function waveGhosts(){
+  for(let i=0;i<3;i++){
+    const g=document.createElement('div'); g.className='ghost'; g.textContent=ghostChars[i%ghostChars.length];
+    g.style.top = (15 + Math.random()*35) + 'vh';
+    g.style.left = (-10 - Math.random()*10) + 'vw';
+    g.style.opacity = .85;
+    g.style.animationDuration = (11 + Math.random()*4)+'s';
+    sky.appendChild(g); setTimeout(()=>g.remove(), 15000);
+  }
+}
+setInterval(waveBats, 3800);
+setInterval(waveGhosts, 6400);
+waveBats(); waveGhosts();
+
+/* ---------- BOTONES CON EFECTOS ---------- */
+const fx = document.getElementById('fx');
+const fxTop = document.getElementById('fxTop');
+
+/* WhatsApp: abre chat + confeti + destello */
+document.getElementById('btnWA').addEventListener('click', (e)=>{
+  epicConfetti(e);
+  lensFlash();
+  setTimeout(()=>{ window.open('https://wa.me/543525455314','_blank'); }, 650);
+});
+
+/* Relámpago */
+document.getElementById('btnRayos').addEventListener('click', ()=>{
+  const bolt=document.createElement('div'); bolt.className='lightning';
+  fxTop.appendChild(bolt);
+  flash();
+  setTimeout(()=>bolt.remove(), 800);
+});
+
+/* Llamas (anillo expansivo) */
+document.getElementById('btnFuego').addEventListener('click', (e)=>{
+  const {x,y} = centerOf(e.currentTarget);
+  const r=document.createElement('div'); r.className='fire-ring';
+  r.style.left=x+'px'; r.style.top=y+'px';
+  fxTop.appendChild(r);
+  setTimeout(()=>r.remove(), 1800);
+});
+
+/* Humo (plumas ascendentes) */
+document.getElementById('btnHumo').addEventListener('click', (e)=>{
+  const c=e.currentTarget.getBoundingClientRect();
+  for(let i=0;i<8;i++){
+    const s=document.createElement('div'); s.className='smoke-plume';
+    const px = c.left + c.width*(.2 + Math.random()*.6);
+    const py = c.top + c.height/2;
+    s.style.left=px+'px'; s.style.top=py+'px';
+    fxTop.appendChild(s);
+    setTimeout(()=>s.remove(), 2300);
+  }
+});
+
+/* ---------- EFECTOS AUX ---------- */
+function flash(){
+  const f=document.createElement('div'); f.className='flash';
+  fxTop.appendChild(f); setTimeout(()=>f.remove(), 500);
+}
+function lensFlash(){
+  flash();
+  // pequeño destello adicional
+  const f2=document.createElement('div'); f2.className='flash';
+  f2.style.background='radial-gradient(circle at 50% 50%, rgba(255,255,255,.75), rgba(255,255,255,.0) 55%)';
+  fxTop.appendChild(f2); setTimeout(()=>f2.remove(), 380);
+}
+function epicConfetti(e){
+  const rect = e.currentTarget.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+  const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💫'];
+  for(let i=0;i<48;i++){
+    const el=document.createElement('div'); el.className='confetti';
+    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    const ang = Math.random()*Math.PI*2;
+    const dist = 140 + Math.random()*200;
+    const dx = Math.cos(ang)*dist;
+    const dy = Math.sin(ang)*dist;
+    el.style.left = cx+'px'; el.style.top = cy+'px';
+    el.style.transformOrigin='center';
+    el.style.setProperty('--t', `translate(${dx}px, ${dy}px) rotate(${(Math.random()*720-360)}deg)`);
+    el.style.fontSize = (18 + Math.random()*18)+'px';
+    fxTop.appendChild(el);
+    setTimeout(()=>el.remove(),1500);
+  }
+}
+function centerOf(el){
+  const r=el.getBoundingClientRect();
+  return {x:r.left+r.width/2, y:r.top+r.height/2};
+}
+
+/* Accesorio: oleada de chispas inicial */
+setTimeout(()=>{ flash(); }, 900);
+</script>
 </body>
 </html>

@@ -3,49 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff6b00">
+    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño terrorífico, alegre y cinematográfico">
     <title>Invitación Halloween</title>
     <style>
         :root {
-            --bg: #07040a;
+            --bg: #0b0211;
+            --bg2: #1a0f2a;
             --orange: #ff6b00;
-            --white: #ffffff;
+            --purple: #6b2db5;
+            --pink: #b83af5;
+            --white: #f6f3ff;
+            --muted: #c9b7ff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 15px rgba(255, 107, 0, 0.4);
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: var(--bg);
+            background: linear-gradient(180deg, var(--bg), var(--bg2));
             color: var(--white);
             text-align: center;
+            overflow-x: hidden;
         }
 
         header {
             padding: 20px;
+            background: radial-gradient(circle, rgba(255,107,0,0.1), transparent);
         }
 
         .title {
-            font-size: 24px;
+            font-family: 'Creepster', cursive;
+            font-size: 2.5rem;
             color: var(--orange);
-            margin-bottom: 10px;
+            text-shadow: var(--glow);
         }
 
         .subtitle {
-            font-size: 16px;
-            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: #ffd9b0;
+            margin-top: 10px;
         }
 
         .info-strip {
             margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .info-chip {
-            display: inline-block;
+            background: rgba(255, 107, 0, 0.1);
             padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             margin: 5px;
             color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .main {
+            max-width: 980px;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .invite {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid var(--muted);
+            border-radius: 12px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .names {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #ffd7b0;
+            text-shadow: var(--glow);
+        }
+
+        .tagline {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffe7d1;
+            margin-top: 10px;
+            text-shadow: var(--glow);
+        }
+
+        .bullets {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            margin: 0.5rem 0;
+        }
+
+        .poster {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .poster-title {
+            font-family: 'Creepster', cursive;
+            font-size: 2rem;
+            color: var(--orange);
+            text-shadow: var(--glow);
         }
 
         .cta-row {
@@ -60,47 +148,82 @@
             color: var(--white);
             text-decoration: none;
             border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--purple);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            margin-top: 2rem;
         }
 
         .countdown {
-            margin-top: 20px;
-            font-size: 16px;
+            text-align: center;
         }
 
         .timer {
             display: flex;
+            gap: 1rem;
             justify-content: center;
-            gap: 15px;
             margin-top: 10px;
         }
 
         .time-box {
             text-align: center;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
 
         .num {
             font-size: 24px;
             font-weight: bold;
+            color: #fff;
         }
 
         .lab {
             font-size: 12px;
+            color: #ffd9c0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1 class="title">Invitación Halloween</h1>
-        <p class="subtitle">31 de Octubre - 21:00<br>Santos Saya Norte 138</p>
+        <h1 class="title">Daniel &amp; Sabrina</h1>
+        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
         <div class="info-strip">
-            <span class="info-chip">🎭 Dress code: Disfraz obligatorio</span>
+            <span class="info-chip">📅 31 de Octubre — 21:00</span>
+            <span class="info-chip">📍 Santos Saya Norte 138</span>
+            <span class="info-chip">🎭 Dress code: ¡Disfraz obligatorio!</span>
         </div>
     </header>
-    <main>
-        <div class="cta-row">
-            <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
-            <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
-        </div>
+    <main class="main">
+        <section class="invite">
+            <div class="details">
+                <h2 class="names">¡Estás invitad@!</h2>
+                <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
+                <ul class="bullets">
+                    <li class="item">🕯️ Recepción con luces, humo y ambientación cinematográfica.</li>
+                    <li class="item">🦇 Murciélagos y fantasmas.</li>
+                    <li class="item">📸 Momentos sorpresa con relámpagos y destellos.</li>
+                    <li class="item">🎁 Regalos y sorpresas para todos los asistentes.</li>
+                </ul>
+                <div class="cta-row">
+                    <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
+                    <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
+                </div>
+            </div>
+            <div class="poster">
+                <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
+            </div>
+        </section>
+    </main>
+    <footer>
         <section class="countdown">
             <h3>Cuenta regresiva para la fiesta</h3>
             <div class="timer">
@@ -122,7 +245,7 @@
                 </div>
             </div>
         </section>
-    </main>
+    </footer>
     <script>
         function updateCountdown() {
             const eventDate = new Date('2025-10-31T21:00:00');

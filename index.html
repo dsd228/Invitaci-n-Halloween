@@ -1,278 +1,681 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b00">
-    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño terrorífico, alegre y cinematográfico">
-    <title>Invitación Halloween</title>
-    <style>
-        :root {
-            --bg: #0b0211;
-            --bg2: #1a0f2a;
-            --orange: #ff6b00;
-            --purple: #6b2db5;
-            --pink: #b83af5;
-            --white: #f6f3ff;
-            --muted: #c9b7ff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 15px rgba(255, 107, 0, 0.4);
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación Épica — Daniel & Sabrina | Halloween Fest</title>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--white);
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <!-- Fuentes: legible para cuerpo + gótica para títulos -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 
-        header {
-            padding: 20px;
-            background: radial-gradient(circle, rgba(255,107,0,0.1), transparent);
-        }
+  <style>
+  /* =====================================================
+     Reset mínimo y variables
+     ===================================================== */
+  :root{
+    --bg-1: #060308;
+    --bg-2: #140623;
+    --violet-1: #2e0b3a;
+    --orange: #ff6b00;
+    --orange-2: #ff8c1a;
+    --muted: #d8c8ff;
+    --card-bg: rgba(255,255,255,0.03);
+    --glass: rgba(255,255,255,0.04);
+    --accent-glow: 0 0 28px rgba(255,107,0,0.45);
+    --soft-glow: 0 0 18px rgba(184,58,245,0.18);
+    --max-width: 1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:
+      radial-gradient(900px 500px at 10% 10%, rgba(46,11,58,0.42), transparent 20%),
+      radial-gradient(800px 420px at 95% 20%, rgba(255,107,0,0.06), transparent 18%),
+      linear-gradient(180deg,var(--bg-1),var(--bg-2) 60%);
+    color: #f5f2ff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x: hidden;
+    padding-bottom: 120px;
+  }
 
-        .title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.5rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+  /* =====================================================
+     BACKGROUND/HALO/FOG (decorativo)
+     ===================================================== */
+  .bg-ambient{ position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .bg-ambient::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(600px 300px at 15% 10%, rgba(184,58,245,0.12), transparent 40%),
+      radial-gradient(500px 240px at 90% 20%, rgba(255,107,0,0.08), transparent 35%);
+    filter: blur(22px);
+    mix-blend-mode: screen;
+    opacity:0.95;
+  }
+  .bg-grid{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 2px, transparent 2px 6px);
+    opacity:0.03;
+  }
 
-        .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffd9b0;
-            margin-top: 10px;
-        }
+  /* =====================================================
+     Header / Hero
+     ===================================================== */
+  header.site-header{
+    position:relative; z-index:5; text-align:center; padding: 36px 18px 10px;
+    max-width: var(--max-width); margin: 0 auto;
+  }
+  .badge{
+    display:inline-flex; gap:.5rem; align-items:center;
+    padding:.5rem 1rem; border-radius:999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.06);
+    color:var(--muted); font-weight:700; font-size:.85rem;
+    letter-spacing:.12em;
+    box-shadow: var(--soft-glow);
+  }
 
-        .info-strip {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+  .hero-title{
+    font-family: "Cinzel", serif;
+    font-weight:700;
+    font-size: clamp(36px, 6.8vw, 92px);
+    color: var(--orange);
+    margin-top: .8rem;
+    line-height: .92;
+    text-shadow: 0 6px 0 #000, var(--accent-glow);
+    letter-spacing:.02em;
+  }
+  .hero-sub{
+    font-size: clamp(14px, 2.2vw, 20px);
+    color:#ffd9b0; margin-top:.3rem;
+    text-shadow: 0 0 12px rgba(255,140,26,0.12);
+  }
 
-        .info-chip {
-            background: rgba(255, 107, 0, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 5px;
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
+  .info-strip{ margin-top: 14px; display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; z-index:5; }
+  .chip{
+    background: linear-gradient(180deg, rgba(255,107,0,0.06), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,107,0,0.16);
+    color:#ffd9c0; padding:.5rem .8rem; border-radius:12px; font-weight:700; font-size:.95rem;
+  }
 
-        .main {
-            max-width: 980px;
-            margin: auto;
-            padding: 1rem;
-        }
+  /* =====================================================
+     Main invite card (dos columnas)
+     ===================================================== */
+  main.container{
+    position:relative; z-index:6; max-width: var(--max-width);
+    margin: 26px auto; padding: 0 18px;
+  }
+  .invite{
+    border-radius:22px; overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 40px 120px rgba(0,0,0,.6), inset 0 0 40px rgba(255,107,0,0.04);
+  }
+  .invite-inner{
+    display:grid; grid-template-columns: 1fr 420px; gap: 20px; padding: clamp(18px, 2.4vw, 28px);
+  }
+  @media (max-width:980px){ .invite-inner{ grid-template-columns: 1fr; } }
 
-        .invite {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border: 1px solid var(--muted);
-            border-radius: 12px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: var(--shadow);
-        }
+  /* LEFT column */
+  .left{
+    padding: 6px 6px;
+  }
+  .names{
+    font-family: "Cinzel", serif;
+    font-size: clamp(28px, 4.6vw, 44px); color:#ffd9b0; margin-bottom:6px;
+    text-shadow: 0 0 18px rgba(255,140,26,0.14);
+  }
+  .subline{
+    text-transform:uppercase; letter-spacing:.18em; font-weight:700; color:#ffe7d1; margin-bottom: 14px;
+  }
+  .desc{
+    color: #f4eefb; opacity:.95; line-height:1.5; font-size:1rem; margin-bottom: 14px;
+  }
 
-        .details {
-            flex: 1;
-            text-align: left;
-        }
+  .features{
+    display:grid; gap:10px; margin-bottom:16px;
+  }
+  .feature{
+    display:flex; gap:12px; align-items:flex-start; padding:10px 12px; border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+    border:1px solid rgba(255,255,255,0.04);
+  }
+  .feature .icon{ font-size:22px; margin-top:2px }
+  .feature .t{ font-weight:700; color:#fff; font-size:.98rem }
 
-        .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd7b0;
-            text-shadow: var(--glow);
-        }
+  /* CTA row */
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 12px; align-items:center }
+  .btn{
+    position:relative; display:inline-flex; align-items:center; gap:.6rem;
+    padding:.9rem 1.1rem; border-radius:12px; border:1px solid rgba(255,255,255,0.06);
+    text-decoration:none; color:#fff; font-weight:800; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    cursor:pointer; overflow:hidden;
+    transition: transform .22s ease, box-shadow .18s ease;
+  }
+  .btn:active{ transform: translateY(1px) }
+  .btn .i{ font-size:18px }
 
-        .tagline {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #ffe7d1;
-            margin-top: 10px;
-            text-shadow: var(--glow);
-        }
+  /* variants */
+  .btn.whatsapp{ border-color: rgba(37,211,102,0.28); box-shadow: 0 8px 30px rgba(37,211,102,0.06) }
+  .btn.map{ border-color: rgba(255,140,26,0.30); box-shadow: 0 8px 30px rgba(255,107,0,0.06) }
+  .btn.dress{ border-color: rgba(184,58,245,0.26); box-shadow: 0 8px 30px rgba(184,58,245,0.04) }
+  .btn.cal{ border-color: rgba(255,196,0,0.28); box-shadow: 0 8px 30px rgba(255,196,0,0.04) }
 
-        .bullets {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
+  /* button spark effect */
+  .btn .spark{
+    position:absolute; inset:0; pointer-events:none; background: radial-gradient(400px 80px at var(--mx,50%) var(--my,50%), rgba(255,107,0,0.14), transparent 50%); opacity:0; transition: .18s opacity;
+  }
+  .btn:hover .spark{ opacity:1 }
 
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
+  /* small note */
+  .note{ color:#e9ddff; opacity:.9; margin-top:10px; font-weight:600 }
 
-        .poster {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
+  /* RIGHT column: poster + decorations */
+  .right{
+    display:flex; flex-direction:column; gap:12px;
+    align-items:center; justify-content:center; padding:10px;
+  }
+  .poster{
+    width:100%; border-radius:14px; padding: 22px; display:flex; align-items:center; justify-content:center;
+    min-height: 260px;
+    background:
+      radial-gradient(300px 220px at 30% 20%, rgba(255,107,0,0.08), transparent 20%),
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px dashed rgba(255,255,255,0.06);
+    box-shadow: inset 0 0 40px rgba(184,58,245,0.03);
+  }
+  .poster .poster-title{
+    font-family: "Cinzel", serif; color: var(--orange); font-size: clamp(28px, 5.2vw, 58px);
+    text-shadow: var(--accent-glow); line-height:1; text-align:center;
+  }
 
-        .poster-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+  /* poster small caption */
+  .poster small{ display:block; margin-top:10px; color:#ffd9b0; font-weight:700 }
 
-        .cta-row {
-            margin-top: 20px;
-        }
+  /* =====================================================
+     MOVERS: bats and ghosts (js inserts)
+     ===================================================== */
+  .mover{
+    position:fixed; z-index: 10; pointer-events:none; transform: translate3d(0,0,0);
+    will-change: transform, left, top;
+  }
+  .mover span{ filter: drop-shadow(0 7px 14px rgba(0,0,0,0.6)); display:inline-block; }
+  @keyframes batFly{
+    0%{ transform: translate3d(-15vw, 0, 0) rotate(0deg) scale(1) }
+    20%{ transform: translate3d(18vw, -6vh, 0) rotate(-12deg) scale(.95) }
+    40%{ transform: translate3d(45vw, 6vh, 0) rotate(5deg) scale(1.05) }
+    60%{ transform: translate3d(70vw, -8vh, 0) rotate(-8deg) scale(.96) }
+    80%{ transform: translate3d(95vw, 4vh, 0) rotate(6deg) scale(1.02) }
+    100%{ transform: translate3d(120vw, -2vh, 0) rotate(0deg) scale(1) }
+  }
+  @keyframes ghostFloat{
+    0%{ transform: translate3d(-18vw, 0, 0) }
+    30%{ transform: translate3d(25vw, -8vh, 0) }
+    60%{ transform: translate3d(65vw, 8vh, 0) }
+    100%{ transform: translate3d(120vw, 0, 0) }
+  }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            background: var(--orange);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
+  /* =====================================================
+     FOOTER: Map + Countdown
+     ===================================================== */
+  footer.site-footer{ max-width: var(--max-width); margin: 32px auto 86px; padding: 0 18px; z-index:6; position:relative; }
+  .map-card{
+    display:grid; grid-template-columns: 1fr 360px; gap:14px; align-items:center;
+    background: var(--card-bg); border-radius:14px; padding:12px; border:1px solid rgba(255,255,255,0.04);
+  }
+  @media (max-width:980px){ .map-card{ grid-template-columns:1fr } }
 
-        .btn:hover {
-            background: var(--purple);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
+  .map-embed{
+    width:100%; height:260px; border-radius:10px; overflow:hidden; border:1px solid rgba(0,0,0,0.2);
+  }
+  .map-info{ padding:10px; display:flex; flex-direction:column; gap:10px }
+  .map-info h4{ color:var(--orange); font-family:"Cinzel", serif; margin-bottom:4px }
+  .map-info p{ color:#ffd9c0; line-height:1.4 }
 
-        footer {
-            margin-top: 2rem;
-        }
+  .countdown{
+    margin-top:14px; border-radius:12px; padding:14px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 0 30px rgba(255,107,0,0.04);
+  }
+  .countdown h3{ font-family:"Cinzel", serif; color:var(--orange); text-shadow: var(--accent-glow); margin-bottom:10px; font-size:20px }
+  .timer{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+  .time{
+    min-width:92px; padding:12px; border-radius:10px; background: rgba(255,107,0,0.06); border:1px solid rgba(255,107,0,0.18);
+    box-shadow: inset 0 0 20px rgba(255,107,0,0.06);
+    text-align:center;
+  }
+  .time .num{ font-size:28px; font-weight:900 }
+  .time .lab{ font-size:12px; color:#ffd9c0; letter-spacing:.14em; margin-top:4px }
 
-        .countdown {
-            text-align: center;
-        }
+  /* fire / smoke effect under countdown */
+  .fire-wrap{ position:relative; margin-top:12px; height:110px; overflow:visible; }
+  .flame{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:120%; height:120px; pointer-events:none; opacity:.9;
+    background:
+      radial-gradient(40% 40% at 30% 70%, rgba(255,140,26,0.26), transparent 40%),
+      radial-gradient(40% 40% at 70% 70%, rgba(255,69,0,0.22), transparent 45%);
+    filter: blur(20px); mix-blend-mode: screen; animation: fireWobble 3.2s ease-in-out infinite;
+  }
+  @keyframes fireWobble{
+    0%{ transform:translateX(-50%) scale(.98) }
+    50%{ transform:translateX(-50%) scale(1.02) }
+    100%{ transform:translateX(-50%) scale(.98) }
+  }
+  .sparks{ position:absolute; bottom:18px; left:20%; width:60%; height:80px; pointer-events:none; z-index:2 }
+  .spark{ position:absolute; width:8px; height:8px; border-radius:50%; background: #ffd96a; opacity:.9 }
 
-        .timer {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .time-box {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .num {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .lab {
-            font-size: 12px;
-            color: #ffd9c0;
-        }
-    </style>
+  /* small utilities */
+  .visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px) }
+  </style>
 </head>
 <body>
-    <header>
-        <h1 class="title">Daniel &amp; Sabrina</h1>
-        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
-        <div class="info-strip">
-            <span class="info-chip">📅 31 de Octubre — 21:00</span>
-            <span class="info-chip">📍 Santos Saya Norte 138</span>
-            <span class="info-chip">🎭 Dress code: ¡Disfraz obligatorio!</span>
+  <!-- Ambient layers -->
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Header / hero -->
+  <header class="site-header" role="banner">
+    <span class="badge" aria-hidden="true">👑 INVITACIÓN EXCLUSIVA</span>
+    <h1 class="hero-title" aria-label="Daniel y Sabrina - Halloween Fest">DANIEL &amp; SABRINA</h1>
+    <div class="hero-sub">Noche de disfraces — Halloween épico</div>
+
+    <div class="info-strip" role="list">
+      <div class="chip" role="listitem">📅 31 de Octubre — 21:00</div>
+      <div class="chip" role="listitem">📍 Santos Saya Norte 138</div>
+      <div class="chip" role="listitem">🎭 Disfraz obligatorio</div>
+    </div>
+  </header>
+
+  <!-- Main invite card -->
+  <main class="container" role="main">
+    <section class="invite" aria-labelledby="invite-title">
+      <div class="invite-inner">
+        <!-- LEFT -->
+        <div class="left">
+          <div class="names" id="invite-title">¡Estás invitad@!</div>
+          <div class="subline">UNA NOCHE DE TERROR · MAGIA · SORPRESA</div>
+          <p class="desc">Daniel y Sabrina te esperan para una gala de disfraces inolvidable: ambientación cinematográfica, sorpresas, música temática (activable por el usuario), y mucha atmósfera. Ven con tu mejor disfraz — habrá premios a los más creativos.</p>
+
+          <div class="features" role="list">
+            <div class="feature" role="listitem"><div class="icon">🕯️</div><div class="t">Recepción con luces y humo</div></div>
+            <div class="feature" role="listitem"><div class="icon">🦇</div><div class="t">Murciélagos y fantasmas animados</div></div>
+            <div class="feature" role="listitem"><div class="icon">🎭</div><div class="t">Gala de disfraces de lujo</div></div>
+            <div class="feature" role="listitem"><div class="icon">📸</div><div class="t">Momentos sorpresa con relámpagos</div></div>
+          </div>
+
+          <div class="cta-row" role="group" aria-label="Acciones">
+            <button id="btnWhats" class="btn whatsapp" title="Confirmar por WhatsApp" aria-live="polite">
+              <span class="i">💬</span> Confirmar por WhatsApp
+              <span class="spark" aria-hidden="true"></span>
+            </button>
+
+            <button id="btnMap" class="btn map" title="Abrir mapa">
+              <span class="i">🗺️</span> Ver mapa
+              <span class="spark" aria-hidden="true"></span>
+            </button>
+
+            <button id="btnDress" class="btn dress" title="Dress code">
+              <span class="i">🎭</span> Dress code
+              <span class="spark" aria-hidden="true"></span>
+            </button>
+
+            <button id="btnCal" class="btn cal" title="Agregar al calendario">
+              <span class="i">🗓️</span> Agregar al calendario
+              <span class="spark" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <p class="note">Teléfono para confirmar: <strong>+54 3525 45 5314</strong></p>
         </div>
-    </header>
-    <main class="main">
-        <section class="invite">
-            <div class="details">
-                <h2 class="names">¡Estás invitad@!</h2>
-                <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
-                <ul class="bullets">
-                    <li class="item">🕯️ Recepción con luces, humo y ambientación cinematográfica.</li>
-                    <li class="item">🦇 Murciélagos y fantasmas.</li>
-                    <li class="item">📸 Momentos sorpresa con relámpagos y destellos.</li>
-                    <li class="item">🎁 Regalos y sorpresas para todos los asistentes.</li>
-                </ul>
-                <div class="cta-row">
-                    <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
-                    <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
-                </div>
+
+        <!-- RIGHT: poster -->
+        <aside class="right" aria-label="Poster">
+          <div class="poster" role="img" aria-label="Poster Halloween Fest">
+            <div>
+              <div class="poster-title">HALLOWEEN<br>FEST</div>
+              <small>Gala de Disfraces — 31/10 • 21:00</small>
             </div>
-            <div class="poster">
-                <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <section class="countdown">
-            <h3>Cuenta regresiva para la fiesta</h3>
-            <div class="timer">
-                <div class="time-box">
-                    <span class="num" id="days">--</span>
-                    <span class="lab">DÍAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="hours">--</span>
-                    <span class="lab">HORAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="minutes">--</span>
-                    <span class="lab">MIN</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="seconds">--</span>
-                    <span class="lab">SEG</span>
-                </div>
-            </div>
-        </section>
-    </footer>
-    <script>
-        function updateCountdown() {
-            const eventDate = new Date('2025-10-31T21:00:00');
-            const now = new Date();
-            const timeDiff = eventDate - now;
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
 
-            if (timeDiff <= 0) {
-                document.getElementById('days').textContent = "00";
-                document.getElementById('hours').textContent = "00";
-                document.getElementById('minutes').textContent = "00";
-                document.getElementById('seconds').textContent = "00";
-                return;
-            }
+  <!-- Footer: map + countdown -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="map-card" aria-hidden="false">
+      <div class="map-embed" title="Mapa - Santos Saya Norte 138">
+        <!-- Google Maps embed (consulta por dirección) -->
+        <iframe
+          src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed"
+          style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
 
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      <div class="map-info">
+        <h4>📍 Lugar</h4>
+        <p>Santos Saya Norte 138 — Entrada principal. Llegar con tiempo para recepción y fotos.</p>
+        <div style="display:flex; gap:.6rem; margin-top:6px;">
+          <a id="openMapsBtn" class="btn map" style="padding:.6rem .9rem; font-weight:700">Abrir en Google Maps</a>
+          <a id="callBtn" class="btn whatsapp" style="padding:.6rem .9rem; font-weight:700">Llamar • +54 3525 45 5314</a>
+        </div>
+      </div>
+    </div>
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+    <div class="countdown" aria-live="polite">
+      <h3>Cuenta regresiva para la fiesta</h3>
+      <div class="timer" id="timerBoxes" role="timer" aria-atomic="true">
+        <div class="time"><div class="num" id="days">--</div><div class="lab">DÍAS</div></div>
+        <div class="time"><div class="num" id="hours">--</div><div class="lab">HORAS</div></div>
+        <div class="time"><div class="num" id="minutes">--</div><div class="lab">MIN</div></div>
+        <div class="time"><div class="num" id="seconds">--</div><div class="lab">SEG</div></div>
+      </div>
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+      <!-- fire/smoke spark area -->
+      <div class="fire-wrap" aria-hidden="true">
+        <div class="flame"></div>
+        <div class="sparks" id="sparks"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessible status for screen readers -->
+  <div class="visually-hidden" id="sr-status" aria-live="polite"></div>
+
+  <!-- ======================================================
+       JavaScript: animaciones, botones, confetti, movers, countdown
+       ====================================================== -->
+  <script>
+  /* ============================
+     Helpers
+     ============================ */
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  function rand(min,max){ return Math.random()*(max-min)+min }
+
+  /* ============================
+     Spawn movers: bats & ghosts
+     ============================ */
+  function spawnMover(type){
+    const el = document.createElement('div');
+    el.className = 'mover';
+    const span = document.createElement('span');
+    span.textContent = type === 'bat' ? '🦇' : '👻';
+    span.style.fontSize = type === 'bat' ? `${rand(18,44)}px` : `${rand(28,72)}px`;
+    if(type === 'ghost'){
+      span.style.opacity = 0.95;
+    }
+    el.appendChild(span);
+    // random vertical pos
+    const top = clamp(rand(8,78),6,82);
+    el.style.top = top + 'vh';
+    // start off-screen left
+    el.style.left = '-16vw';
+    document.body.appendChild(el);
+
+    // animate with CSS keyframes via JS by applying transforms over time
+    const duration = type === 'bat' ? rand(11000,16000) : rand(15000,22000);
+    const start = performance.now();
+    const sx = -16; const ex = 120; // vw values
+    function frame(now){
+      const t = (now - start) / duration;
+      if(t >= 1){
+        el.remove();
+        return;
+      }
+      // eased progress
+      const p = t;
+      // compute current x in vw
+      const curX = sx + (ex - sx) * p;
+      // vertical oscillation
+      const vy = Math.sin(p * Math.PI * rand(1,3)) * (type === 'bat' ? 6 : 12);
+      el.style.transform = `translate3d(${curX}vw, ${vy}vh, 0)`;
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // start spawn intervals
+  setInterval(()=> spawnMover(Math.random() > 0.46 ? 'bat' : 'ghost'), 2800);
+  // initial ones
+  for(let i=0;i<3;i++) setTimeout(()=> spawnMover('bat'), 300*i+200);
+  for(let i=0;i<2;i++) setTimeout(()=> spawnMover('ghost'), 500*i+800);
+
+  /* ============================
+     Button pointer spark positions
+     ============================ */
+  $$( '.btn' ).forEach(btn=>{
+    btn.addEventListener('pointermove', e=>{
+      const r = btn.getBoundingClientRect();
+      btn.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      btn.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ============================
+     Confetti (emoji) burst
+     ============================ */
+  function confettiBurst(x,y, count=46){
+    const emojis = ['✨','🎃','👻','🦇','🕷️','🌟','💫'];
+    for(let i=0;i<count;i++){
+      const c = document.createElement('div');
+      c.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      c.style.position = 'fixed';
+      c.style.left = x + 'px';
+      c.style.top = y + 'px';
+      c.style.zIndex = 9999;
+      c.style.pointerEvents = 'none';
+      c.style.fontSize = `${Math.floor(rand(14,36))}px`;
+      document.body.appendChild(c);
+      const ang = rand(0, Math.PI*2);
+      const dist = rand(120,380);
+      const dx = Math.cos(ang) * dist;
+      const dy = Math.sin(ang) * dist - 80;
+      const dur = rand(900,1700);
+      c.animate([
+        { transform: 'translate(0,0) scale(.2)', opacity:0 },
+        { transform: `translate(${dx*0.5}px,${dy*0.5}px) scale(1)`, opacity:1, offset:.35 },
+        { transform: `translate(${dx}px,${dy}px) scale(.2)`, opacity:0 }
+      ], { duration: dur, easing: 'cubic-bezier(.22,1,.36,1)' }).onfinish = ()=> c.remove();
+    }
+  }
+
+  /* ============================
+     Flash / fog / lightning helpers
+     ============================ */
+  function flashEffect(){
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed'; overlay.style.inset = '0'; overlay.style.zIndex = 9998;
+    overlay.style.background = 'radial-gradient(circle at 50% 20%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%)';
+    overlay.style.pointerEvents = 'none';
+    document.body.appendChild(overlay);
+    overlay.animate([{ opacity: .0 }, { opacity: 1 }, { opacity: 0 }], { duration: 520, easing: 'ease-out' })
+      .onfinish = ()=> overlay.remove();
+  }
+  function fogBurstAt(x,y){
+    const fog = document.createElement('div');
+    fog.style.position='fixed'; fog.style.left='0'; fog.style.top='0'; fog.style.width='100%'; fog.style.height='100%';
+    fog.style.zIndex=9997; fog.style.pointerEvents='none';
+    fog.style.background = `radial-gradient(30vw 20vh at ${x}px ${y}px, rgba(255,255,255,0.18), transparent 40%)`;
+    fog.style.filter = 'blur(12px)'; fog.style.opacity = 0;
+    document.body.appendChild(fog);
+    fog.animate([{opacity:0},{opacity:.9},{opacity:0}], { duration: 1200, easing:'ease-out' }).onfinish = ()=> fog.remove();
+  }
+  function lightningAt(x,y){
+    const bolt = document.createElement('div');
+    bolt.style.position='fixed'; bolt.style.left='0'; bolt.style.top='0'; bolt.style.width='100%'; bolt.style.height='100%';
+    bolt.style.zIndex=9999; bolt.style.pointerEvents='none';
+    bolt.style.background = `radial-gradient(1200px 500px at ${x}px ${y}px, rgba(255,255,255,.9), rgba(255,255,255,0) 40%)`;
+    document.body.appendChild(bolt);
+    bolt.animate([{opacity:0},{opacity:1},{opacity:0}], { duration: 360, easing:'steps(2, end)' }).onfinish = ()=> bolt.remove();
+  }
+
+  /* ============================
+     WhatsApp button behavior
+     ============================ */
+  const phone = '543525455314'; // +54 3525 45 5314
+  $('#btnWhats').addEventListener('click', (e)=>{
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = r.left + r.width/2, y = r.top + r.height/2;
+    confettiBurst(x,y);
+    flashEffect();
+    setTimeout(()=> {
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent('¡Hola! Confirmo mi asistencia a la fiesta de Daniel & Sabrina 🎃👻')}`, '_blank');
+    }, 700);
+    // announce for screen readers
+    $('#sr-status').textContent = 'Se abrirá WhatsApp en una nueva pestaña para confirmar.';
+  });
+
+  /* ============================
+     Map button
+     ============================ */
+  $('#btnMap').addEventListener('click', (e)=>{
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = r.left + r.width*.65, y = r.top + r.height*.2;
+    lightningAt(x,y);
+    fogBurstAt(x,y+40);
+    // Open Google Maps search
+    const q = encodeURIComponent('Santos Saya Norte 138');
+    setTimeout(()=> window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank'), 380);
+    $('#sr-status').textContent = 'Abriendo Google Maps con la ubicación.';
+  });
+
+  /* ============================
+     Dress code button (tip + spawn bats)
+     ============================ */
+  $('#btnDress').addEventListener('click', (e)=>{
+    const r = e.currentTarget.getBoundingClientRect();
+    fogBurstAt(r.left + r.width/2, r.top + r.height/2);
+    // spawn a small wave of bats
+    for(let i=0;i<4;i++) setTimeout(()=> spawnMover('bat'), i*220);
+    showToast('Dress code: disfraz obligatorio. Premios a los más creativos 🎭🏆');
+  });
+
+  /* ============================
+     Calendar (.ics) button
+     ============================ */
+  $('#btnCal').addEventListener('click', (e)=>{
+    const r = e.currentTarget.getBoundingClientRect();
+    confettiBurst(r.left + r.width/2, r.top + r.height/2, 28);
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//HalloweenFest//Invite//ES',
+      'BEGIN:VEVENT',
+      'UID:'+Date.now()+'@halloween',
+      'DTSTAMP:20251031T210000Z',
+      'DTSTART:20251031T210000',
+      'DTEND:20251101T030000',
+      'SUMMARY:Halloween Fest — Daniel & Sabrina',
+      'LOCATION:Santos Saya Norte 138',
+      'DESCRIPTION:Fiesta de disfraces épica. Confirma al +54 3525 45 5314',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    const blob = new Blob([lines.join('\r\n')], {type:'text/calendar;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'HalloweenFest.ics';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=> { URL.revokeObjectURL(url); a.remove(); }, 900);
+    $('#sr-status').textContent = 'Archivo .ics descargado para agregar al calendario.';
+  });
+
+  /* ============================
+     open maps / call from footer buttons
+     ============================ */
+  $('#openMapsBtn').addEventListener('click', ()=> {
+    const q = encodeURIComponent('Santos Saya Norte 138');
+    window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank');
+  });
+  $('#callBtn').addEventListener('click', ()=> {
+    window.open('tel:+543525455314');
+  });
+
+  /* ============================
+     Small toast utility
+     ============================ */
+  function showToast(msg){
+    const t = document.createElement('div');
+    t.textContent = msg;
+    Object.assign(t.style, {
+      position:'fixed', left:'50%', bottom:'24px', transform:'translateX(-50%)',
+      padding:'10px 14px', borderRadius:'12px', background:'rgba(0,0,0,0.7)', color:'#fff',
+      border:'1px solid rgba(255,255,255,0.06)', zIndex:99999, fontWeight:700
+    });
+    document.body.appendChild(t);
+    t.animate([{opacity:0, transform:'translate(-50%,10px)'},{opacity:1, transform:'translate(-50%,0)'}],{duration:220,easing:'ease-out'});
+    setTimeout(()=> t.animate([{opacity:1},{opacity:0}],{duration:260}).onfinish=()=>t.remove(), 2600);
+  }
+
+  /* ============================
+     Countdown
+     ============================ */
+  const target = new Date('2025-10-31T21:00:00'); // fecha objetivo
+  function pad(n){ return String(n).padStart(2,'0') }
+  function tick(){
+    const now = new Date();
+    let diff = target.getTime() - now.getTime();
+    if(diff <= 0){
+      $('#days').textContent = '0';
+      $('#hours').textContent = '00';
+      $('#minutes').textContent = '00';
+      $('#seconds').textContent = '00';
+      showToast('🎉 ¡La fiesta ha comenzado! 🎉');
+      return;
+    }
+    const d = Math.floor(diff / (1000*60*60*24));
+    diff -= d * (1000*60*60*24);
+    const h = Math.floor(diff / (1000*60*60));
+    diff -= h * (1000*60*60);
+    const m = Math.floor(diff / (1000*60));
+    diff -= m * (1000*60);
+    const s = Math.floor(diff / 1000);
+    $('#days').textContent = String(d);
+    $('#hours').textContent = pad(h);
+    $('#minutes').textContent = pad(m);
+    $('#seconds').textContent = pad(s);
+  }
+  setInterval(tick, 1000); tick();
+
+  /* ============================
+     Sparks generation under fire
+     ============================ */
+  function spawnSparks(){
+    const container = $('#sparks');
+    container.innerHTML = '';
+    for(let i=0;i<16;i++){
+      const sp = document.createElement('div');
+      sp.className = 'spark';
+      sp.style.left = `${rand(5,95)}%`;
+      sp.style.bottom = `${rand(10,45)}px`;
+      sp.style.width = `${rand(6,12)}px`;
+      sp.style.height = sp.style.width;
+      sp.style.opacity = rand(.6,1);
+      container.appendChild(sp);
+      // animate each spark
+      const anim = sp.animate([
+        { transform: 'translateY(0) scale(.6)', opacity: 0 },
+        { transform: `translateY(-${rand(40,140)}px) scale(1)`, opacity: 1 },
+        { transform: `translateY(-${rand(160,320)}px) scale(.4)`, opacity: 0 }
+      ], { duration: rand(1000,2400), easing:'cubic-bezier(.25,.9,.3,1)', delay: rand(0,600) });
+      anim.onfinish = ()=> sp.remove();
+    }
+  }
+  setInterval(spawnSparks, 1400);
+  spawnSparks();
+
+  /* ============================
+     Accessibility keyboard triggers
+     ============================ */
+  $$('button, a').forEach(el=>{
+    el.addEventListener('keyup', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') el.click(); });
+  });
+
+  /* End of script */
+  </script>
 </body>
 </html>

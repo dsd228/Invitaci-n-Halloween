@@ -1,278 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b00">
-    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño terrorífico, alegre y cinematográfico">
-    <title>Invitación Halloween</title>
-    <style>
-        :root {
-            --bg: #0b0211;
-            --bg2: #1a0f2a;
-            --orange: #ff6b00;
-            --purple: #6b2db5;
-            --pink: #b83af5;
-            --white: #f6f3ff;
-            --muted: #c9b7ff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 15px rgba(255, 107, 0, 0.4);
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--white);
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        header {
-            padding: 20px;
-            background: radial-gradient(circle, rgba(255,107,0,0.1), transparent);
-        }
-
-        .title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.5rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
-
-        .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffd9b0;
-            margin-top: 10px;
-        }
-
-        .info-strip {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .info-chip {
-            background: rgba(255, 107, 0, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 5px;
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
-
-        .main {
-            max-width: 980px;
-            margin: auto;
-            padding: 1rem;
-        }
-
-        .invite {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border: 1px solid var(--muted);
-            border-radius: 12px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: var(--shadow);
-        }
-
-        .details {
-            flex: 1;
-            text-align: left;
-        }
-
-        .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd7b0;
-            text-shadow: var(--glow);
-        }
-
-        .tagline {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #ffe7d1;
-            margin-top: 10px;
-            text-shadow: var(--glow);
-        }
-
-        .bullets {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
-
-        .poster {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .poster-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
-
-        .cta-row {
-            margin-top: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            background: var(--orange);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            background: var(--purple);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        footer {
-            margin-top: 2rem;
-        }
-
-        .countdown {
-            text-align: center;
-        }
-
-        .timer {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .time-box {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .num {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .lab {
-            font-size: 12px;
-            color: #ffd9c0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎃 Fiesta de Disfraces 🎭</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Creepster', cursive;
+      background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
+      color: #ff7518;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 3.5rem;
+      text-shadow: 3px 3px 10px black, 0 0 25px red;
+      margin-top: 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 10px 0;
+      text-shadow: 2px 2px 8px black;
+    }
+    .info {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #fff5e6;
+      text-shadow: 1px 1px 5px #000;
+    }
+    .btn {
+      margin: 20px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: #ff7518;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff7518;
+    }
+    .btn:hover {
+      background: #ff4500;
+      box-shadow: 0 0 30px #ff7518;
+      transform: scale(1.1);
+    }
+    /* Fantasmas */
+    .ghost {
+      position: absolute;
+      width: 80px;
+      animation: floatGhost 10s linear infinite;
+      opacity: 0.8;
+      top: 20%;
+    }
+    @keyframes floatGhost {
+      0% { left: -100px; }
+      50% { top: 30%; }
+      100% { left: 110%; }
+    }
+    /* Murciélagos */
+    .bat {
+      position: absolute;
+      width: 60px;
+      animation: flyBat 8s linear infinite;
+      top: 10%;
+    }
+    @keyframes flyBat {
+      0% { left: 110%; transform: scaleX(1); }
+      50% { top: 20%; }
+      100% { left: -100px; transform: scaleX(-1); }
+    }
+    /* Confeti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: orange;
+      top: -10px;
+      animation: fall 5s linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); }
+    }
+    /* Contador */
+    #countdown {
+      margin-top: 40px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffa94d;
+      text-shadow: 2px 2px 5px black;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1 class="title">Daniel &amp; Sabrina</h1>
-        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
-        <div class="info-strip">
-            <span class="info-chip">📅 31 de Octubre — 21:00</span>
-            <span class="info-chip">📍 Santos Saya Norte 138</span>
-            <span class="info-chip">🎭 Dress code: ¡Disfraz obligatorio!</span>
-        </div>
-    </header>
-    <main class="main">
-        <section class="invite">
-            <div class="details">
-                <h2 class="names">¡Estás invitad@!</h2>
-                <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
-                <ul class="bullets">
-                    <li class="item">🕯️ Recepción con luces, humo y ambientación cinematográfica.</li>
-                    <li class="item">🦇 Murciélagos y fantasmas.</li>
-                    <li class="item">📸 Momentos sorpresa con relámpagos y destellos.</li>
-                    <li class="item">🎁 Regalos y sorpresas para todos los asistentes.</li>
-                </ul>
-                <div class="cta-row">
-                    <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
-                    <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
-                </div>
-            </div>
-            <div class="poster">
-                <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <section class="countdown">
-            <h3>Cuenta regresiva para la fiesta</h3>
-            <div class="timer">
-                <div class="time-box">
-                    <span class="num" id="days">--</span>
-                    <span class="lab">DÍAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="hours">--</span>
-                    <span class="lab">HORAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="minutes">--</span>
-                    <span class="lab">MIN</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="seconds">--</span>
-                    <span class="lab">SEG</span>
-                </div>
-            </div>
-        </section>
-    </footer>
-    <script>
-        function updateCountdown() {
-            const eventDate = new Date('2025-10-31T21:00:00');
-            const now = new Date();
-            const timeDiff = eventDate - now;
+  <h1>🎃 ¡Fiesta de Disfraces! 👻</h1>
+  <h2>Daniel & Sabrina</h2>
+  <div class="info">
+    📅 31 de Octubre – 21:00 hs <br>
+    📍 Santos Saya Norte 138 <br>
+    📱 Confirma asistencia: +54 3525 45 5314
+  </div>
 
-            if (timeDiff <= 0) {
-                document.getElementById('days').textContent = "00";
-                document.getElementById('hours').textContent = "00";
-                document.getElementById('minutes').textContent = "00";
-                document.getElementById('seconds').textContent = "00";
-                return;
-            }
+  <button class="btn" onclick="confettiEffect()">✨ Sorpresa ✨</button>
+  <button class="btn" onclick="openWhatsApp()">📲 Confirmar por WhatsApp</button>
 
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+  <div id="countdown"></div>
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+  <!-- Fantasmas -->
+  <img src="https://pngimg.com/uploads/ghost/ghost_PNG31.png" class="ghost" style="animation-delay:0s;">
+  <img src="https://pngimg.com/uploads/ghost/ghost_PNG31.png" class="ghost" style="animation-delay:5s; top:40%;">
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+  <!-- Murciélagos -->
+  <img src="https://pngimg.com/uploads/bat/bat_PNG8.png" class="bat" style="animation-delay:2s;">
+  <img src="https://pngimg.com/uploads/bat/bat_PNG8.png" class="bat" style="animation-delay:6s; top:30%;">
+
+  <script>
+    // Confeti
+    function confettiEffect() {
+      for (let i = 0; i < 40; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor = ["#ff7518","#ffcc00","#ff4500"][Math.floor(Math.random()*3)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+    // WhatsApp
+    function openWhatsApp() {
+      window.open("https://wa.me/543525455314?text=Hola! Confirmo mi asistencia a la fiesta 🎃👻", "_blank");
+    }
+    // Contador Halloween
+    const targetDate = new Date("Oct 31, 2025 21:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    setInterval(() => {
+      let now = new Date().getTime();
+      let distance = targetDate - now;
+      if (distance < 0) {
+        countdownEl.innerHTML = "¡La fiesta comenzó! 🎉👻";
+        return;
+      }
+      let days = Math.floor(distance / (1000*60*60*24));
+      let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+      let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+      let seconds = Math.floor((distance%(1000*60))/1000);
+      countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  </script>
 </body>
 </html>

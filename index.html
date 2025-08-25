@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<link rel="preconnect" href="https://fonts.gstatic.com    " crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com       " crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -373,7 +373,7 @@ body{
 </div>
 
 <!-- AUDIO -->
-<audio id="bgm" src="    https://pixabay.com/es/sound-effects/wolf-howl-6310/    " preload="auto" loop></audio>
+<audio id="bgm" src="       https://pixabay.com/es/sound-effects/wolf-howl-6310/       " preload="auto" loop></audio>
 
 <!-- Botón de música -->
 <button id="musicBtn" class="music-btn" aria-label="Activar música">
@@ -496,7 +496,7 @@ const fxTop = document.getElementById('fxTop');
 document.getElementById('btnWA').addEventListener('click', (e)=>{
   epicConfetti(e);
   lensFlash();
-  setTimeout(()=>{ window.open('https://wa.me/543525455314    ','_blank'); }, 650);
+  setTimeout(()=>{ window.open('https://wa.me/543525455314       ','_blank'); }, 650);
 });
 
 /* Relámpago */
@@ -605,6 +605,12 @@ function updateCountdown() {
 // Actualizar cuenta regresiva cada segundo
 setInterval(updateCountdown, 1000);
 updateCountdown(); // Llamar inmediatamente para mostrar valores desde el inicio
+
+// Añadir evento de clic al ícono de ubicación para abrir Google Maps en una nueva pestaña
+document.querySelector('[aria-label="Santos Saya Norte 138"]').closest('.item').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+});
 </script>
 </body>
 </html>

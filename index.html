@@ -79,12 +79,15 @@ body{
 
 /* Murciélagos y Fantasmas */
 .sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
-.bat, .ghost{
-  position:fixed; top:-30px; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
+.bat, .ghost, .skull, .madhat{
+  position:fixed; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
   animation-timing-function:linear;
 }
 .bat{animation:batfly 10s linear forwards}
 .ghost{animation:ghostFloat 12s ease-in-out forwards}
+.skull{animation:skullFloat 15s ease-in-out forwards}
+.madhat{animation:madhatFloat 18s ease-in-out forwards}
+
 @keyframes batfly{
   0%{transform:translateX(-10vw) translateY(0) rotate(0)} 
   25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}
@@ -97,6 +100,18 @@ body{
   10%{opacity:.9}
   50%{transform:translate(40vw,10vh) scale(1.04)}
   100%{transform:translate(110vw,18vh) scale(1); opacity:0}
+}
+@keyframes skullFloat{
+  0%{transform:translate(-10vw,20vh) scale(0.8); opacity:0}
+  15%{opacity:.9}
+  50%{transform:translate(45vw,15vh) scale(1.1) rotate(10deg)}
+  100%{transform:translate(110vw,22vh) scale(0.9); opacity:0}
+}
+@keyframes madhatFloat{
+  0%{transform:translate(-10vw,30vh) scale(0.7); opacity:0}
+  15%{opacity:.9}
+  50%{transform:translate(50vw,25vh) scale(1.2) rotate(-5deg)}
+  100%{transform:translate(110vw,32vh) scale(0.8); opacity:0}
 }
 
 /* ---------- TARJETA ---------- */
@@ -132,7 +147,8 @@ body{
 .type{ text-align:center; font-weight:700; opacity:.95; margin-top:4px }
 .grid{ display:grid; gap:10px; margin-top:12px }
 .item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;
-  background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; }
+  background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; cursor:pointer; transition:transform 0.3s ease; }
+.item:hover{ transform:scale(1.03); }
 .item .i{font-size:18px}
 
 /* CTA Botones */
@@ -314,7 +330,7 @@ body{
   <div class="sparks" id="sparks" aria-hidden="true"></div>
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- Capa de cielo para bats/ghosts -->
+  <!-- Capa de cielo para bats/ghosts/skulls/madhat -->
   <div class="sky-layer" id="sky" aria-hidden="true"></div>
 
   <!-- TARJETA -->
@@ -331,7 +347,7 @@ body{
       <div class="grid" role="list">
         <div class="item" role="listitem"><span class="i">🎭</span> Gala de disfraces</div>
         <div class="item" role="listitem"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <div class="item" role="listitem"><span class="i">📍</span> Santos Saya Norte 138</div>
+        <div class="item" role="listitem" id="locationItem"><span class="i">📍</span> Santos Saya Norte 138</div>
         <div class="item" role="listitem"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
       </div>
       <div class="cta" aria-label="Acciones">
@@ -460,10 +476,13 @@ function spawnDust(){
 setInterval(spawnSpark, 160);
 setInterval(spawnDust, 260);
 
-/* ---------- MURCIÉLAGOS y FANTASMAS EN OLEADAS ---------- */
+/* ---------- MURCIÉLAGOS, FANTASMAS, CALAVERAS Y SOMBRERERO LOCO EN OLEADAS ---------- */
 const sky=document.getElementById('sky');
 const batChars = ['🦇','🦇','🦇'];
 const ghostChars = ['👻','👻'];
+const skullChars = ['💀','☠️'];
+const madhatChars = ['🎩','🎪'];
+
 function waveBats(){
   for(let i=0;i<6;i++){
     const b=document.createElement('div'); b.className='bat'; b.textContent=batChars[i%batChars.length];
@@ -474,6 +493,7 @@ function waveBats(){
     sky.appendChild(b); setTimeout(()=>b.remove(), 12000);
   }
 }
+
 function waveGhosts(){
   for(let i=0;i<3;i++){
     const g=document.createElement('div'); g.className='ghost'; g.textContent=ghostChars[i%ghostChars.length];
@@ -484,9 +504,36 @@ function waveGhosts(){
     sky.appendChild(g); setTimeout(()=>g.remove(), 15000);
   }
 }
+
+function waveSkulls(){
+  for(let i=0;i<4;i++){
+    const s=document.createElement('div'); s.className='skull'; s.textContent=skullChars[i%skullChars.length];
+    s.style.top = (25 + Math.random()*30) + 'vh';
+    s.style.left = (-10 - Math.random()*10) + 'vw';
+    s.style.opacity = .8;
+    s.style.animationDuration = (13 + Math.random()*5)+'s';
+    s.style.fontSize = (20 + Math.random()*12) +'px';
+    sky.appendChild(s); setTimeout(()=>s.remove(), 18000);
+  }
+}
+
+function waveMadHat(){
+  for(let i=0;i<2;i++){
+    const m=document.createElement('div'); m.className='madhat'; m.textContent=madhatChars[i%madhatChars.length];
+    m.style.top = (35 + Math.random()*20) + 'vh';
+    m.style.left = (-10 - Math.random()*10) + 'vw';
+    m.style.opacity = .9;
+    m.style.animationDuration = (16 + Math.random()*6)+'s';
+    m.style.fontSize = (22 + Math.random()*14) +'px';
+    sky.appendChild(m); setTimeout(()=>m.remove(), 22000);
+  }
+}
+
 setInterval(waveBats, 3800);
 setInterval(waveGhosts, 6400);
-waveBats(); waveGhosts();
+setInterval(waveSkulls, 5200);
+setInterval(waveMadHat, 8000);
+waveBats(); waveGhosts(); waveSkulls(); waveMadHat();
 
 /* ---------- BOTONES CON EFECTOS ---------- */
 const fx = document.getElementById('fx');
@@ -545,7 +592,7 @@ function epicConfetti(e){
   const rect = e.currentTarget.getBoundingClientRect();
   const cx = rect.left + rect.width/2;
   const cy = rect.top + rect.height/2;
-  const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💫'];
+  const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💫','💀','🎩'];
   for(let i=0;i<48;i++){
     const el=document.createElement('div'); el.className='confetti';
     el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
@@ -607,9 +654,22 @@ setInterval(updateCountdown, 1000);
 updateCountdown(); // Llamar inmediatamente para mostrar valores desde el inicio
 
 // Añadir evento de clic al ícono de ubicación para abrir Google Maps en una nueva pestaña
-document.querySelector('[aria-label="Santos Saya Norte 138"]').closest('.item').addEventListener('click', function(e) {
+document.getElementById('locationItem').addEventListener('click', function(e) {
   e.preventDefault();
   window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+});
+
+// Asegurar que el evento se registre correctamente
+document.addEventListener('DOMContentLoaded', function() {
+  const locationItem = document.getElementById('locationItem');
+  if (locationItem) {
+    locationItem.style.cursor = 'pointer';
+    locationItem.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+    });
+  }
 });
 </script>
 </body>

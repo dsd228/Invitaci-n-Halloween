@@ -31,7 +31,6 @@ body{
     radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
     #000;
 }
-/* Luna y castillo (look cinematográfico) */
 .moon{
   position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
   background:
@@ -87,32 +86,6 @@ body{
 .ghost{animation:ghostFloat 12s ease-in-out forwards}
 .skull{animation:skullFloat 15s ease-in-out forwards}
 .madhat{animation:madhatFloat 18s ease-in-out forwards}
-
-@keyframes batfly{
-  0%{transform:translateX(-10vw) translateY(0) rotate(0)} 
-  25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}
-  50%{transform:translateX(55vw) translateY(1vh) rotate(6deg)}
-  75%{transform:translateX(85vw) translateY(-1.5vh) rotate(-4deg)}
-  100%{transform:translateX(120vw) translateY(0) rotate(0)}
-}
-@keyframes ghostFloat{
-  0%{transform:translate(-10vw,15vh) scale(1); opacity:0}
-  10%{opacity:.9}
-  50%{transform:translate(40vw,10vh) scale(1.04)}
-  100%{transform:translate(110vw,18vh) scale(1); opacity:0}
-}
-@keyframes skullFloat{
-  0%{transform:translate(-10vw,20vh) scale(0.8); opacity:0}
-  15%{opacity:.9}
-  50%{transform:translate(45vw,15vh) scale(1.1) rotate(10deg)}
-  100%{transform:translate(110vw,22vh) scale(0.9); opacity:0}
-}
-@keyframes madhatFloat{
-  0%{transform:translate(-10vw,30vh) scale(0.7); opacity:0}
-  15%{opacity:.9}
-  50%{transform:translate(50vw,25vh) scale(1.2) rotate(-5deg)}
-  100%{transform:translate(110vw,32vh) scale(0.8); opacity:0}
-}
 
 /* ---------- TARJETA ---------- */
 .card{
@@ -182,517 +155,88 @@ body{
   height: 50px;
   border-radius: 50%;
   background: rgba(255, 107, 53, 0.8);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 24px;
+  border: 2px solid rgba(255,255,255,0.25);
+  display: flex; align-items:center; justify-content:center;
   cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite alternate;
+  z-index: 10;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
+.music-btn:hover{transform:scale(1.1);}
 
-.music-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
-}
-
-.music-btn.muted {
-  background: rgba(100, 100, 100, 0.6);
-  box-shadow: 0 0 20px rgba(100, 100, 100, 0.4);
-}
-
-/* Efectos especiales (contenedores) */
-.fx-layer{ position:fixed; inset:0; pointer-events:none; z-index:900 }
-.fx-top{ position:fixed; inset:0; pointer-events:none; z-index:905 }
-.flash{
-  position:fixed; inset:0; background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.9), rgba(255,255,255,.0) 60%);
-  animation:flash .45s ease forwards;
-}
-@keyframes flash{ 0%{opacity:0} 10%{opacity:1} 100%{opacity:0} }
-.lightning{
-  position:fixed; left:50%; top:-10%; width:3px; height:0; background:linear-gradient(#e6f2ff,#c9e0ff,transparent);
-  box-shadow:0 0 20px #cfe2ff; transform:translateX(-50%);
-  animation:bolt .6s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes bolt{
-  0%{height:0; opacity:1} 60%{height:80vh; opacity:1} 100%{height:0; opacity:0}
-}
-.fire-ring{
-  position:fixed; width:10px; height:10px; border-radius:50%; border:2px solid rgba(255,140,60,.9);
-  box-shadow:0 0 30px 8px rgba(255,100,40,.55), inset 0 0 8px rgba(255,200,160,.4);
-  animation:ring 1.6s ease-out forwards;
-}
-@keyframes ring{
-  0%{transform:translate(-50%,-50%) scale(.1); opacity:.95}
-  80%{transform:translate(-50%,-50%) scale(25); opacity:.35}
-  100%{transform:translate(-50%,-50%) scale(30); opacity:0}
-}
-.smoke-plume{
-  position:fixed; width:26px; height:26px; border-radius:50%; background:radial-gradient(circle, rgba(220,220,220,.35), rgba(120,120,120,.08));
-  filter:blur(4px); animation:smoke 2.2s ease-out forwards;
-}
-@keyframes smoke{
-  0%{transform:translate(-50%,-50%) scale(1); opacity:.6}
-  100%{transform:translate(-50%,-200%) scale(3.2); opacity:0}
-}
-
-/* Confeti emojis */
-.confetti{position:fixed; font-size:20px; pointer-events:none; animation:pop 1.4s ease forwards}
-@keyframes pop{
-  0%{transform:translate(0,0) scale(0); opacity:0}
-  15%{transform:translate(0,0) scale(1); opacity:1}
-  100%{transform:var(--t) scale(0.2); opacity:0}
-}
-
-/* Cuenta regresiva estilo Halloween */
-.countdown-container {
-  margin-top: 20px;
+/* Firma creador */
+.signature {
   text-align: center;
-  padding: 15px;
-  background: rgba(255, 107, 53, 0.1);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 107, 53, 0.3);
-  box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.2);
-}
-.countdown-title {
+  margin-top: 18px;
   font-family: 'Cinzel', serif;
-  color: var(--halloween);
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
-}
-.countdown-grid {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.countdown-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 60px;
-}
-.countdown-number {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 107, 53, 0.2);
-  border: 2px solid var(--halloween);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', monospace;
-  font-size: 1.8rem;
   font-weight: 700;
-  color: #ff3366;
-  text-shadow: 0 0 10px rgba(255, 107, 53, 0.7);
-  box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
-  animation: pulse 2s infinite alternate;
+  font-size: clamp(16px, 4vw, 20px);
+  color: #ffd7c6;
+  text-shadow: 0 0 12px rgba(255,107,53,0.6), 0 0 20px rgba(180,90,255,0.4);
+  animation: glowPulse 2.2s ease-in-out infinite;
 }
-@keyframes pulse {
-  0% { box-shadow: 0 0 15px rgba(255, 107, 53, 0.3); }
-  100% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.6); }
-}
-.countdown-label {
-  margin-top: 5px;
-  font-size: 0.8rem;
-  color: var(--halloween);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-/* Responsive ajustes finos */
-@media (max-width:480px){
-  .btn{font-size:.95rem}
-  .grid .item{font-size:.95rem}
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 12px rgba(255,107,53,0.6), 0 0 20px rgba(180,90,255,0.4);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255,107,53,0.9), 0 0 28px rgba(180,90,255,0.6);
+  }
 }
 </style>
 </head>
 <body>
 <div class="stage">
-  <div class="moon" aria-hidden="true"></div>
-  <div class="castle" aria-hidden="true"></div>
-
-  <!-- Niebla -->
-  <div class="fog" aria-hidden="true">
-    <div class="layer l1"></div>
+  <div class="moon"></div>
+  <div class="castle"></div>
+  <div class="fog">
+    <div class="layer"></div>
     <div class="layer l2"></div>
     <div class="layer l3"></div>
   </div>
 
-  <!-- Partículas y destellos -->
-  <div class="sparks" id="sparks" aria-hidden="true"></div>
-  <div class="particles" id="particles" aria-hidden="true"></div>
+  <article class="card">
+    <div class="header">
+      <div class="badge">Halloween Cinematográfico</div>
+      <h1 class="title">Daniel & <span>Sabrina</span></h1>
+      <div class="subtitle">¡Estás invitado!</div>
+    </div>
 
-  <!-- Capa de cielo para bats/ghosts/skulls/madhat -->
-  <div class="sky-layer" id="sky" aria-hidden="true"></div>
+    <div class="block">
+      <div class="names">31 de Octubre, desde las 21hs</div>
+      <div class="type">Fiesta de disfraces</div>
+    </div>
 
-  <!-- TARJETA -->
-  <article class="card" role="region" aria-label="Invitación de Halloween">
-    <header class="header">
-      <div class="badge">👑 Invitación Cinematográfica 👑</div>
-      <h1 class="title">HALLOWEEN <span>FEST</span></h1>
-      <p class="subtitle">Una celebración de ensueño</p>
-    </header>
-
-    <section class="block">
-      <h2 class="names" aria-label="Cumpleaños de Daniel y Sabrina">DANIEL &amp; SABRINA</h2>
-      <p class="type">🎂 Fiesta de Disfraces</p>
-      <div class="grid" role="list">
-        <div class="item" role="listitem"><span class="i">🎭</span> Gala de disfraces</div>
-        <div class="item" role="listitem"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <div class="item" role="listitem" id="locationItem">
-         <span class="i">📍</span> Santos Saya Norte 138
-        </div>
-        <div class="item" role="listitem"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
+    <div class="block grid">
+      <div class="item whatsapp" onclick="window.open('https://wa.me/5491123456789','_blank')">
+        <div class="i">💬</div> Confirmar asistencia
       </div>
-      <div class="cta" aria-label="Acciones">
-        <button class="btn whatsapp" id="btnWA" type="button" aria-label="Confirmar por WhatsApp">
-          <span>WhatsApp</span> 💬
-          <span class="shine"></span>
-        </button>
-        <button class="btn light" id="btnRayos" type="button" aria-label="Lanzar relámpagos">⚡ Relámpago <span class="shine"></span></button>
-        <button class="btn fire" id="btnFuego" type="button" aria-label="Círculo de fuego">🔥 Llamas <span class="shine"></span></button>
-        <button class="btn smoke" id="btnHumo" type="button" aria-label="Humo misterioso">💨 Humo <span class="shine"></span></button>
+      <div class="item light" onclick="window.open('https://goo.gl/maps/ejemplo','_blank')">
+        <div class="i">📍</div> Ver ubicación
       </div>
-      
-      <!-- Cuenta regresiva agregada -->
-      <div class="countdown-container">
-        <div class="countdown-title">TIEMPO RESTANTE</div>
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <div class="countdown-number" id="days">00</div>
-            <div class="countdown-label">DÍAS</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="hours">00</div>
-            <div class="countdown-label">HRS</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="minutes">00</div>
-            <div class="countdown-label">MIN</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="seconds">00</div>
-            <div class="countdown-label">SEG</div>
-          </div>
-        </div>
+      <div class="item fire">
+        <div class="i">🍹</div> Trae tu bebida favorita
       </div>
-    </section>
+    </div>
 
-    <p class="subtitle" style="text-align:center;margin-top:10px">✨ Los misterios de la noche te convocan… ✨</p>
+    <!-- Firma del creador -->
+    <div class="signature">
+      👑 Diseño y creación por David Díaz
+    </div>
   </article>
 </div>
 
-<!-- AUDIO -->
-<audio id="bgm" src="wolf-howl-6310.mp3" preload="auto" loop></audio>
-
-<!-- Botón de música -->
-<button id="musicBtn" class="music-btn" aria-label="Activar música">
-  🔇
-</button>
-
-<!-- Botón de sonido de lobo -->
-<button class="music-btn" id="wolfBtn" style="right: 80px;">🐺</button>
-<audio id="wolfHowl" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
-
-<!-- Capas de efectos -->
-<div class="fx-layer" id="fx"></div>
-<div class="fx-top" id="fxTop"></div>
+<!-- Música de fondo -->
+<audio id="bg-music" loop>
+  <source src="audio/lobo.mp3" type="audio/mpeg">
+</audio>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
-/* ---------- BOTÓN DE MÚSICA ---------- */
-const audio = document.getElementById('bgm');
-const musicBtn = document.getElementById('musicBtn');
-let isPlaying = false;
-
-// Inicializar el botón en silencio
-audio.volume = 0;
-audio.pause();
-
-musicBtn.addEventListener('click', () => {
-  if (!isPlaying) {
-    // Activar música
-    audio.play().then(() => {
-      // Subir volumen gradualmente
-      let volume = 0;
-      const fadeIn = setInterval(() => {
-        if (volume < 1) {
-          volume += 0.05;
-          audio.volume = volume;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 100);
-      
-      musicBtn.innerHTML = '🔊';
-      musicBtn.classList.remove('muted');
-      musicBtn.setAttribute('aria-label', 'Silenciar música');
-      isPlaying = true;
-    }).catch(e => {
-      console.warn('Reproducción bloqueada:', e);
-    });
-  } else {
-    // Silenciar música
-    // Bajar volumen gradualmente
-    let volume = 1;
-    const fadeOut = setInterval(() => {
-      if (volume > 0) {
-        volume -= 0.05;
-        audio.volume = volume;
-      } else {
-        clearInterval(fadeOut);
-        audio.pause();
-        musicBtn.innerHTML = '🔇';
-        musicBtn.classList.add('muted');
-        musicBtn.setAttribute('aria-label', 'Activar música');
-        isPlaying = false;
-      }
-    }, 100);
-  }
-});
-
-/* ---------- BOTÓN DE SONIDO DE LOBO ---------- */
-const wolfBtn = document.getElementById("wolfBtn");
-const wolfHowl = document.getElementById("wolfHowl");
-
-wolfBtn.addEventListener("click", () => {
-  if (wolfHowl.paused) {
-    wolfHowl.currentTime = 0;
-    wolfHowl.play();
-    wolfBtn.innerHTML = '🌕';
-  } else {
-    wolfHowl.pause();
-    wolfBtn.innerHTML = '🐺';
-  }
-});
-
-/* ---------- PARTICULAS & DESTELLOS ---------- */
-const sparks = document.getElementById('sparks');
-const particles = document.getElementById('particles');
-function spawnSpark(){
-  const s=document.createElement('div'); s.className='spark';
-  s.style.left = Math.random()*100+'%';
-  s.style.bottom = '-10vh';
-  s.style.animationDuration = (4 + Math.random()*4)+'s';
-  sparks.appendChild(s);
-  setTimeout(()=>s.remove(), 8000);
+function toggleMusic(){
+  const music = document.getElementById('bg-music');
+  if(music.paused){music.play();}
+  else{music.pause();}
 }
-function spawnDust(){
-  const d=document.createElement('div'); d.className='spark';
-  d.style.width='3px'; d.style.height='3px';
-  d.style.left=Math.random()*100+'%';
-  d.style.bottom='-5vh';
-  d.style.boxShadow='0 0 8px #ffa96e, 0 0 20px rgba(255,107,53,.8)';
-  d.style.animationDuration=(5+Math.random()*5)+'s';
-  particles.appendChild(d);
-  setTimeout(()=>d.remove(),10000);
-}
-setInterval(spawnSpark, 160);
-setInterval(spawnDust, 260);
-
-/* ---------- MURCIÉLAGOS, FANTASMAS, CALAVERAS Y SOMBRERERO LOCO EN OLEADAS ---------- */
-const sky=document.getElementById('sky');
-const batChars = ['🦇','🦇','🦇'];
-const ghostChars = ['👻','👻'];
-const skullChars = ['💀','☠️'];
-const madhatChars = ['🎩','🎪'];
-
-function waveBats(){
-  for(let i=0;i<6;i++){
-    const b=document.createElement('div'); b.className='bat'; b.textContent=batChars[i%batChars.length];
-    b.style.top = (10 + Math.random()*40) + 'vh';
-    b.style.left = (-15 - Math.random()*10) + 'vw';
-    b.style.animationDuration = (8 + Math.random()*3)+'s';
-    b.style.fontSize = (18 + Math.random()*10) +'px';
-    sky.appendChild(b); setTimeout(()=>b.remove(), 12000);
-  }
-}
-
-function waveGhosts(){
-  for(let i=0;i<3;i++){
-    const g=document.createElement('div'); g.className='ghost'; g.textContent=ghostChars[i%ghostChars.length];
-    g.style.top = (15 + Math.random()*35) + 'vh';
-    g.style.left = (-10 - Math.random()*10) + 'vw';
-    g.style.opacity = .85;
-    g.style.animationDuration = (11 + Math.random()*4)+'s';
-    sky.appendChild(g); setTimeout(()=>g.remove(), 15000);
-  }
-}
-
-function waveSkulls(){
-  for(let i=0;i<4;i++){
-    const s=document.createElement('div'); s.className='skull'; s.textContent=skullChars[i%skullChars.length];
-    s.style.top = (25 + Math.random()*30) + 'vh';
-    s.style.left = (-10 - Math.random()*10) + 'vw';
-    s.style.opacity = .8;
-    s.style.animationDuration = (13 + Math.random()*5)+'s';
-    s.style.fontSize = (20 + Math.random()*12) +'px';
-    sky.appendChild(s); setTimeout(()=>s.remove(), 18000);
-  }
-}
-
-function waveMadHat(){
-  for(let i=0;i<2;i++){
-    const m=document.createElement('div'); m.className='madhat'; m.textContent=madhatChars[i%madhatChars.length];
-    m.style.top = (35 + Math.random()*20) + 'vh';
-    m.style.left = (-10 - Math.random()*10) + 'vw';
-    m.style.opacity = .9;
-    m.style.animationDuration = (16 + Math.random()*6)+'s';
-    m.style.fontSize = (22 + Math.random()*14) +'px';
-    sky.appendChild(m); setTimeout(()=>m.remove(), 22000);
-  }
-}
-
-setInterval(waveBats, 3800);
-setInterval(waveGhosts, 6400);
-setInterval(waveSkulls, 5200);
-setInterval(waveMadHat, 8000);
-waveBats(); waveGhosts(); waveSkulls(); waveMadHat();
-
-/* ---------- BOTONES CON EFECTOS ---------- */
-const fx = document.getElementById('fx');
-const fxTop = document.getElementById('fxTop');
-
-/* WhatsApp: abre chat + confeti + destello */
-document.getElementById('btnWA').addEventListener('click', (e)=>{
-  epicConfetti(e);
-  lensFlash();
-  setTimeout(()=>{ window.open('https://wa.me/543525455314','_blank'); }, 650);
-});
-
-/* Relámpago */
-document.getElementById('btnRayos').addEventListener('click', ()=>{
-  const bolt=document.createElement('div'); bolt.className='lightning';
-  fxTop.appendChild(bolt);
-  flash();
-  setTimeout(()=>bolt.remove(), 800);
-});
-
-/* Llamas (anillo expansivo) */
-document.getElementById('btnFuego').addEventListener('click', (e)=>{
-  const {x,y} = centerOf(e.currentTarget);
-  const r=document.createElement('div'); r.className='fire-ring';
-  r.style.left=x+'px'; r.style.top=y+'px';
-  fxTop.appendChild(r);
-  setTimeout(()=>r.remove(), 1800);
-});
-
-/* Humo (plumas ascendentes) */
-document.getElementById('btnHumo').addEventListener('click', (e)=>{
-  const c=e.currentTarget.getBoundingClientRect();
-  for(let i=0;i<8;i++){
-    const s=document.createElement('div'); s.className='smoke-plume';
-    const px = c.left + c.width*(.2 + Math.random()*.6);
-    const py = c.top + c.height/2;
-    s.style.left=px+'px'; s.style.top=py+'px';
-    fxTop.appendChild(s);
-    setTimeout(()=>s.remove(), 2300);
-  }
-});
-
-/* ---------- EFECTOS AUX ---------- */
-function flash(){
-  const f=document.createElement('div'); f.className='flash';
-  fxTop.appendChild(f); setTimeout(()=>f.remove(), 500);
-}
-function lensFlash(){
-  flash();
-  // pequeño destello adicional
-  const f2=document.createElement('div'); f2.className='flash';
-  f2.style.background='radial-gradient(circle at 50% 50%, rgba(255,255,255,.75), rgba(255,255,255,.0) 55%)';
-  fxTop.appendChild(f2); setTimeout(()=>f2.remove(), 380);
-}
-function epicConfetti(e){
-  const rect = e.currentTarget.getBoundingClientRect();
-  const cx = rect.left + rect.width/2;
-  const cy = rect.top + rect.height/2;
-  const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💫','💀','🎩'];
-  for(let i=0;i<48;i++){
-    const el=document.createElement('div'); el.className='confetti';
-    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    const ang = Math.random()*Math.PI*2;
-    const dist = 140 + Math.random()*200;
-    const dx = Math.cos(ang)*dist;
-    const dy = Math.sin(ang)*dist;
-    el.style.left = cx+'px'; el.style.top = cy+'px';
-    el.style.transformOrigin='center';
-    el.style.setProperty('--t', `translate(${dx}px, ${dy}px) rotate(${(Math.random()*720-360)}deg)`);
-    el.style.fontSize = (18 + Math.random()*18)+'px';
-    fxTop.appendChild(el);
-    setTimeout(()=>el.remove(),1500);
-  }
-}
-function centerOf(el){
-  const r=el.getBoundingClientRect();
-  return {x:r.left+r.width/2, y:r.top+r.height/2};
-}
-
-/* Accesorio: oleada de chispas inicial */
-setTimeout(()=>{ flash(); }, 900);
-
-/* ---------- CUENTA REGRESIVA ---------- */
-function updateCountdown() {
-  // Fecha objetivo: 31 de Octubre a las 21:00
-  const now = new Date();
-  let targetDate = new Date(`${now.getFullYear()}-10-31T21:00:00`);
-  
-  // Si ya pasó la fecha de este año, usar el próximo año
-  if (now > targetDate) {
-    targetDate = new Date(`${now.getFullYear() + 1}-10-31T21:00:00`);
-  }
-  
-  const difference = targetDate - now;
-
-  if (difference > 0) {
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    // Asegurar que siempre tenga dos dígitos
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-  } else {
-    // Cuando el tiempo se acaba
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
-  }
-}
-
-// Actualizar cuenta regresiva cada segundo
-setInterval(updateCountdown, 1000);
-updateCountdown(); // Llamar inmediatamente para mostrar valores desde el inicio
-
-// Añadir evento de clic al ícono de ubicación para abrir Google Maps en una nueva pestaña
-document.getElementById('locationItem').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
-});
-
-// Asegurar que el evento se registre correctamente
-document.addEventListener('DOMContentLoaded', function() {
-  const locationItem = document.getElementById('locationItem');
-  if (locationItem) {
-    locationItem.style.cursor = 'pointer';
-    locationItem.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
-    });
-  }
-});
 </script>
 </body>
 </html>

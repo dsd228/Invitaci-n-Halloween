@@ -1,278 +1,453 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b00">
-    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño terrorífico, alegre y cinematográfico">
-    <title>Invitación Halloween</title>
-    <style>
-        :root {
-            --bg: #0b0211;
-            --bg2: #1a0f2a;
-            --orange: #ff6b00;
-            --purple: #6b2db5;
-            --pink: #b83af5;
-            --white: #f6f3ff;
-            --muted: #c9b7ff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 15px rgba(255, 107, 0, 0.4);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Halloween – Daniel & Sabrina</title>
+  <meta name="description" content="Invitación digital exclusiva para la Fiesta de Halloween de Daniel y Sabrina">
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--white);
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
-        header {
-            padding: 20px;
-            background: radial-gradient(circle, rgba(255,107,0,0.1), transparent);
-        }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.5rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+  <style>
+    :root {
+      --halloween-orange: #ff6b35;
+      --halloween-purple: #a45de6;
+      --halloween-red: #e74c3c;
+      --halloween-dark: #0a0310;
+      --halloween-light: #ffd7c6;
+      --neon-glow: 0 0 15px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3);
+      --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
-        .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffd9b0;
-            margin-top: 10px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .info-strip {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--halloween-dark);
+      color: var(--halloween-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .info-chip {
-            background: rgba(255, 107, 0, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 5px;
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
+    /* Fondo animado */
+    .cosmic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(ellipse at bottom, #1b0b30 0%, #0a0310 50%, #000000 100%);
+      overflow: hidden;
+    }
 
-        .main {
-            max-width: 980px;
-            margin: auto;
-            padding: 1rem;
-        }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(2px 2px at 27px 44px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 55px 311px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 86px 956px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 126px 675px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 344px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 166px 711px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 178px 360px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 182px 183px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 188px 576px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 200px 995px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 208px 439px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 218px 759px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 244px 533px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 248px 257px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 254px 871px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 272px 124px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 280px 643px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 300px 378px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 318px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 324px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 332px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 350px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 360px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 380px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 400px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 420px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 440px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 460px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 480px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 500px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 520px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 540px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 560px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 580px 400px, #fff, rgba(0,0,0,0));
+      background-size: 1000px 2000px;
+      opacity: 0.8;
+      animation: starPulse 6s infinite alternate;
+    }
 
-        .invite {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border: 1px solid var(--muted);
-            border-radius: 12px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: var(--shadow);
-        }
+    @keyframes starPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
 
-        .details {
-            flex: 1;
-            text-align: left;
-        }
+    /* Tarjeta principal */
+    .card-container {
+      width: 80%;
+      max-width: 420px;
+      padding: 20px;
+      z-index: 20;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
 
-        .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd7b0;
-            text-shadow: var(--glow);
-        }
+    .invitation-card {
+      background: linear-gradient(145deg, rgba(20, 10, 40, 0.8), rgba(30, 15, 50, 0.9), rgba(40, 15, 45, 0.85), rgba(40, 12, 10, 0.8));
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: var(--transition);
+    }
 
-        .tagline {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #ffe7d1;
-            margin-top: 10px;
-            text-shadow: var(--glow);
-        }
+    .invitation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+      animation: headerGlow 2s infinite alternate;
+    }
 
-        .bullets {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
+    @keyframes headerGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
 
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
+    .invitation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 107, 53, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.08);
+    }
 
-        .poster {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
+    /* Header */
+    .card-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-        .poster-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--halloween-light);
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+    }
 
-        .cta-row {
-            margin-top: 20px;
-        }
+    .badge i {
+      color: var(--halloween-orange);
+      font-size: 1.2em;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            background: var(--orange);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin: 15px 0 5px;
+      line-height: 1.1;
+      text-shadow: var(--neon-glow);
+      position: relative;
+    }
 
-        .btn:hover {
-            background: var(--purple);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
+    .main-title span {
+      color: var(--halloween-orange);
+      text-shadow: var(--neon-glow);
+    }
 
-        footer {
-            margin-top: 2rem;
-        }
+    .subtitle {
+      font-family: 'Montserrat', cursive;
+      font-size: 1.4rem;
+      color: #d8b3ff;
+      text-align: center;
+      margin: 15px 0 0;
+      opacity: 0.9;
+      font-style: italic;
+    }
 
-        .countdown {
-            text-align: center;
-        }
+    /* Content */
+    .card-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+    }
 
-        .timer {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 10px;
-        }
+    .couple-names {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: #ffcaa8;
+      margin: 0 0 15px;
+      text-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+    }
 
-        .time-box {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
+    .event-type {
+      text-align: center;
+      font-weight: 600;
+      color: var(--halloween-light);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
 
-        .num {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
+    .details-grid {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0;
+    }
 
-        .lab {
-            font-size: 12px;
-            color: #ffd9c0;
-        }
-    </style>
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .detail-item:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .detail-icon {
+      font-size: 1.4rem;
+      color: var(--halloween-orange);
+    }
+
+    .cta-buttons {
+      display: grid;
+      gap: 12px;
+      margin: 25px 0 15px;
+    }
+
+    .btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: white;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      z-index: 1;
+    }
+
+    .btn i {
+      font-size: 1.3rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 107, 53, 0.15));
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 107, 53, 0.25));
+      box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.3), rgba(164, 93, 230, 0.15));
+      border: 1px solid rgba(164, 93, 230, 0.4);
+      box-shadow: 0 8px 20px rgba(164, 93, 230, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.4), rgba(164, 93, 230, 0.25));
+      box-shadow: 0 12px 30px rgba(164, 93, 230, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .closing-text {
+      text-align: center;
+      font-family: 'Montserrat', cursive;
+      font-size: 1.3rem;
+      color: #d8b3ff;
+      margin: 20px 0 0;
+      opacity: 0.9;
+      text-shadow: var(--neon-purple-glow);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown-grid {
+        gap: 10px;
+      }
+
+      .countdown-item {
+        min-width: 60px;
+      }
+
+      .countdown-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 1.8rem;
+      }
+
+      .badge {
+        font-size: 0.7rem;
+        padding: 8px 16px;
+      }
+
+      .invitation-card {
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 12px 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1 class="title">Daniel &amp; Sabrina</h1>
-        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
-        <div class="info-strip">
-            <span class="info-chip">📅 31 de Octubre — 21:00</span>
-            <span class="info-chip">📍 Santos Saya Norte 138</span>
-            <span class="info-chip">🎭 Dress code: ¡Disfraz obligatorio!</span>
+  <!-- Fondo cósmico -->
+  <div class="cosmic-bg">
+    <div class="stars"></div>
+  </div>
+
+  <!-- Tarjeta principal -->
+  <div class="card-container">
+    <div class="invitation-card">
+      <div class="card-header">
+        <div class="badge">
+          <i class="fas fa-crown"></i>
+          Invitación Exclusiva
+          <i class="fas fa-crown"></i>
         </div>
-    </header>
-    <main class="main">
-        <section class="invite">
-            <div class="details">
-                <h2 class="names">¡Estás invitad@!</h2>
-                <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
-                <ul class="bullets">
-                    <li class="item">🕯️ Recepción con luces, humo y ambientación cinematográfica.</li>
-                    <li class="item">🦇 Murciélagos y fantasmas.</li>
-                    <li class="item">📸 Momentos sorpresa con relámpagos y destellos.</li>
-                    <li class="item">🎁 Regalos y sorpresas para todos los asistentes.</li>
-                </ul>
-                <div class="cta-row">
-                    <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
-                    <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
-                </div>
-            </div>
-            <div class="poster">
-                <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <section class="countdown">
-            <h3>Cuenta regresiva para la fiesta</h3>
-            <div class="timer">
-                <div class="time-box">
-                    <span class="num" id="days">--</span>
-                    <span class="lab">DÍAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="hours">--</span>
-                    <span class="lab">HORAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="minutes">--</span>
-                    <span class="lab">MIN</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="seconds">--</span>
-                    <span class="lab">SEG</span>
-                </div>
-            </div>
-        </section>
-    </footer>
-    <script>
-        function updateCountdown() {
-            const eventDate = new Date('2025-10-31T21:00:00');
-            const now = new Date();
-            const timeDiff = eventDate - now;
+        <h1 class="main-title">HALLOWEEN <span>FEST</span></h1>
+        <p class="subtitle">Una noche de misterio y fantasía</p>
+      </div>
 
-            if (timeDiff <= 0) {
-                document.getElementById('days').textContent = "00";
-                document.getElementById('hours').textContent = "00";
-                document.getElementById('minutes').textContent = "00";
-                document.getElementById('seconds').textContent = "00";
-                return;
-            }
+      <div class="card-content">
+        <h2 class="couple-names">DANIEL & SABRINA</h2>
+        <p class="event-type">🎉 Fiesta de Disfraces</p>
 
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        <div class="details-grid">
+          <div class="detail-item">
+            <i class="fas fa-mask detail-icon"></i>
+            <span>Gala de disfraces temáticos</span>
+          </div>
+          <div class="detail-item">
+            <i class="far fa-calendar-alt detail-icon"></i>
+            <span>31 de Octubre – 21:00 hs</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt detail-icon"></i>
+            <span>Santos Saya Norte 138</span>
+          </div>
+        </div>
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+        <div class="cta-buttons">
+          <button class="btn btn-primary" id="btnWA">
+            <i class="fab fa-whatsapp"></i>
+            Confirmar asistencia
+          </button>
+          <button class="btn btn-secondary" id="btnLoc">
+            <i class="fas fa-location-dot"></i>
+            Ver ubicación
+          </button>
+        </div>
+      </div>
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+      <p class="closing-text">✨ Los secretos de la noche te esperan… ✨</p>
+    </div>
+  </div>
+
+  <script>
+    // Botones principales
+    const btnWA = document.getElementById('btnWA');
+    const btnLoc = document.getElementById('btnLoc');
+
+    btnWA.addEventListener('click', () => {
+      const message = encodeURIComponent('Confirmo mi asistencia a la fiesta de Halloween 🎃');
+      window.open(`https://wa.me/543525455314?text=${message}`, '_blank');
+    });
+
+    btnLoc.addEventListener('click', () => {
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+    });
+  </script>
 </body>
 </html>

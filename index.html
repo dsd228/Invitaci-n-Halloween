@@ -22,8 +22,6 @@ body{
   color:#fff;
   overflow-x:hidden;
 }
-
-/* ---------- ESCENA CINEMATOGRÁFICA ---------- */
 .stage{
   position:relative;min-height:100dvh;display:grid;place-items:center;overflow:hidden;
   background:
@@ -31,7 +29,6 @@ body{
     radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
     #000;
 }
-/* Luna y castillo (look cinematográfico) */
 .moon{
   position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
   background:
@@ -49,8 +46,6 @@ body{
   content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:
     140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;
 }
-
-/* Niebla */
 .fog{position:absolute;inset:-10% -30%; pointer-events:none; z-index:2;}
 .fog layer{display:block}
 .fog .layer{
@@ -63,8 +58,6 @@ body{
 @keyframes drift{
   0%{transform:translateX(-10%)} 100%{transform:translateX(10%)}
 }
-
-/* Partículas y destellos */
 .particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3}
 .spark{
   position:absolute;width:2px;height:2px;border-radius:50%;
@@ -76,8 +69,6 @@ body{
   10%{opacity:.9}
   to{transform:translateY(-110vh) scale(1.2);opacity:0}
 }
-
-/* Murciélagos y Fantasmas */
 .sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
 .bat, .ghost, .skull, .madhat{
   position:fixed; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
@@ -87,7 +78,6 @@ body{
 .ghost{animation:ghostFloat 12s ease-in-out forwards}
 .skull{animation:skullFloat 15s ease-in-out forwards}
 .madhat{animation:madhatFloat 18s ease-in-out forwards}
-
 @keyframes batfly{
   0%{transform:translateX(-10vw) translateY(0) rotate(0)} 
   25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}
@@ -113,8 +103,6 @@ body{
   50%{transform:translate(50vw,25vh) scale(1.2) rotate(-5deg)}
   100%{transform:translate(110vw,32vh) scale(0.8); opacity:0}
 }
-
-/* ---------- TARJETA ---------- */
 .card{
   position:relative; z-index:6;
   width:min(92vw,420px);
@@ -136,77 +124,37 @@ body{
 .title{font-family:'Cinzel',serif; font-size:clamp(28px,7vw,40px); letter-spacing:1px; margin:.3rem 0 .1rem}
 .title span{ color:var(--halloween); text-shadow:0 0 25px rgba(255,107,53,.5)}
 .subtitle{font-family:'Great Vibes',cursive; font-size:clamp(18px,5.2vw,26px); color:#d8b3ff; opacity:.95}
-
-/* Bloque de datos */
 .block{
   margin:16px 0; padding:16px; border-radius:18px; background:var(--soft);
   border:1px solid rgba(255,255,255,.15);
   box-shadow: inset 0 0 30px rgba(255,255,255,.05);
 }
 .names{font-family:'Cinzel',serif; font-weight:700; font-size:clamp(20px,6vw,28px); color:#ffcaa8; text-align:center; text-shadow:0 2px 14px rgba(255,107,53,.35)}
-.type{ text-align:center; font-weight:700; opacity:.95; margin-top:4px }
 .grid{ display:grid; gap:10px; margin-top:12px }
 .item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;
   background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; cursor:pointer; transition:transform 0.3s ease; }
 .item:hover{ transform:scale(1.03); }
-.item .i{font-size:18px}
-
-/* CTA Botones */
-.cta{
-  display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px
-}
-.btn{
-  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2);
-  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-  color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none;
-  box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06);
-  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
-}
-.btn:active{transform:translateY(1px) scale(.99)}
-.btn.whatsapp{ grid-column:1 / -1; background:linear-gradient(180deg, rgba(37,211,102,.25), rgba(37,211,102,.08)); border-color:rgba(37,211,102,.35)}
-.btn.light{ border-color:rgba(180,210,255,.35)}
-.btn.fire{ border-color:rgba(255,107,53,.45); color:var(--halloween); text-shadow:0 0 8px rgba(255,107,53,.35)}
-
-/* NUEVO BLOQUE ELEGANTE DE BEBIDAS */
-.drink-reminder{
-  margin-top:20px;
-  text-align:center;
-  padding:16px 18px;
-  border-radius:20px;
-  background:rgba(255,215,198,.08);
-  border:1px solid rgba(255,215,198,.25);
-  box-shadow:inset 0 0 20px rgba(255,107,53,.1);
-}
-.drink-reminder p{
-  font-family:'Cinzel',serif;
-  color:#ffd7c6;
-  font-size:1rem;
-  font-weight:500;
-  line-height:1.5;
-  text-shadow:0 0 8px rgba(255,215,198,.3);
-}
+.countdown-container {margin-top: 20px;text-align: center;padding: 15px;background: rgba(255, 107, 53, 0.1);border-radius: 18px;border: 1px solid rgba(255, 107, 53, 0.3);box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.2);}
+.countdown-title {font-family: 'Cinzel', serif;color: var(--halloween);font-size: 1.3rem;margin-bottom: 15px;text-shadow: 0 0 10px rgba(255,107,53,.45);}
+.countdown {font-family: 'Montserrat', sans-serif;font-size: 1.5rem;letter-spacing:2px;}
+button.audio-btn{position:fixed;top:22px;left:22px;padding:12px 14px;border:none;border-radius:999px;background:var(--halloween);color:#000;font-weight:800;cursor:pointer;z-index:10;}
+button.audio-btn:hover{filter:brightness(1.1);}
 </style>
 </head>
 <body>
 <div class="stage">
-
-  <!-- Luna y castillo -->
   <div class="moon"></div>
   <div class="castle"></div>
-
-  <!-- Niebla -->
   <div class="fog">
-    <div class="layer l1"></div>
+    <div class="layer"></div>
     <div class="layer l2"></div>
     <div class="layer l3"></div>
   </div>
-
-  <!-- Partículas -->
-  <div class="particles"></div>
-  <div class="sparks"></div>
-
-  <!-- Fantasmas, murciélagos, etc -->
+  <div class="particles">
+    <div class="spark" style="left:20%;animation-delay:0s;"></div>
+    <div class="spark" style="left:50%;animation-delay:2s;"></div>
+    <div class="spark" style="left:75%;animation-delay:4s;"></div>
+  </div>
   <div class="sky-layer">
     <div class="bat">🦇</div>
     <div class="ghost">👻</div>
@@ -214,26 +162,57 @@ body{
     <div class="madhat">🎩</div>
   </div>
 
-  <!-- Tarjeta -->
   <div class="card">
     <div class="header">
-      <div class="badge">INVITACIÓN</div>
-      <div class="title"><span>Daniel</span> & <span>Sabrina</span></div>
-      <div class="subtitle">Noche de Halloween</div>
+      <div class="badge">Invitación Especial</div>
+      <div class="title">Halloween <span>Night</span></div>
+      <div class="subtitle">Daniel & Sabrina</div>
+    </div>
+    <div class="block names">¡Te Esperamos!</div>
+    <div class="countdown-container">
+      <div class="countdown-title">Cuenta Regresiva</div>
+      <div class="countdown" id="countdown">-- : -- : -- : --</div>
     </div>
 
-    <div class="block">
-      <div class="names">31 de Octubre 2025</div>
-      <div class="type">Desde las 21:00 hs</div>
-      <div class="names">Santos Saya Norte 138</div>
+    <div class="grid">
+      <div class="item" onclick="window.open('https://wa.me/5493512345678?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20Halloween%20Night%20de%20Daniel%20&%20Sabrina','_blank')">📱 WhatsApp</div>
+      <div class="item" onclick="window.open('https://www.google.com/maps?q=Santos+Saya+Norte+138,+Colonia+Caroya','_blank')">📍 Ubicación</div>
+      <div class="item" onclick="alert('¡Recuerda traer tu bebida favorita! 🍹')">🍹 Trae tu bebida favorita</div>
     </div>
-
-    <div class="drink-reminder">
-      <p>🍽️ La cena y la mesa dulce estarán incluidas para disfrutar juntos de la velada.  
-      🥂 Invitamos a nuestros estimados invitados a traer su bebida favorita para brindar en esta noche mágica.</p>
-    </div>
-
   </div>
+
+  <button class="audio-btn" id="musicBtn">🔊 Música</button>
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/02/08/audio_9e32f4b27b.mp3?filename=spooky-background-116845.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="wolfSound">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_aee7e2b8c3.mp3?filename=wolf-howling-6314.mp3" type="audio/mpeg">
+  </audio>
 </div>
+
+<script>
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+musicBtn.addEventListener('click', ()=>{bgMusic.paused?bgMusic.play():bgMusic.pause()});
+
+const wolfSound = document.getElementById('wolfSound');
+document.querySelector('.card').addEventListener('mouseenter',()=>{wolfSound.play()});
+
+const countdown = document.getElementById('countdown');
+const eventDate = new Date('2025-10-31T21:00:00');
+
+function updateCountdown(){
+  const now = new Date();
+  const diff = eventDate-now;
+  if(diff<=0){countdown.innerHTML="¡Es hora!"; return;}
+  const d=Math.floor(diff/1000/60/60/24);
+  const h=Math.floor((diff/1000/60/60)%24);
+  const m=Math.floor((diff/1000/60)%60);
+  const s=Math.floor((diff/1000)%60);
+  countdown.innerHTML=`${d}d : ${h}h : ${m}m : ${s}s`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
 </body>
 </html>

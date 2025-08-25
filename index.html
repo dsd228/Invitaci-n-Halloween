@@ -1,491 +1,1161 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<style>
-:root{
-  --halloween:#ff6b35;
-  --violet:#a45de6;
-  --ink:#0b0613;
-  --glass:rgba(255,255,255,.12);
-  --soft:rgba(255,255,255,.08);
-  --neon-red: #ff0033;
-  --neon-purple: #9d4edd;
-  --dark-bg: #0a0310;
-  --blood-red: #8b0000;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#000;color:#fff;}
-.stage{position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;
-background:radial-gradient(1200px 600px at 50% -10%, rgba(180,120,255,.2), transparent 60%),
-          radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%), #000;}
-.moon{position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
-background:radial-gradient(circle at 35% 35%, #fff, #ddd 40%, #aaa 60%, #777 75%, #666 85%, transparent 86%),
-          radial-gradient(60px 60px at 70% 60%, rgba(255,255,255,.08), transparent 60%),
-          radial-gradient(40px 40px at 50% 40%, rgba(255,255,255,.09), transparent 60%);
-box-shadow:0 0 120px 40px rgba(255,255,255,.15);filter:saturate(.9) contrast(1.1);z-index:1;}
-.castle{position:absolute;bottom:18vh;left:8vw;width:0;height:0;border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:160px solid #1a1028;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6));opacity:.9;z-index:1;}
-.castle:after{content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;}
-.fog{position:absolute;inset:-10% -30%;pointer-events:none;z-index:2;}
-.fog .layer{position:absolute;left:-20%;right:-20%;height:35vh;background:radial-gradient(50% 60% at 50% 50%, rgba(200,200,255,.08), transparent 65%);filter:blur(14px);animation:drift 38s linear infinite;}
-.fog .layer.l2{top:20vh;animation-duration:55s;opacity:.7;}
-.fog .layer.l3{top:40vh;animation-duration:70s;opacity:.5;}
-@keyframes drift{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
-.particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3;}
-.spark{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff,0 0 25px var(--violet);animation:rise 6s linear infinite;}
-@keyframes rise{from{transform:translateY(20vh) scale(.6);opacity:.0}10%{opacity:.9}to{transform:translateY(-110vh) scale(1.2);opacity:0}}
-.sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none;}
-.bat,.ghost{position:fixed;font-size:clamp(16px,4vw,28px);opacity:.85;filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));animation-timing-function:linear;}
-.bat{animation:batfly 10s linear forwards;}
-.ghost{animation:ghostFloat 12s ease-in-out forwards;}
-@keyframes batfly{0%{transform:translateX(-10vw) translateY(0) rotate(0)}25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}50%{transform:translateX(55vw) translateY(1vh) rotate(6deg)}75%{transform:translateX(85vw) translateY(-1.5vh) rotate(-4deg)}100%{transform:translateX(120vw) translateY(0) rotate(0)}}
-@keyframes ghostFloat{0%{transform:translate(-10vw,15vh) scale(1);opacity:0}10%{opacity:.9}50%{transform:translate(40vw,10vh) scale(1.04)}100%{transform:translate(110vw,18vh) scale(1);opacity:0}}
-.card{position:relative; z-index:6;width:min(92vw,420px);background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);border-radius:28px;padding:22px;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 120px rgba(255,107,53,.25),inset 0 0 40px rgba(255,255,255,.05);backdrop-filter: blur(10px);}
-.header{text-align:center;margin-bottom:12px;}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.55);letter-spacing:2px;font-weight:800;font-size:.72rem;color:#ffd7c6;text-transform:uppercase;text-shadow:0 0 10px rgba(255,107,53,.55);}
-.title{font-family:'Cinzel',serif;font-size:clamp(28px,7vw,40px);letter-spacing:1px;margin:.3rem 0 .1rem;}
-.title span{ color:var(--halloween); text-shadow:0 0 25px rgba(255,107,53,.5);}
-.subtitle{font-family:'Great Vibes',cursive;font-size:clamp(18px,5.2vw,26px);color:#d8b3ff;opacity:.95;text-align:center;}
-.block{margin:16px 0;padding:16px;border-radius:18px;background:var(--soft);border:1px solid rgba(255,255,255,.15);box-shadow: inset 0 0 30px rgba(255,255,255,.05);}
-.names{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(20px,6vw,28px);color:#ffcaa8;text-align:center;text-shadow:0 2px 14px rgba(255,107,53,.35);}
-.type{text-align:center;font-weight:700;opacity:.95;margin-top:4px;}
-.grid{display:grid;gap:10px;margin-top:12px;}
-.item{display:flex;gap:10px;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,.15);font-weight:600;}
-.item .i{font-size:18px;}
-.cta{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:10px;}
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));color:#fff;font-weight:800;letter-spacing:.5px;text-decoration:none;cursor:pointer;user-select:none;box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06);transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;}
-.btn:active{transform:translateY(1px) scale(.99);}
-.btn.whatsapp{grid-column:1 / -1;background:linear-gradient(180deg, rgba(37,211,102,.25), rgba(37,211,102,.08));border-color:rgba(37,211,102,.35);}
-.btn.location{grid-column:1 / -1;background:linear-gradient(180deg, rgba(0,123,255,.25), rgba(0,123,255,.08));border-color:rgba(0,123,255,.35);}
-.btn.light{border-color:rgba(180,210,255,.35);}
-.btn.fire{border-color:rgba(255,120,70,.35);}
-.btn.smoke{border-color:rgba(200,200,200,.35);}
-.btn .shine{position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;background:radial-gradient(600px 90px at 50% -20%, rgba(255,255,255,.22), transparent 60%),radial-gradient(200px 60px at -20% 50%, rgba(255,255,255,.14), transparent 60%),radial-gradient(200px 60px at 120% 50%, rgba(255,255,255,.14), transparent 60%);mix-blend-mode:screen;opacity:.8;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
+  <meta name="description" content="Invitación digital exclusiva para la Fiesta de Halloween de Daniel y Sabrina">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --halloween-orange: #ff6b35;
+      --halloween-purple: #a45de6;
+      --halloween-red: #e74c3c;
+      --halloween-dark: #0a0310;
+      --halloween-darker: #050108;
+      --halloween-light: #ffd7c6;
+      --neon-glow: 0 0 15px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3);
+      --neon-purple-glow: 0 0 15px rgba(164, 93, 230, 0.5), 0 0 30px rgba(164, 93, 230, 0.3);
+      --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
-/* Estilo terrorífico futurista para sección inferior */
-.horror-section {
-  position: relative;
-  padding: 30px 20px;
-  margin-top: 20px;
-  background: linear-gradient(135deg, #0a0310 0%, #1a0820 50%, #2a0c08 100%);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 107, 53, 0.3);
-  box-shadow: 
-    0 0 30px rgba(255, 107, 53, 0.2),
-    0 0 60px rgba(164, 93, 230, 0.15),
-    inset 0 0 20px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  z-index: 5;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.horror-title {
-  font-family: 'Cinzel', serif;
-  font-size: 24px;
-  color: var(--halloween);
-  text-align: center;
-  margin-bottom: 20px;
-  text-shadow: 0 0 15px rgba(255, 107, 53, 0.7), 0 0 30px rgba(255, 107, 53, 0.4);
-  letter-spacing: 2px;
-  position: relative;
-  padding: 10px 0;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.horror-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--halloween), transparent);
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: var(--halloween-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-.horror-grid {
-  display: grid;
-  gap: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-}
+    /* Fondo animado */
+    .cosmic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: 
+        radial-gradient(ellipse at bottom, #1b0b30 0%, #0a0310 50%, #000000 100%);
+      overflow: hidden;
+    }
 
-.horror-card {
-  background: rgba(20, 10, 32, 0.6);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 27px 44px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 55px 311px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 86px 956px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 126px 675px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 344px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 166px 711px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 178px 360px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 182px 183px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 188px 576px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 200px 995px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 208px 439px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 218px 759px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 244px 533px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 248px 257px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 254px 871px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 272px 124px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 280px 643px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 300px 378px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 318px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 324px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 332px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 350px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 360px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 380px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 400px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 420px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 440px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 460px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 480px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 500px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 520px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 540px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 560px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 580px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 600px 800px, #ddd, rgba(0,0,0,0));
+      background-size: 1000px 2000px;
+      opacity: 0.8;
+      animation: starPulse 6s infinite alternate;
+    }
 
-.horror-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
-  animation: pulse 2s infinite;
-}
+    @keyframes starPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
 
-.horror-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(164, 93, 230, 0.3);
-  border-color: var(--neon-purple);
-}
+    /* Luna */
+    .moon {
+      position: fixed;
+      top: 10vh;
+      right: 10vw;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #e6e1e6 30%, #b8b0b8 50%, #8a808a 70%, #665c66 80%, transparent 82%);
+      box-shadow: 
+        0 0 60px 20px rgba(255, 255, 255, 0.2),
+        0 0 100px 40px rgba(255, 107, 53, 0.1);
+      z-index: 10;
+      animation: moonGlow 4s infinite alternate;
+    }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
+    @keyframes moonGlow {
+      0% { box-shadow: 0 0 60px 20px rgba(255, 255, 255, 0.2), 0 0 100px 40px rgba(255, 107, 53, 0.1); }
+      100% { box-shadow: 0 0 80px 30px rgba(255, 255, 255, 0.3), 0 0 140px 60px rgba(255, 107, 53, 0.2); }
+    }
 
-.horror-card h4 {
-  font-family: 'Cinzel', serif;
-  color: #d8b3ff;
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    /* Niebla */
+    .fog {
+      position: fixed;
+      bottom: 20vh;
+      left: 0;
+      width: 100%;
+      height: 40vh;
+      pointer-events: none;
+      z-index: 8;
+    }
 
-.horror-card p {
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-}
+    .fog-layer {
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      background: rgba(200, 200, 255, 0.1);
+      filter: blur(20px);
+      opacity: 0.3;
+      animation: fogDrift linear infinite;
+    }
 
-.horror-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
+    .fog-layer:nth-child(1) {
+      bottom: 0;
+      animation-duration: 30s;
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-.horror-btn {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  color: white;
-}
+    .fog-layer:nth-child(2) {
+      bottom: 30px;
+      animation-duration: 45s;
+      opacity: 0.2;
+      background: rgba(164, 93, 230, 0.06);
+    }
 
-.horror-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-}
+    .fog-layer:nth-child(3) {
+      bottom: 60px;
+      animation-duration: 60s;
+      opacity: 0.15;
+      background: rgba(255, 107, 53, 0.05);
+    }
 
-.horror-btn.map {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border: 1px solid rgba(0, 123, 255, 0.4);
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
-}
+    @keyframes fogDrift {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
 
-.horror-btn.map:hover {
-  background: linear-gradient(135deg, #2a2a4e 0%, #26315e 50%, #1f4480 100%);
-  box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
-}
+    /* Castillo */
+    .castle {
+      position: fixed;
+      bottom: 15vh;
+      left: 10vw;
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-bottom: 130px solid var(--halloween-dark);
+      z-index: 9;
+      filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.7));
+      transform: rotate(-5deg);
+    }
 
-.horror-btn.whatsapp {
-  background: linear-gradient(135deg, #1a3a1e 0%, #164e27 50%, #0f6b34 100%);
-  border: 1px solid rgba(37, 211, 102, 0.4);
-  box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
-}
+    .castle::before {
+      content: '';
+      position: absolute;
+      left: -50px;
+      bottom: -100px;
+      width: 100px;
+      height: 150px;
+      background: var(--halloween-darker);
+      border-radius: 8px 8px 0 0;
+      box-shadow: 
+        100px 0 0 var(--halloween-darker),
+        50px -30px 0 var(--halloween-dark),
+        -50px -30px 0 var(--halloween-dark);
+    }
 
-.horror-btn.whatsapp:hover {
-  background: linear-gradient(135deg, #2a4a2e 0%, #265e37 50%, #1f8b44 100%);
-  box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
-}
+    /* Partículas */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 7;
+    }
 
-.horror-btn:hover {
-  transform: translateY(-2px);
-}
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
 
-.countdown-container {
-  margin-top: 30px;
-  text-align: center;
-}
+    /* Tarjeta principal */
+    .card-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 20;
+    }
 
-.countdown-title {
-  font-family: 'Cinzel', serif;
-  font-size: 24px;
-  color: var(--neon-red);
-  margin-bottom: 20px;
-  text-shadow: 0 0 15px rgba(255, 0, 51, 0.7);
-  letter-spacing: 2px;
-}
+    .invitation-card {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(145deg, rgba(20, 10, 40, 0.8), rgba(30, 15, 50, 0.9), rgba(40, 15, 45, 0.85), rgba(40, 12, 10, 0.8));
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(255, 107, 53, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: var(--transition);
+    }
 
-.timer {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
+    .invitation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+      animation: headerGlow 2s infinite alternate;
+    }
 
-.time {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    @keyframes headerGlow {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
 
-.num {
-  width: 60px;
-  height: 60px;
-  background: rgba(139, 0, 0, 0.3);
-  border: 2px solid var(--neon-red);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', monospace;
-  font-size: 28px;
-  font-weight: 700;
-  color: #ff3366;
-  text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
-  box-shadow: 0 0 15px rgba(255, 0, 51, 0.3);
-  animation: pulse-number 2s infinite;
-}
+    .invitation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.85),
+        0 0 50px rgba(255, 107, 53, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.08);
+    }
 
-@keyframes pulse-number {
-  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 51, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(255, 0, 51, 0.6); }
-}
+    /* Header */
+    .card-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-.lab {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #ff6b35;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--halloween-light);
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+    }
 
-.audio-overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.65);z-index:999;}
-.audio-box{background:#0f0a16;border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:16px 18px;width:min(92vw,420px);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6);}
-.audio-title{font-weight:800;letter-spacing:.5px;margin-bottom:6px;}
-.audio-btn{margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05));font-weight:900;cursor:pointer;}
-@media (max-width:480px){.btn{font-size:.95rem}.grid .item{font-size:.95rem;}}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    .badge i {
+      color: var(--halloween-orange);
+      font-size: 1.2em;
+    }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin: 15px 0 5px;
+      line-height: 1.1;
+      text-shadow: var(--neon-glow);
+      position: relative;
+    }
+
+    .main-title span {
+      color: var(--halloween-orange);
+      text-shadow: var(--neon-glow);
+    }
+
+    .subtitle {
+      font-family: 'Montserrat', cursive;
+      font-size: 1.4rem;
+      color: #d8b3ff;
+      text-align: center;
+      margin: 15px 0 0;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    /* Content */
+    .card-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .couple-names {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: #ffcaa8;
+      margin: 0 0 15px;
+      text-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+    }
+
+    .event-type {
+      text-align: center;
+      font-weight: 600;
+      color: var(--halloween-light);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .details-grid {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .detail-item:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .detail-icon {
+      font-size: 1.4rem;
+      color: var(--halloween-orange);
+    }
+
+    .cta-buttons {
+      display: grid;
+      gap: 12px;
+      margin: 25px 0 15px;
+    }
+
+    .btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: white;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      z-index: 1;
+    }
+
+    .btn i {
+      font-size: 1.3rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(255, 107, 53, 0.15));
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 107, 53, 0.25));
+      box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.3), rgba(164, 93, 230, 0.15));
+      border: 1px solid rgba(164, 93, 230, 0.4);
+      box-shadow: 0 8px 20px rgba(164, 93, 230, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.4), rgba(164, 93, 230, 0.25));
+      box-shadow: 0 12px 30px rgba(164, 93, 230, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .closing-text {
+      text-align: center;
+      font-family: 'Montserrat', cursive;
+      font-size: 1.3rem;
+      color: #d8b3ff;
+      margin: 20px 0 0;
+      opacity: 0.9;
+      text-shadow: var(--neon-purple-glow);
+    }
+
+    /* Audio overlay */
+    .audio-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .audio-content {
+      background: rgba(15, 10, 30, 0.95);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 53, 0.2);
+      backdrop-filter: blur(10px);
+      transform: scale(0.9);
+      animation: popup 0.5s ease-out forwards;
+    }
+
+    @keyframes popup {
+      to { transform: scale(1); }
+    }
+
+    .audio-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: white;
+      margin-bottom: 15px;
+      text-shadow: var(--neon-glow);
+    }
+
+    .audio-desc {
+      color: #b8b8d8;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .audio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--halloween-orange), rgba(255, 107, 53, 0.8));
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    .audio-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255, 107, 53, 0.6);
+    }
+
+    /* Footer section */
+    .footer-section {
+      padding: 60px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--halloween-orange);
+      text-shadow: var(--neon-glow);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 25px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .info-card {
+      background: rgba(20, 10, 40, 0.6);
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      border-color: var(--halloween-purple);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--halloween-purple), transparent);
+      animation: headerGlow 3s infinite alternate;
+    }
+
+    .info-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: #d8b3ff;
+      margin: 0 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .info-title i {
+      color: var(--halloween-orange);
+      font-size: 1.3em;
+    }
+
+    .info-text {
+      color: white;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .map-container {
+      height: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 15px 0 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .map-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      flex: 1;
+      min-width: 180px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .action-btn i {
+      font-size: 1.2rem;
+    }
+
+    .btn-map {
+      background: linear-gradient(135deg, #1a3a5a, #2a5a8a);
+      border: 1px solid rgba(0, 123, 255, 0.4);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+    }
+
+    .btn-map:hover {
+      background: linear-gradient(135deg, #2a4a6a, #3a6a9a);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-call {
+      background: linear-gradient(135deg, #1a4a2a, #2a7a3a);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: white;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+    }
+
+    .btn-call:hover {
+      background: linear-gradient(135deg, #2a5a3a, #3a8a4a);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Countdown */
+    .countdown-container {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .countdown-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--halloween-red);
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      width: 80px;
+      height: 80px;
+      background: rgba(231, 76, 60, 0.2);
+      border: 2px solid var(--halloween-red);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ff3366;
+      text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+      box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px rgba(231, 76, 60, 0.3); }
+      100% { box-shadow: 0 0 25px rgba(231, 76, 60, 0.6); }
+    }
+
+    .countdown-label {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--halloween-orange);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Animaciones de entrada */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .countdown-grid {
+        gap: 10px;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+      }
+      
+      .countdown-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 1.8rem;
+      }
+      
+      .badge {
+        font-size: 0.7rem;
+        padding: 8px 16px;
+      }
+      
+      .invitation-card {
+        padding: 20px;
+        margin: 10px;
+      }
+      
+      .btn {
+        font-size: 1rem;
+        padding: 12px 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="stage">
+  <!-- Fondo cósmico -->
+  <div class="cosmic-bg">
+    <div class="stars"></div>
+  </div>
+
+  <!-- Elementos decorativos -->
   <div class="moon"></div>
   <div class="castle"></div>
   <div class="fog">
-    <div class="layer l1"></div>
-    <div class="layer l2"></div>
-    <div class="layer l3"></div>
+    <div class="fog-layer"></div>
+    <div class="fog-layer"></div>
+    <div class="fog-layer"></div>
   </div>
-  <div class="sparks" id="sparks"></div>
   <div class="particles" id="particles"></div>
-  <div class="sky-layer" id="sky"></div>
 
-  <article class="card">
-    <header class="header">
-      <div class="badge">👑 Invitación Cinematográfica 👑</div>
-      <h1 class="title">HALLOWEEN <span>FEST</span></h1>
-      <p class="subtitle">Una celebración de ensueño</p>
-    </header>
-    <section class="block">
-      <h2 class="names">DANIEL &amp; SABRINA</h2>
-      <p class="type">🎂 Fiesta de Disfraces</p>
-      <div class="grid">
-        <div class="item"><span class="i">🎭</span> Gala de disfraces</div>
-        <div class="item"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <div class="item"><span class="i">📍</span> Santos Saya Norte 138</div>
-        <div class="item"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
+  <!-- Tarjeta principal -->
+  <div class="card-container">
+    <div class="invitation-card animate-in">
+      <div class="card-header">
+        <div class="badge">
+          <i class="fas fa-crown"></i>
+          Invitación Exclusiva
+          <i class="fas fa-crown"></i>
+        </div>
+        <h1 class="main-title">HALLOWEEN <span>FEST</span></h1>
+        <p class="subtitle">Una noche de misterio y fantasía</p>
       </div>
-      <div class="cta">
-        <button class="btn whatsapp" id="btnWA">💬 WhatsApp</button>
-        <button class="btn location" id="btnLoc">📍 Ubicación</button>
-      </div>
-    </section>
-    <p class="subtitle">✨ Los misterios de la noche te convocan… ✨</p>
-  </article>
-</div>
 
-<audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop></audio>
-<div class="audio-overlay" id="audioOverlay">
-  <div class="audio-box">
-    <div class="audio-title">¿Listo para la experiencia completa?</div>
-    <div>Activa el sonido para música épica de terror.</div>
-    <button class="audio-btn" id="btnAudio">🔊 Activar audio</button>
-  </div>
-</div>
+      <div class="card-content">
+        <h2 class="couple-names">DANIEL & SABRINA</h2>
+        <p class="event-type">🎉 Fiesta de Disfraces</p>
+        
+        <div class="details-grid">
+          <div class="detail-item">
+            <i class="fas fa-mask detail-icon"></i>
+            <span>Gala de disfraces temáticos</span>
+          </div>
+          <div class="detail-item">
+            <i class="far fa-calendar-alt detail-icon"></i>
+            <span>31 de Octubre – 21:00 hs</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt detail-icon"></i>
+            <span>Santos Saya Norte 138</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-star detail-icon"></i>
+            <span>Experiencia inolvidable garantizada</span>
+          </div>
+        </div>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="horror-section">
-    <h3 class="horror-title">INFORMACIÓN ADICIONAL</h3>
-    
-    <div class="horror-grid">
-      <div class="horror-card">
-        <h4>📍 ZONA DE ACCESO</h4>
-        <p>Santos Saya Norte 138 — Entrada principal con control de acceso. Llegar con tiempo para recepción y fotos temáticas.</p>
-        <div class="horror-buttons">
-          <button id="openMapsBtn" class="horror-btn map">🗺️ Abrir en Google Maps</button>
-          <button id="callBtn" class="horror-btn whatsapp">📞 Llamar • +54 3525 45 5314</button>
+        <div class="cta-buttons">
+          <button class="btn btn-primary" id="btnWA">
+            <i class="fab fa-whatsapp"></i>
+            Confirmar asistencia
+          </button>
+          <button class="btn btn-secondary" id="btnLoc">
+            <i class="fas fa-location-dot"></i>
+            Ver ubicación
+          </button>
         </div>
       </div>
+
+      <p class="closing-text">✨ Los secretos de la noche te esperan… ✨</p>
+    </div>
+  </div>
+
+  <!-- Overlay de audio -->
+  <div class="audio-overlay" id="audioOverlay">
+    <div class="audio-content">
+      <h3 class="audio-title">🔊 Activa el Sonido</h3>
+      <p class="audio-desc">Para vivir la experiencia completa de nuestra invitación, activa el sonido y sumérgete en la atmósfera de Halloween.</p>
+      <button class="audio-btn" id="btnAudio">
+        <i class="fas fa-music"></i>
+        Activar Música
+      </button>
+    </div>
+  </div>
+
+  <!-- Sección de información adicional -->
+  <section class="footer-section">
+    <div class="footer-container">
+      <h2 class="section-title">INFORMACIÓN DETALLADA</h2>
       
-      <div class="horror-card">
-        <h4>🗺️ MAPA DE LA ZONA</h4>
-        <div class="map-embed" title="Mapa - Santos Saya Norte 138">
-          <iframe
-            src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed"
-            style="border:0; width:100%; height:180px; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+      <div class="info-grid">
+        <div class="info-card animate-in">
+          <h3 class="info-title">
+            <i class="fas fa-map-signs"></i>
+            Ubicación Exacta
+          </h3>
+          <p class="info-text">Santos Saya Norte 138 — Acceso principal con control de seguridad. Te recomendamos llegar con 15 minutos de anticipación para el registro y sesiones fotográficas temáticas.</p>
+          
+          <div class="map-container">
+            <iframe class="map-iframe" src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          
+          <div class="action-buttons">
+            <button id="openMapsBtn" class="action-btn btn-map">
+              <i class="fas fa-map"></i>
+              Abrir en Google Maps
+            </button>
+            <button id="callBtn" class="action-btn btn-call">
+              <i class="fas fa-phone"></i>
+              Llamar al organizador
+            </button>
+          </div>
+        </div>
+
+        <div class="info-card animate-in">
+          <h3 class="info-title">
+            <i class="fas fa-hourglass-half"></i>
+            Cuenta Regresiva
+          </h3>
+          <p class="info-text">El momento más esperado se acerca. Prepara tu mejor disfraz y únete a nosotros en esta noche mágica donde la realidad y la fantasía se fusionan.</p>
+          
+          <div class="countdown-container">
+            <h3 class="countdown-title">TIEMPO RESTANTE</h3>
+            <div class="countdown-grid" id="countdown">
+              <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">DÍAS</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">HRS</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">MIN</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">SEG</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Audio -->
+  <audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop></audio>
+
+  <script>
+    // Elementos del DOM
+    const audio = document.getElementById('bgm');
+    const audioOverlay = document.getElementById('audioOverlay');
+    const btnAudio = document.getElementById('btnAudio');
+    const particlesContainer = document.getElementById('particles');
     
-    <div class="countdown-container">
-      <h3 class="countdown-title">CUENTA REGRESIVA</h3>
-      <div class="timer" id="timerBoxes" role="timer" aria-atomic="true">
-        <div class="time">
-          <div class="num" id="days">--</div>
-          <div class="lab">DÍAS</div>
-        </div>
-        <div class="time">
-          <div class="num" id="hours">--</div>
-          <div class="lab">HRS</div>
-        </div>
-        <div class="time">
-          <div class="num" id="minutes">--</div>
-          <div class="lab">MIN</div>
-        </div>
-        <div class="time">
-          <div class="num" id="seconds">--</div>
-          <div class="lab">SEG</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+    // Botones principales
+    const btnWA = document.getElementById('btnWA');
+    const btnLoc = document.getElementById('btnLoc');
+    const openMapsBtn = document.getElementById('openMapsBtn');
+    const callBtn = document.getElementById('callBtn');
+    
+    // Countdown elements
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
 
-<script>
-// Audio
-const audio=document.getElementById('bgm');
-const overlay=document.getElementById('audioOverlay');
-document.getElementById('btnAudio').addEventListener('click', async()=>{
-  try{await audio.play();}catch{}
-  overlay.style.display='none';
-});
+    // Activar audio
+    btnAudio.addEventListener('click', async () => {
+      try {
+        await audio.play();
+        audioOverlay.style.opacity = '0';
+        setTimeout(() => {
+          audioOverlay.style.display = 'none';
+        }, 500);
+      } catch (err) {
+        console.log('Autoplay bloqueado, el usuario debe interactuar primero');
+      }
+    });
 
-// WhatsApp
-document.getElementById('btnWA').addEventListener('click', ()=>{
-  const url = 'https://wa.me/543525455314?text=' + encodeURIComponent('Confirmo asistencia 🎃');
-  window.open(url,'_blank');
-});
+    // Acciones de botones
+    btnWA.addEventListener('click', () => {
+      const message = encodeURIComponent('Confirmo mi asistencia a la fiesta de Halloween 🎃');
+      window.open(`https://wa.me/543525455314?text=${message}`, '_blank');
+    });
 
-// Ubicación
-document.getElementById('btnLoc').addEventListener('click', ()=>{
-  window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank');
-});
+    btnLoc.addEventListener('click', () => {
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+    });
 
-// Abrir en Google Maps
-document.getElementById('openMapsBtn').addEventListener('click', ()=>{
-  window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank');
-});
+    openMapsBtn.addEventListener('click', () => {
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+    });
 
-// Llamar
-document.getElementById('callBtn').addEventListener('click', ()=>{
-  window.location.href = 'tel:+543525455314';
-});
+    callBtn.addEventListener('click', () => {
+      window.location.href = 'tel:+543525455314';
+    });
 
-// Cuenta regresiva
-function updateCountdown() {
-  const targetDate = new Date('October 31, 2023 21:00:00').getTime();
-  const now = new Date().getTime();
-  const difference = targetDate - now;
+    // Cuenta regresiva - CORREGIDA
+    function updateCountdown() {
+      // Fecha objetivo: 31 de Octubre a las 21:00
+      const now = new Date();
+      let targetDate = new Date(`${now.getFullYear()}-10-31T21:00:00`);
+      
+      // Si ya pasó la fecha de este año, usar el próximo año
+      if (now > targetDate) {
+        targetDate = new Date(`${now.getFullYear() + 1}-10-31T21:00:00`);
+      }
+      
+      const difference = targetDate - now;
 
-  if (difference > 0) {
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-  } else {
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
-  }
-}
+        daysEl.textContent = days.toString().padStart(2, '0');
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minutesEl.textContent = minutes.toString().padStart(2, '0');
+        secondsEl.textContent = seconds.toString().padStart(2, '0');
+      } else {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+      }
+    }
 
-// Actualizar cuenta regresiva cada segundo
-setInterval(updateCountdown, 1000);
-updateCountdown();
+    // Actualizar cuenta regresiva cada segundo
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Llamar inmediatamente para mostrar valores desde el inicio
 
-// Partículas básicas
-const sparks=document.getElementById('sparks');
-function spawnSpark(){const s=document.createElement('div');s.className='spark';s.style.left=Math.random()*100+'%';s.style.bottom='-10vh';sparks.appendChild(s);setTimeout(()=>s.remove(),8000);}
-setInterval(spawnSpark,200);
+    // Partículas animadas
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Propiedades aleatorias
+      const size = Math.random() * 4 + 1;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const duration = Math.random() * 3 + 2;
+      const delay = Math.random() * 5;
+      
+      // Estilo
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${x}%`;
+      particle.style.top = `${y}%`;
+      particle.style.opacity = '0';
+      
+      // Animación
+      particle.animate([
+        { transform: 'translateY(0) scale(0)', opacity: 0 },
+        { transform: 'translateY(-20px) scale(1)', opacity: 0.8 },
+        { transform: 'translateY(-40px) scale(0)', opacity: 0 }
+      ], {
+        duration: duration * 1000,
+        delay: delay * 1000,
+        fill: 'forwards'
+      });
+      
+      particlesContainer.appendChild(particle);
+      
+      // Remover después de la animación
+      setTimeout(() => {
+        particle.remove();
+      }, (duration + delay) * 1000);
+    }
 
-// Añadir elementos animados al cielo (murciélagos)
-function createBat() {
-  const bat = document.createElement('div');
-  bat.className = 'bat';
-  bat.innerHTML = '🦇';
-  bat.style.left = '-10vw';
-  bat.style.top = Math.random() * 60 + 10 + 'vh';
-  document.getElementById('sky').appendChild(bat);
-  
-  // Reiniciar animación
-  bat.style.animation = 'none';
-  bat.offsetHeight; // Trigger reflow
-  bat.style.animation = 'batfly 10s linear forwards';
-  
-  setTimeout(() => {
-    bat.remove();
-  }, 10000);
-}
+    // Generar partículas periódicamente
+    setInterval(createParticle, 300);
+    
+    // Crear algunas partículas iniciales
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createParticle, i * 100);
+    }
 
-// Añadir fantasmas
-function createGhost() {
-  const ghost = document.createElement('div');
-  ghost.className = 'ghost';
-  ghost.innerHTML = '👻';
-  ghost.style.left = '-10vw';
-  ghost.style.top = Math.random() * 40 + 20 + 'vh';
-  document.getElementById('sky').appendChild(ghost);
-  
-  // Reiniciar animación
-  ghost.style.animation = 'none';
-  ghost.offsetHeight;
-  ghost.style.animation = 'ghostFloat 12s ease-in-out forwards';
-  
-  setTimeout(() => {
-    ghost.remove();
-  }, 12000);
-}
+    // Animaciones de entrada al hacer scroll
+    const animateElements = document.querySelectorAll('.animate-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(el => {
+      observer.observe(el);
+    });
 
-// Crear murciélagos y fantasmas periódicamente
-setInterval(createBat, 8000);
-setInterval(createGhost, 15000);
+    // Efecto de parallax sutil en la tarjeta principal
+    document.addEventListener('mousemove', (e) => {
+      const card = document.querySelector('.invitation-card');
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
 
-// Inicializar con algunos elementos
-setTimeout(createBat, 2000);
-setTimeout(createGhost, 5000);
-</script>
+    // Reset transform al salir
+    document.addEventListener('mouseleave', () => {
+      const card = document.querySelector('.invitation-card');
+      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+
+    // Añadir elementos decorativos animados
+    function createFlyingElement() {
+      const elements = ['🦇', '👻', '🕷️', '🕸️', '🎃'];
+      const el = document.createElement('div');
+      el.textContent = elements[Math.floor(Math.random() * elements.length)];
+      el.style.position = 'fixed';
+      el.style.fontSize = `${Math.random() * 20 + 16}px`;
+      el.style.left = '-50px';
+      el.style.top = `${Math.random() * 80 + 10}vh`;
+      el.style.opacity = '0.8';
+      el.style.pointerEvents = 'none';
+      el.style.zIndex = '5';
+      el.style.filter = 'drop-shadow(0 0 5px rgba(255,255,255,0.3))';
+      
+      document.body.appendChild(el);
+      
+      // Animación
+      const animation = el.animate([
+        { transform: 'translateX(-50px)', offset: 0 },
+        { transform: `translateX(${window.innerWidth + 50}px)`, offset: 1 }
+      ], {
+        duration: Math.random() * 20000 + 15000,
+        easing: 'linear',
+        fill: 'forwards'
+      });
+      
+      animation.onfinish = () => {
+        el.remove();
+      };
+    }
+
+    // Crear elementos voladores periódicamente
+    setInterval(createFlyingElement, 7000);
+    
+    // Crear algunos iniciales
+    setTimeout(createFlyingElement, 1000);
+    setTimeout(createFlyingElement, 3000);
+    setTimeout(createFlyingElement, 5000);
+  </script>
 </body>
 </html>
 ```

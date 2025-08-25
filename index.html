@@ -149,6 +149,26 @@ document.getElementById('btnLoc').addEventListener('click', ()=>{
         </div>
       </div>
     </div>
+  <div class="countdown" aria-live="polite">
+      <h3>Cuenta regresiva para la fiesta</h3>
+      <div class="timer" id="timerBoxes" role="timer" aria-atomic="true">
+        <div class="time"><div class="num" id="days">--</div><div class="lab">DÍAS</div></div>
+        <div class="time"><div class="num" id="hours">--</div><div class="lab">HORAS</div></div>
+        <div class="time"><div class="num" id="minutes">--</div><div class="lab">MIN</div></div>
+        <div class="time"><div class="num" id="seconds">--</div><div class="lab">SEG</div></div>
+      </div>
+
+      <!-- fire/smoke spark area -->
+      <div class="fire-wrap" aria-hidden="true">
+        <div class="flame"></div>
+        <div class="sparks" id="sparks"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessible status for screen readers -->
+  <div class="visually-hidden" id="sr-status" aria-live="polite"></div>
+
 // Partículas básicas
 const sparks=document.getElementById('sparks');
 function spawnSpark(){const s=document.createElement('div');s.className='spark';s.style.left=Math.random()*100+'%';s.style.bottom='-10vh';sparks.appendChild(s);setTimeout(()=>s.remove(),8000);}

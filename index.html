@@ -1,278 +1,1439 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b00">
-    <meta name="description" content="Invitación de Halloween para Daniel y Sabrina - Diseño terrorífico, alegre y cinematográfico">
-    <title>Invitación Halloween</title>
-    <style>
-        :root {
-            --bg: #0b0211;
-            --bg2: #1a0f2a;
-            --orange: #ff6b00;
-            --purple: #6b2db5;
-            --pink: #b83af5;
-            --white: #f6f3ff;
-            --muted: #c9b7ff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 15px rgba(255, 107, 0, 0.4);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
+  <meta name="description" content="Invitación digital exclusiva para la Fiesta de Halloween de Daniel y Sabrina">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --halloween-orange: #ff6b35;
+      --halloween-purple: #a45de6;
+      --halloween-red: #e74c3c;
+      --halloween-dark: #0a0310;
+      --halloween-darker: #050108;
+      --halloween-light: #ffd7c6;
+      --neon-glow: 0 0 15px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3);
+      --neon-purple-glow: 0 0 15px rgba(164, 93, 230, 0.5), 0 0 30px rgba(164, 93, 230, 0.3);
+      --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      --glow: 0 0 20px rgba(255, 107, 53, 0.4), 0 0 40px rgba(255, 107, 53, 0.2);
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--white);
-            text-align: center;
-            overflow-x: hidden;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header {
-            padding: 20px;
-            background: radial-gradient(circle, rgba(255,107,0,0.1), transparent);
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.5rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: var(--halloween-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffd9b0;
-            margin-top: 10px;
-        }
+    /* Fondo animado mejorado */
+    .cosmic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      background: 
+        radial-gradient(ellipse at bottom, #1b0b30 0%, #0a0310 50%, #000000 100%);
+      overflow: hidden;
+    }
 
-        .info-strip {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 27px 44px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 55px 311px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 86px 956px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 126px 675px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 344px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 166px 711px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 178px 360px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 182px 183px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 188px 576px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 200px 995px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 208px 439px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 218px 759px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 244px 533px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 248px 257px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 254px 871px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 272px 124px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 280px 643px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 300px 378px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 318px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 324px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 332px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 350px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 360px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 380px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 400px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 420px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 440px 800px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 460px 500px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 480px 200px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 500px 900px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 520px 600px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 540px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 560px 700px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 580px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 600px 800px, #ddd, rgba(0,0,0,0));
+      background-size: 1000px 2000px;
+      opacity: 0.8;
+      animation: starPulse 6s infinite alternate;
+    }
 
-        .info-chip {
-            background: rgba(255, 107, 0, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 5px;
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
+    @keyframes starPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
 
-        .main {
-            max-width: 980px;
-            margin: auto;
-            padding: 1rem;
-        }
+    /* Luna mejorada */
+    .moon {
+      position: fixed;
+      top: 10vh;
+      right: 10vw;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at 30% 30%, #ffffff, #e6e1e6 30%, #b8b0b8 50%, #8a808a 70%, #665c66 80%, transparent 82%),
+        radial-gradient(60px 60px at 70% 60%, rgba(255, 255, 255, 0.08), transparent 60%);
+      box-shadow: 
+        0 0 80px 30px rgba(255, 255, 255, 0.2),
+        0 0 140px 60px rgba(255, 107, 53, 0.2);
+      z-index: 10;
+      animation: moonGlow 4s infinite alternate, float 6s ease-in-out infinite;
+      filter: blur(0.5px);
+    }
 
-        .invite {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border: 1px solid var(--muted);
-            border-radius: 12px;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: var(--shadow);
-        }
+    @keyframes moonGlow {
+      0% { box-shadow: 0 0 60px 20px rgba(255, 255, 255, 0.2), 0 0 100px 40px rgba(255, 107, 53, 0.1); }
+      100% { box-shadow: 0 0 80px 30px rgba(255, 255, 255, 0.3), 0 0 140px 60px rgba(255, 107, 53, 0.2); }
+    }
 
-        .details {
-            flex: 1;
-            text-align: left;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
 
-        .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #ffd7b0;
-            text-shadow: var(--glow);
-        }
+    /* Niebla mejorada */
+    .fog {
+      position: fixed;
+      bottom: 20vh;
+      left: 0;
+      width: 100%;
+      height: 40vh;
+      pointer-events: none;
+      z-index: 8;
+    }
 
-        .tagline {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #ffe7d1;
-            margin-top: 10px;
-            text-shadow: var(--glow);
-        }
+    .fog-layer {
+      position: absolute;
+      width: 100%;
+      height: 120px;
+      background: rgba(200, 200, 255, 0.1);
+      filter: blur(25px);
+      opacity: 0.3;
+      animation: fogDrift linear infinite;
+    }
 
-        .bullets {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
+    .fog-layer:nth-child(1) {
+      bottom: 0;
+      animation-duration: 35s;
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
+    .fog-layer:nth-child(2) {
+      bottom: 40px;
+      animation-duration: 50s;
+      opacity: 0.2;
+      background: rgba(164, 93, 230, 0.06);
+    }
 
-        .poster {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
+    .fog-layer:nth-child(3) {
+      bottom: 80px;
+      animation-duration: 65s;
+      opacity: 0.15;
+      background: rgba(255, 107, 53, 0.05);
+    }
 
-        .poster-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2rem;
-            color: var(--orange);
-            text-shadow: var(--glow);
-        }
+    @keyframes fogDrift {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
 
-        .cta-row {
-            margin-top: 20px;
-        }
+    /* Castillo mejorado */
+    .castle {
+      position: fixed;
+      bottom: 15vh;
+      left: 10vw;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 160px solid var(--halloween-dark);
+      z-index: 9;
+      filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.8));
+      transform: rotate(-5deg);
+      animation: castlePulse 8s ease-in-out infinite;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            background: var(--orange);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
+    @keyframes castlePulse {
+      0%, 100% { filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.8)); }
+      50% { filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.9)); }
+    }
 
-        .btn:hover {
-            background: var(--purple);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
+    .castle::before {
+      content: '';
+      position: absolute;
+      left: -60px;
+      bottom: -120px;
+      width: 120px;
+      height: 180px;
+      background: var(--halloween-darker);
+      border-radius: 10px 10px 0 0;
+      box-shadow: 
+        120px 0 0 var(--halloween-darker),
+        60px -40px 0 var(--halloween-dark),
+        -60px -40px 0 var(--halloween-dark);
+    }
 
-        footer {
-            margin-top: 2rem;
-        }
+    /* Partículas mejoradas */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 7;
+    }
 
-        .countdown {
-            text-align: center;
-        }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
 
-        .timer {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 10px;
-        }
+    /* Menú hamburguesa */
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
 
-        .time-box {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
+    .menu-toggle {
+      width: 50px;
+      height: 50px;
+      background: rgba(10, 3, 16, 0.8);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+    }
 
-        .num {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
+    .menu-toggle:hover {
+      background: rgba(20, 10, 40, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+    }
 
-        .lab {
-            font-size: 12px;
-            color: #ffd9c0;
-        }
-    </style>
+    .menu-icon {
+      width: 24px;
+      height: 2px;
+      background: var(--halloween-orange);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: var(--halloween-orange);
+      transition: var(--transition);
+    }
+
+    .menu-icon::before {
+      transform: translateY(-8px);
+    }
+
+    .menu-icon::after {
+      transform: translateY(8px);
+    }
+
+    /* Menú desplegable */
+    .menu-dropdown {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 280px;
+      background: rgba(10, 3, 16, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 53, 0.2);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+
+    .menu-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .menu-item {
+      padding: 15px 20px;
+      margin: 5px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--halloween-light);
+      font-weight: 600;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 107, 53, 0.1);
+      transform: translateX(5px);
+    }
+
+    .menu-item i {
+      font-size: 1.3rem;
+      color: var(--halloween-orange);
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 15px 0;
+    }
+
+    /* Tarjeta principal mejorada */
+    .card-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 20;
+    }
+
+    .invitation-card {
+      width: 100%;
+      max-width: 460px;
+      background: linear-gradient(145deg, rgba(20, 10, 40, 0.85), rgba(30, 15, 50, 0.95), rgba(40, 15, 45, 0.9), rgba(40, 12, 10, 0.85));
+      border-radius: 28px;
+      padding: 35px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.9),
+        0 0 50px rgba(255, 107, 53, 0.25),
+        inset 0 0 40px rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: var(--transition);
+      border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+    }
+
+    .invitation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+      animation: headerGlow 2s infinite alternate;
+    }
+
+    .invitation-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(164, 93, 230, 0.03), transparent);
+      z-index: -1;
+    }
+
+    @keyframes headerGlow {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .invitation-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 35px 90px rgba(0, 0, 0, 0.95),
+        0 0 60px rgba(255, 107, 53, 0.35),
+        inset 0 0 40px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header mejorado */
+    .card-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 35px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--halloween-light);
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(255, 107, 53, 0.25);
+      animation: badgePulse 3s infinite alternate;
+    }
+
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.25); }
+      100% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.4); }
+    }
+
+    .badge i {
+      color: var(--halloween-orange);
+      font-size: 1.3em;
+      animation: iconFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin: 18px 0 8px;
+      line-height: 1.1;
+      text-shadow: var(--neon-glow);
+      position: relative;
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 15px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3); }
+      100% { text-shadow: 0 0 25px rgba(255, 107, 53, 0.7), 0 0 50px rgba(255, 107, 53, 0.5); }
+    }
+
+    .main-title span {
+      color: var(--halloween-orange);
+      text-shadow: var(--neon-glow);
+    }
+
+    .subtitle {
+      font-family: 'Montserrat', cursive;
+      font-size: 1.5rem;
+      color: #d8b3ff;
+      text-align: center;
+      margin: 18px 0 0;
+      opacity: 0.95;
+      font-style: italic;
+      letter-spacing: 1px;
+      animation: subtitleFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes subtitleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    /* Content mejorado */
+    .card-content {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 25px 0;
+      box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.4),
+        0 2px 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .couple-names {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      color: #ffcaa8;
+      margin: 0 0 18px 0;
+      text-shadow: 0 3px 15px rgba(255, 107, 53, 0.5);
+      letter-spacing: 1px;
+      animation: namesGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes namesGlow {
+      0% { text-shadow: 0 3px 15px rgba(255, 107, 53, 0.5); }
+      100% { text-shadow: 0 3px 20px rgba(255, 107, 53, 0.7), 0 0 30px rgba(255, 107, 53, 0.4); }
+    }
+
+    .event-type {
+      text-align: center;
+      font-weight: 600;
+      color: var(--halloween-light);
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .details-grid {
+      display: grid;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .detail-item:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateX(8px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border-color: var(--halloween-orange);
+    }
+
+    .detail-item:hover::before {
+      opacity: 1;
+    }
+
+    .detail-icon {
+      font-size: 1.5rem;
+      color: var(--halloween-orange);
+      transition: transform 0.3s ease;
+    }
+
+    .detail-item:hover .detail-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .cta-buttons {
+      display: grid;
+      gap: 15px;
+      margin: 30px 0 20px;
+    }
+
+    .btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: white;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+      z-index: 1;
+    }
+
+    .btn i {
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover i {
+      transform: scale(1.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(255, 107, 53, 0.2));
+      box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.5), rgba(255, 107, 53, 0.3));
+      box-shadow: 0 15px 35px rgba(255, 107, 53, 0.5);
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.4), rgba(164, 93, 230, 0.2));
+      box-shadow: 0 10px 25px rgba(164, 93, 230, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, rgba(164, 93, 230, 0.5), rgba(164, 93, 230, 0.3));
+      box-shadow: 0 15px 35px rgba(164, 93, 230, 0.5);
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .closing-text {
+      text-align: center;
+      font-family: 'Montserrat', cursive;
+      font-size: 1.4rem;
+      color: #d8b3ff;
+      margin: 25px 0 0;
+      opacity: 0.95;
+      text-shadow: var(--neon-purple-glow);
+      animation: closingFloat 5s ease-in-out infinite;
+      letter-spacing: 1px;
+    }
+
+    @keyframes closingFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    /* Audio overlay mejorado */
+    .audio-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .audio-content {
+      background: rgba(15, 10, 30, 0.98);
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      border-radius: 24px;
+      padding: 35px;
+      text-align: center;
+      max-width: 440px;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(255, 107, 53, 0.3);
+      backdrop-filter: blur(12px);
+      transform: scale(0.9);
+      animation: popup 0.6s ease-out forwards;
+      border-bottom: 2px solid rgba(255, 107, 53, 0.4);
+    }
+
+    @keyframes popup {
+      to { transform: scale(1); }
+    }
+
+    .audio-title {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 18px;
+      text-shadow: var(--neon-glow);
+      font-family: 'Cinzel', serif;
+    }
+
+    .audio-desc {
+      color: #b8b8d8;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .audio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, var(--halloween-orange), rgba(255, 107, 53, 0.9));
+      border: none;
+      border-radius: 35px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
+      animation: pulseButton 2s infinite;
+    }
+
+    @keyframes pulseButton {
+      0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 107, 53, 0.7); }
+    }
+
+    .audio-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 53, 0.7);
+    }
+
+    /* Footer section mejorado */
+    .footer-section {
+      padding: 60px 20px 40px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .footer-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--halloween-orange);
+      text-shadow: var(--neon-glow);
+      position: relative;
+      letter-spacing: 2px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--halloween-orange), transparent);
+      border-radius: 2px;
+    }
+
+    .countdown-container {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .countdown-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--halloween-red);
+      margin-bottom: 25px;
+      text-shadow: 0 0 18px rgba(231, 76, 60, 0.6);
+      letter-spacing: 2px;
+      animation: countdownGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes countdownGlow {
+      0% { text-shadow: 0 0 18px rgba(231, 76, 60, 0.6); }
+      100% { text-shadow: 0 0 30px rgba(231, 76, 60, 0.8), 0 0 50px rgba(231, 76, 60, 0.5); }
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 85px;
+    }
+
+    .countdown-number {
+      width: 85px;
+      height: 85px;
+      background: rgba(231, 76, 60, 0.25);
+      border: 3px solid var(--halloween-red);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #ff3366;
+      text-shadow: 0 0 12px rgba(231, 76, 60, 0.8);
+      box-shadow: 0 0 18px rgba(231, 76, 60, 0.4);
+      animation: pulseNumber 1.5s infinite alternate;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-number::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    }
+
+    @keyframes pulseNumber {
+      0% { box-shadow: 0 0 18px rgba(231, 76, 60, 0.4); }
+      100% { box-shadow: 0 0 30px rgba(231, 76, 60, 0.7); }
+    }
+
+    .countdown-label {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--halloween-orange);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    }
+
+    /* Animaciones de entrada mejoradas */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efectos hover mejorados */
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive mejorado */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2.6rem;
+      }
+      
+      .subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .invitation-card {
+        padding: 30px 25px;
+        max-width: 440px;
+      }
+      
+      .countdown-grid {
+        gap: 15px;
+      }
+      
+      .countdown-item {
+        min-width: 75px;
+      }
+      
+      .countdown-number {
+        width: 75px;
+        height: 75px;
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .menu-container {
+        right: 15px;
+        top: 15px;
+      }
+      
+      .menu-dropdown {
+        right: 15px;
+        top: 70px;
+        width: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 2rem;
+      }
+      
+      .badge {
+        font-size: 0.75rem;
+        padding: 10px 20px;
+        gap: 8px;
+      }
+      
+      .invitation-card {
+        padding: 25px 20px;
+        margin: 15px;
+        max-width: 420px;
+      }
+      
+      .btn {
+        font-size: 1.05rem;
+        padding: 14px 20px;
+      }
+      
+      .countdown-item {
+        min-width: 65px;
+      }
+      
+      .countdown-number {
+        width: 65px;
+        height: 65px;
+        font-size: 1.5rem;
+      }
+      
+      .countdown-title {
+        font-size: 1.6rem;
+      }
+      
+      .footer-section {
+        padding: 50px 15px 30px;
+      }
+    }
+
+    /* Soporte para prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1 class="title">Daniel &amp; Sabrina</h1>
-        <p class="subtitle">Festejamos nuestros cumpleaños - Noche de Disfraces — Halloween Épico</p>
-        <div class="info-strip">
-            <span class="info-chip">📅 31 de Octubre — 21:00</span>
-            <span class="info-chip">📍 Santos Saya Norte 138</span>
-            <span class="info-chip">🎭 Dress code: ¡Disfraz obligatorio!</span>
+  <!-- Fondo cósmico -->
+  <div class="cosmic-bg">
+    <div class="stars"></div>
+  </div>
+
+  <!-- Elementos decorativos -->
+  <div class="moon"></div>
+  <div class="castle"></div>
+  <div class="fog">
+    <div class="fog-layer"></div>
+    <div class="fog-layer"></div>
+    <div class="fog-layer"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Menú hamburguesa -->
+  <div class="menu-container">
+    <div class="menu-toggle" id="menuToggle">
+      <div class="menu-icon"></div>
+    </div>
+    
+    <div class="menu-dropdown" id="menuDropdown">
+      <div class="menu-item" id="menuWhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Confirmar Asistencia</span>
+      </div>
+      
+      <div class="menu-divider"></div>
+      
+      <div class="menu-item" id="menuLocation">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Ver Ubicación</span>
+      </div>
+      
+      <div class="menu-divider"></div>
+      
+      <div class="menu-item" id="menuCountdown">
+        <i class="fas fa-hourglass-half"></i>
+        <span>Cuenta Regresiva</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjeta principal -->
+  <div class="card-container">
+    <div class="invitation-card animate-in">
+      <div class="card-header">
+        <div class="badge">
+          <i class="fas fa-crown"></i>
+          Invitación Exclusiva
+          <i class="fas fa-crown"></i>
         </div>
-    </header>
-    <main class="main">
-        <section class="invite">
-            <div class="details">
-                <h2 class="names">¡Estás invitad@!</h2>
-                <p class="tagline">UNA NOCHE DE TERROR • MAGIA • MISTERIO</p>
-                <ul class="bullets">
-                    <li class="item">🕯️ Recepción con luces, humo y ambientación cinematográfica.</li>
-                    <li class="item">🦇 Murciélagos y fantasmas.</li>
-                    <li class="item">📸 Momentos sorpresa con relámpagos y destellos.</li>
-                    <li class="item">🎁 Regalos y sorpresas para todos los asistentes.</li>
-                </ul>
-                <div class="cta-row">
-                    <a class="btn" href="https://wa.me/543525455314" target="_blank">💬 Confirmar por WhatsApp</a>
-                    <a class="btn" href="https://maps.google.com/?q=Santos+Saya+Norte+138" target="_blank">🗺️ Abrir mapa</a>
-                </div>
-            </div>
-            <div class="poster">
-                <h3 class="poster-title">HALLOWEEN<br>FEST</h3>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <section class="countdown">
-            <h3>Cuenta regresiva para la fiesta</h3>
-            <div class="timer">
-                <div class="time-box">
-                    <span class="num" id="days">--</span>
-                    <span class="lab">DÍAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="hours">--</span>
-                    <span class="lab">HORAS</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="minutes">--</span>
-                    <span class="lab">MIN</span>
-                </div>
-                <div class="time-box">
-                    <span class="num" id="seconds">--</span>
-                    <span class="lab">SEG</span>
-                </div>
-            </div>
-        </section>
-    </footer>
-    <script>
-        function updateCountdown() {
-            const eventDate = new Date('2025-10-31T21:00:00');
-            const now = new Date();
-            const timeDiff = eventDate - now;
+        <h1 class="main-title">HALLOWEEN <span>FEST</span></h1>
+        <p class="subtitle">Una noche de misterio y fantasía</p>
+      </div>
 
-            if (timeDiff <= 0) {
-                document.getElementById('days').textContent = "00";
-                document.getElementById('hours').textContent = "00";
-                document.getElementById('minutes').textContent = "00";
-                document.getElementById('seconds').textContent = "00";
-                return;
-            }
+      <div class="card-content">
+        <h2 class="couple-names">DANIEL & SABRINA</h2>
+        <p class="event-type">🎉 Fiesta de Disfraces</p>
+        
+        <div class="details-grid">
+          <div class="detail-item">
+            <i class="fas fa-mask detail-icon"></i>
+            <span>Gala de disfraces temáticos</span>
+          </div>
+          <div class="detail-item">
+            <i class="far fa-calendar-alt detail-icon"></i>
+            <span>31 de Octubre – 21:00 hs</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt detail-icon"></i>
+            <span>Santos Saya Norte 138</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-star detail-icon"></i>
+            <span>Experiencia inolvidable garantizada</span>
+          </div>
+        </div>
 
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        <div class="cta-buttons">
+          <button class="btn btn-primary hover-scale" id="btnWA">
+            <i class="fab fa-whatsapp"></i>
+            Confirmar asistencia
+          </button>
+          <button class="btn btn-secondary hover-scale" id="btnLoc">
+            <i class="fas fa-location-dot"></i>
+            Ver ubicación
+          </button>
+        </div>
+      </div>
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      <p class="closing-text">✨ Los secretos de la noche te esperan… ✨</p>
+    </div>
+  </div>
+
+  <!-- Overlay de audio -->
+  <div class="audio-overlay" id="audioOverlay">
+    <div class="audio-content">
+      <h3 class="audio-title">🔊 Activa el Sonido</h3>
+      <p class="audio-desc">Para vivir la experiencia completa de nuestra invitación, activa el sonido y sumérgete en la atmósfera de Halloween.</p>
+      <button class="audio-btn" id="btnAudio">
+        <i class="fas fa-music"></i>
+        Activar Música
+      </button>
+    </div>
+  </div>
+
+  <!-- Sección de información adicional -->
+  <section class="footer-section">
+    <div class="footer-container">
+      <h2 class="section-title">INFORMACIÓN DETALLADA</h2>
+      
+      <div class="countdown-container animate-in">
+        <h3 class="countdown-title">TIEMPO RESTANTE</h3>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="days">00</div>
+            <div class="countdown-label">DÍAS</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="hours">00</div>
+            <div class="countdown-label">HRS</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="minutes">00</div>
+            <div class="countdown-label">MIN</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="seconds">00</div>
+            <div class="countdown-label">SEG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio -->
+  <audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop></audio>
+
+  <script>
+    // Elementos del DOM
+    const audio = document.getElementById('bgm');
+    const audioOverlay = document.getElementById('audioOverlay');
+    const btnAudio = document.getElementById('btnAudio');
+    const particlesContainer = document.getElementById('particles');
+    
+    // Botones principales
+    const btnWA = document.getElementById('btnWA');
+    const btnLoc = document.getElementById('btnLoc');
+    
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('menuToggle');
+    const menuDropdown = document.getElementById('menuDropdown');
+    const menuWhatsApp = document.getElementById('menuWhatsApp');
+    const menuLocation = document.getElementById('menuLocation');
+    const menuCountdown = document.getElementById('menuCountdown');
+    
+    // Countdown elements
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    // Toggle menú hamburguesa
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle('active');
+      
+      // Animar ícono
+      const icon = menuToggle.querySelector('.menu-icon');
+      if (menuDropdown.classList.contains('active')) {
+        icon.style.transform = 'rotate(45deg)';
+        icon.style.background = 'transparent';
+        icon.style.width = '0';
+        
+        icon.style.transform = 'rotate(45deg)';
+        icon.style.background = 'transparent';
+        
+        icon.style.transform = 'rotate(-45deg)';
+      } else {
+        icon.style.transform = 'none';
+        icon.style.background = var(--halloween-orange);
+        icon.style.width = '24px';
+        
+        icon.style.transform = 'translateY(-8px)';
+        icon.style.background = var(--halloween-orange);
+        
+        icon.style.transform = 'translateY(8px)';
+        icon.style.background = var(--halloween-orange);
+      }
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+        menuDropdown.classList.remove('active');
+        const icon = menuToggle.querySelector('.menu-icon');
+        icon.style.transform = 'none';
+        icon.style.background = 'var(--halloween-orange)';
+        icon.style.width = '24px';
+      }
+    });
+
+    // Activar audio
+    btnAudio.addEventListener('click', async () => {
+      try {
+        await audio.play();
+        audioOverlay.style.opacity = '0';
+        setTimeout(() => {
+          audioOverlay.style.display = 'none';
+        }, 600);
+      } catch (err) {
+        console.log('Autoplay bloqueado, el usuario debe interactuar primero');
+      }
+    });
+
+    // Acciones de botones
+    btnWA.addEventListener('click', () => {
+      const message = encodeURIComponent('Confirmo mi asistencia a la fiesta de Halloween 🎃');
+      window.open(`https://wa.me/543525455314?text=${message}`, '_blank');
+    });
+
+    btnLoc.addEventListener('click', () => {
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+    });
+
+    // Acciones del menú
+    menuWhatsApp.addEventListener('click', () => {
+      const message = encodeURIComponent('Confirmo mi asistencia a la fiesta de Halloween 🎃');
+      window.open(`https://wa.me/543525455314?text=${message}`, '_blank');
+      menuDropdown.classList.remove('active');
+    });
+
+    menuLocation.addEventListener('click', () => {
+      window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138', '_blank');
+      menuDropdown.classList.remove('active');
+    });
+
+    menuCountdown.addEventListener('click', () => {
+      document.querySelector('.countdown-container').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+      menuDropdown.classList.remove('active');
+    });
+
+    // Cuenta regresiva mejorada
+    function updateCountdown() {
+      // Fecha objetivo: 31 de Octubre a las 21:00
+      const now = new Date();
+      let targetDate = new Date(`${now.getFullYear()}-10-31T21:00:00`);
+      
+      // Si ya pasó la fecha de este año, usar el próximo año
+      if (now > targetDate) {
+        targetDate = new Date(`${now.getFullYear() + 1}-10-31T21:00:00`);
+      }
+      
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        // Asegurar que siempre tenga dos dígitos
+        daysEl.textContent = days.toString().padStart(2, '0');
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minutesEl.textContent = minutes.toString().padStart(2, '0');
+        secondsEl.textContent = seconds.toString().padStart(2, '0');
+      } else {
+        // Cuando el tiempo se acaba
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+      }
+    }
+
+    // Actualizar cuenta regresiva cada segundo
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Llamar inmediatamente para mostrar valores desde el inicio
+
+    // Partículas animadas mejoradas
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Propiedades aleatorias
+      const size = Math.random() * 5 + 2;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const duration = Math.random() * 4 + 3;
+      const delay = Math.random() * 6;
+      const hue = Math.random() * 60 + 10; // Naranjas y morados
+      
+      // Estilo
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${x}%`;
+      particle.style.top = `${y}%`;
+      particle.style.opacity = '0';
+      particle.style.filter = `hue-rotate(${hue}deg)`;
+      
+      // Animación
+      const animation = particle.animate([
+        { transform: 'translateY(0) scale(0)', opacity: 0 },
+        { transform: 'translateY(-30px) scale(1)', opacity: 0.9 },
+        { transform: 'translateY(-60px) scale(0)', opacity: 0 }
+      ], {
+        duration: duration * 1000,
+        delay: delay * 1000,
+        fill: 'forwards',
+        easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+      });
+      
+      particlesContainer.appendChild(particle);
+      
+      // Remover después de la animación
+      setTimeout(() => {
+        particle.remove();
+      }, (duration + delay) * 1000);
+    }
+
+    // Generar partículas periódicamente
+    setInterval(createParticle, 250);
+    
+    // Crear algunas partículas iniciales
+    for (let i = 0; i < 25; i++) {
+      setTimeout(createParticle, i * 80);
+    }
+
+    // Animaciones de entrada al hacer scroll
+    const animateElements = document.querySelectorAll('.animate-in');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
+      });
+    }, observerOptions);
+    
+    animateElements.forEach(el => {
+      observer.observe(el);
+    });
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+    // Efecto de parallax sutil en la tarjeta principal
+    document.addEventListener('mousemove', (e) => {
+      const card = document.querySelector('.invitation-card');
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 30;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 30;
+      card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+
+    // Reset transform al salir
+    document.addEventListener('mouseleave', () => {
+      const card = document.querySelector('.invitation-card');
+      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+
+    // Añadir elementos decorativos animados
+    function createFlyingElement() {
+      const elements = ['🦇', '👻', '🕷️', '🕸️', '🎃', '🔮', '💀'];
+      const el = document.createElement('div');
+      el.textContent = elements[Math.floor(Math.random() * elements.length)];
+      el.style.position = 'fixed';
+      el.style.fontSize = `${Math.random() * 25 + 18}px`;
+      el.style.left = '-60px';
+      el.style.top = `${Math.random() * 80 + 10}vh`;
+      el.style.opacity = '0.9';
+      el.style.pointerEvents = 'none';
+      el.style.zIndex = '5';
+      el.style.filter = 'drop-shadow(0 0 8px rgba(255,255,255,0.4))';
+      el.style.animation = 'none';
+      
+      document.body.appendChild(el);
+      
+      // Posición final aleatoria
+      const endX = window.innerWidth + 60;
+      const endY = parseFloat(el.style.top) + (Math.random() * 100 - 50);
+      
+      // Animación
+      const animation = el.animate([
+        { transform: 'translate(0, 0) rotate(0deg)', opacity: 0.7 },
+        { transform: `translate(${endX}px, ${endY - parseFloat(el.style.top)}px) rotate(${Math.random() * 720}deg)`, opacity: 0.7 }
+      ], {
+        duration: Math.random() * 25000 + 20000,
+        easing: 'linear',
+        fill: 'forwards'
+      });
+      
+      animation.onfinish = () => {
+        el.remove();
+      };
+    }
+
+    // Crear elementos voladores periódicamente
+    setInterval(createFlyingElement, 6000);
+    
+    // Crear algunos iniciales
+    setTimeout(createFlyingElement, 1000);
+    setTimeout(createFlyingElement, 2500);
+    setTimeout(createFlyingElement, 4000);
+    setTimeout(createFlyingElement, 5500);
+
+    // Preloader de audio para mejor experiencia
+    audio.addEventListener('canplaythrough', () => {
+      console.log('Audio listo para reproducirse');
+    });
+
+    // Manejo de errores de audio
+    audio.addEventListener('error', (e) => {
+      console.log('Error al cargar el audio:', e);
+    });
+
+    // Optimización para dispositivos móviles
+    if ('ontouchstart' in window) {
+      // En dispositivos táctiles, mostrar el overlay de audio de forma más persistente
+      btnAudio.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+      });
+    }
+
+    // Asegurar que la cuenta regresiva se actualice correctamente
+    window.addEventListener('load', () => {
+      updateCountdown();
+      console.log('Página cargada completamente');
+    });
+
+    // Prevención de errores comunes
+    window.addEventListener('error', (e) => {
+      console.log('Error en la página:', e.error);
+    });
+  </script>
 </body>
 </html>
+```

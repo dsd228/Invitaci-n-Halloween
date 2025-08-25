@@ -1,183 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎃 Invitación Halloween - Cumpleaños</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Trebuchet MS', sans-serif;
-      color: #fff;
-      background: linear-gradient(180deg, #000 0%, #1a001a 40%, #330033 70%, #ff6600 100%);
-      overflow-x: hidden;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Galactic Live VR - Daniel & Sabrina</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-    h1 {
-      font-size: 3em;
-      color: #ff6600;
-      text-shadow: 2px 2px 10px #000;
-      margin-top: 40px;
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#000010;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    perspective:4000px;
+}
 
-    h2 {
-      font-size: 1.8em;
-      margin: 10px 0;
-      color: #fff;
-    }
+/* Sistemas de partículas */
+.particle-system,.shooting-stars,.meteors{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}
+.particle{position:absolute;border-radius:50%;pointer-events:none;}
+.particle-glow{width:6px;height:6px;background:radial-gradient(circle,#ff6b35,transparent);box-shadow:0 0 40px #ff6b35;animation:particleFloat 16s linear infinite;}
+.particle-magic{width:8px;height:8px;background:radial-gradient(circle,#ba55d3,transparent);box-shadow:0 0 45px #ba55d3;animation:particleFloat 18s linear infinite;}
+.particle-star{width:3px;height:3px;background:#fff;box-shadow:0 0 20px #fff;animation:particleFloat 12s linear infinite;}
 
-    p {
-      font-size: 1.2em;
-      margin: 10px 0 30px;
-    }
+@keyframes particleFloat{
+0%{transform:translateY(100vh) translateX(0) rotate(0deg) scale(0);opacity:0;}
+5%{opacity:1;transform:scale(1);}
+95%{opacity:1;}
+100%{transform:translateY(-120vh) translateX(250px) rotate(720deg) scale(0);opacity:0;}
+}
 
-    .contador {
-      font-size: 2em;
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(0,0,0,0.6);
-      display: inline-block;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #ff6600;
-    }
+/* Tarjeta flotante 3D */
+.invitation-container{width:90%;max-width:480px;position:relative;transform-style:preserve-3d;animation:cardFloat 6s ease-in-out infinite;z-index:10;margin:auto;}
+@keyframes cardFloat{
+0%{transform:translateY(0px) rotateX(0deg) rotateY(0deg);}
+25%{transform:translateY(-18px) rotateX(10deg) rotateY(8deg);}
+50%{transform:translateY(-24px) rotateX(-10deg) rotateY(-8deg);}
+75%{transform:translateY(-18px) rotateX(8deg) rotateY(10deg);}
+100%{transform:translateY(0px) rotateX(0deg) rotateY(0deg);}
+}
 
-    .btn {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #fff;
-      background: #ff6600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-      margin: 15px;
-    }
+.card{
+width:100%;
+background:linear-gradient(135deg, rgba(45,27,105,0.98), rgba(17,0,28,0.99), rgba(255,107,53,0.95));
+border-radius:50px;
+box-shadow:0 70px 180px rgba(0,0,0,0.95),0 0 350px rgba(255,107,53,0.95),0 0 600px rgba(186,85,211,0.6);
+position:relative;
+overflow:hidden;
+cursor:pointer;
+transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+backdrop-filter:blur(30px);
+border:2px solid rgba(255,107,53,0.6);
+padding:38px;
+}
+.card:hover{
+transform:translateY(-40px) rotateX(20deg) rotateY(14deg) scale(1.08);
+box-shadow:0 100px 250px rgba(0,0,0,1),0 0 400px rgba(255,107,53,0.95),0 0 650px rgba(186,85,211,0.7);
+}
 
-    .btn:hover {
-      background: #cc5200;
-      transform: scale(1.1);
-    }
+/* Contenido */
+.content{position:relative;z-index:20;padding:38px 28px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;}
+.premium-badge{display:inline-flex;align-items:center;gap:16px;background:rgba(0,0,0,0.88);border:2px solid #ff6b35;border-radius:50px;padding:14px 38px;font-size:14px;color:#ffaa80;text-transform:uppercase;letter-spacing:2px;margin-bottom:28px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,0.8),0 0 20px rgba(255,107,53,0.95);}
+.crown-title{font-family:'Cinzel',serif;font-size:34px;font-weight:900;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.9),0 0 50px #ff6b35;margin-bottom:16px;}
+.elegant-subtitle{font-family:'Great Vibes',cursive;font-size:26px;color:#e6b3ff;margin-bottom:16px;}
 
-    iframe {
-      width: 90%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      margin: 40px 0;
-      box-shadow: 0 0 20px rgba(255,102,0,0.8);
-    }
+.celebrants-section{background:rgba(0,0,0,0.9);border-radius:38px;padding:38px 32px;margin:32px 0;border:2px solid rgba(255,107,53,0.85);box-shadow: inset 0 0 60px rgba(255,107,53,0.35),0 22px 55px rgba(0,0,0,0.85);}
+.names-display{font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#ffaa80;text-shadow:0 2px 10px rgba(0,0,0,0.9),0 0 45px #ff6b35;margin-bottom:16px;}
+.celebration-type{font-size:20px;color:#f5f5f5;margin-bottom:22px;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
 
-    /* Fantasmas flotando */
-    .fantasma {
-      position: absolute;
-      width: 80px;
-      animation: flotar 10s infinite linear;
-      opacity: 0.7;
-    }
+.event-grid{display:flex;flex-direction:column;gap:16px;}
+.detail-card{display:flex;align-items:center;justify-content:center;gap:16px;color:#f5f5f5;font-size:17px;padding:16px 22px;border-radius:20px;background: rgba(255,255,255,0.18);backdrop-filter: blur(16px);border:1px solid rgba(255,255,255,0.28);font-weight:700;transition:0.3s;}
+.detail-card:hover{background: rgba(255,107,53,0.3);transform: translateX(9px) scale(1.05);border-color: rgba(255,107,53,0.5);}
+.detail-icon{font-size:26px;}
 
-    @keyframes flotar {
-      from {transform: translateY(100vh) translateX(0);}
-      to {transform: translateY(-150px) translateX(50px);}
-    }
+.mystical-invitation{font-family:'Great Vibes',cursive;font-size:25px;color:#e6b3ff;margin-bottom:16px;line-height:1.4;}
+.confirmation-note{font-size:16px;color:rgba(255,255,255,0.98);font-style:italic;}
 
-    /* Murciélagos */
-    .murcielago {
-      position: absolute;
-      width: 60px;
-      top: 10%;
-      animation: volar 8s infinite linear;
-    }
-
-    @keyframes volar {
-      from { left: -100px; }
-      to { left: 110%; }
-    }
-  </style>
+@media(max-width:480px){
+.crown-title{font-size:30px;}
+.elegant-subtitle{font-size:26px;}
+.names-display{font-size:28px;}
+.celebration-type{font-size:20px;}
+.detail-card{font-size:15px;padding:14px 18px;}
+.content{padding:30px 24px;}
+}
+</style>
 </head>
 <body>
 
-  <h1>🎃 ¡Fiesta de Halloween!</h1>
-  <h2>Daniel & Sabrina te invitan</h2>
-  <p>📅 31 de Octubre - 21:00 hs<br>📍 Santos Saya Norte 138</p>
+<audio id="bg-music" loop autoplay>
+    <source src="https://assets.mixkit.co/music/preview/mixkit-dark-fantasy-halloween-1050.mp3" type="audio/mpeg">
+</audio>
+<audio id="pop-sound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-jump-coin-216.wav" type="audio/mpeg">
+</audio>
 
-  <div class="contador" id="contador"></div>
+<div class="particle-system"></div>
+<div class="shooting-stars"></div>
+<div class="meteors"></div>
 
-  <button class="btn" onclick="abrirWhatsApp()">Confirmar por WhatsApp</button>
+<div class="invitation-container">
+    <div class="card" onclick="launchGalacticVR(event)">
+        <div class="content">
+            <div class="premium-badge">👑 INVITACIÓN GALACTIC LIVE VR 👑</div>
+            <div class="crown-title">HALLOWEEN FEST</div>
+            <div class="elegant-subtitle">Experiencia Interdimensional Épica</div>
 
-  <!-- Fantasmas -->
-  <img src="https://i.imgur.com/3Vb5Y1u.png" class="fantasma" style="left:20%; animation-duration:12s;">
-  <img src="https://i.imgur.com/3Vb5Y1u.png" class="fantasma" style="left:70%; animation-duration:15s;">
+            <div class="celebrants-section">
+                <div class="names-display">DANIEL & SABRINA</div>
+                <div class="celebration-type">🎂 Cumpleaños Legendario 🎂</div>
+                <div class="event-grid">
+                    <div class="detail-card"><span class="detail-icon">🎭</span>Gala de Disfraces Épica</div>
+                    <div class="detail-card"><span class="detail-icon">📅</span>31 de Octubre - 21:00 hs</div>
+                    <div class="detail-card"><span class="detail-icon">📍</span>Santos Saya Norte 138</div>
+                    <div class="detail-card"><span class="detail-icon">🌟</span>Experiencia Inolvidable Garantizada</div>
+                </div>
+            </div>
 
-  <!-- Murciélagos -->
-  <img src="https://i.imgur.com/0ZwX9yM.png" class="murcielago" style="top:30%; animation-duration:10s;">
-  <img src="https://i.imgur.com/0ZwX9yM.png" class="murcielago" style="top:50%; animation-duration:12s;">
+            <div class="mystical-invitation">✨ El cosmos te convoca... ✨<br>🔮 ¿Aceptas este desafío estelar? 🔮</div>
+            <div class="confirmation-note">Confirmar al +54 3525 45 5314 👻🎃</div>
+        </div>
+    </div>
+</div>
 
-  <!-- Mapa -->
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.522163623017!2d-64.100000!3d-31.000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDAwJzAwLjAiUyA2NMKwMDYnMDAuMCJX!5e0!3m2!1ses!2sar!4v1698240000000!5m2!1ses!2sar" 
-    allowfullscreen="" 
-    loading="lazy">
-  </iframe>
+<script>
+const emojis=['✨','🎃','👻','🦇','🕷️','🌟','💀','🔥','🌌','🌠'];
+const bgMusic=document.getElementById('bg-music');
+const popSound=document.getElementById('pop-sound');
 
-  <script>
-    // Contador regresivo
-    const evento = new Date("Oct 31, 2025 21:00:00").getTime();
-    const x = setInterval(function() {
-      let ahora = new Date().getTime();
-      let distancia = evento - ahora;
+function initParticles(){
+    const system=document.querySelector('.particle-system');
+    setInterval(()=>{for(let i=0;i<6;i++) createParticle(system);},400);
+}
+function createParticle(container){
+    const p=document.createElement('div');
+    const types=['particle-glow','particle-magic','particle-star'];
+    p.className='particle '+types[Math.floor(Math.random()*types.length)];
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(Math.random()*6+8)+'s';
+    container.appendChild(p);
+    setTimeout(()=>{if(p.parentNode)p.parentNode.removeChild(p)},20000);
+}
 
-      let dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-      let horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-      let segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+setInterval(()=>{
+    const stars=document.querySelector('.shooting-stars');
+    const star=document.createElement('div');
+    star.className='particle-star';
+    star.style.left=Math.random()*100+'%';
+    star.style.top='-5px';
+    star.style.width='4px';
+    star.style.height='4px';
+    stars.appendChild(star);
+    star.animate([{transform:'translateY(0) translateX(0)'},{transform:`translateY(120vh) translateX(${Math.random()*200-100}px)`}],{duration:2000+Math.random()*1000,easing:'ease-in'}).onfinish=()=>stars.removeChild(star);
+},800);
 
-      document.getElementById("contador").innerHTML = 
-        dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+setInterval(()=>{
+    const meteors=document.querySelector('.meteors');
+    const meteor=document.createElement('div');
+    meteor.textContent='☄️';
+    meteor.style.position='absolute';
+    meteor.style.left=Math.random()*100+'%';
+    meteor.style.top='-20px';
+    meteor.style.fontSize=(Math.random()*30+20)+'px';
+    meteors.appendChild(meteor);
+    meteor.animate([{transform:'translateY(0) rotate(0deg)'},{transform:`translateY(120vh) rotate(${Math.random()*720}deg)`}],{duration:2200+Math.random()*800,easing:'linear'}).onfinish=()=>meteors.removeChild(meteor);
+},1500);
 
-      if (distancia < 0) {
-        clearInterval(x);
-        document.getElementById("contador").innerHTML = "¡La fiesta ya comenzó!";
-      }
-    }, 1000);
-
-    // WhatsApp con confeti
-    function abrirWhatsApp() {
-      confeti();
-      setTimeout(() => {
-        window.open("https://wa.me/543525455314?text=¡Confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20Halloween!", "_blank");
-      }, 1500);
+function launchGalacticVR(event){
+    const rect=event.currentTarget.getBoundingClientRect();
+    ultraConfetti(rect.left+rect.width/2,rect.top+rect.height/2,150);
+    popSound.currentTime=0;
+    popSound.play();
+    setTimeout(()=>{window.open('https://wa.me/543525455314','_blank');},700);
+}
+function ultraConfetti(x,y,count=60){
+    for(let i=0;i<count;i++){
+        const c=document.createElement('div');
+        c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+        c.style.position='fixed';
+        c.style.left=x+'px';
+        c.style.top=y+'px';
+        c.style.fontSize=(Math.random()*35+20)+'px';
+        c.style.pointerEvents='none';
+        c.style.zIndex='6000';
+        document.body.appendChild(c);
+        const angle=Math.random()*2*Math.PI;
+        const distance=250+Math.random()*250;
+        const dx=Math.cos(angle)*distance;
+        const dy=Math.sin(angle)*distance;
+        c.animate([
+            {transform:'translate(0px,0px) scale(0)',opacity:0},
+            {transform:`translate(${dx/2}px,${dy/2}px) scale(1) rotate(${Math.random()*360}deg)`,opacity:1},
+            {transform:`translate(${dx}px,${dy}px) scale(0) rotate(${Math.random()*720}deg)`,opacity:0}
+        ],{duration:2200+Math.random()*800,easing:'cubic-bezier(0.23,1,0.32,1)'}).onfinish=()=>{document.body.removeChild(c)};
     }
+}
 
-    // Confeti simple
-    function confeti() {
-      for(let i=0; i<50; i++) {
-        let div = document.createElement("div");
-        div.style.position = "fixed";
-        div.style.top = Math.random() * 100 + "vh";
-        div.style.left = Math.random() * 100 + "vw";
-        div.style.width = "10px";
-        div.style.height = "10px";
-        div.style.background = ["#ff6600","#fff","#6600cc"][Math.floor(Math.random()*3)];
-        div.style.borderRadius = "50%";
-        div.style.animation = "caer 3s linear forwards";
-        document.body.appendChild(div);
-        setTimeout(()=>div.remove(), 3000);
-      }
+// Movimiento teléfono
+if(window.DeviceOrientationEvent){
+    window.addEventListener('deviceorientation',e=>{
+        const card=document.querySelector('.invitation-container');
+        const x=e.gamma?e.gamma/3:0;
+        const y=e.beta?e.beta/3:0;
+        card.style.transform=`translateY(-12px) rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+}
+
+// Touch para confeti y sonido
+document.addEventListener('touchstart',e=>{
+    popSound.currentTime=0;
+    popSound.play();
+    for(let i=0;i<e.touches.length;i++){
+        const t=e.touches[i];
+        ultraConfetti(t.clientX,t.clientY,30);
     }
-
-    // animación confeti
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes caer {
-        from { transform: translateY(-100vh); }
-        to { transform: translateY(100vh); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+});
+document.addEventListener('DOMContentLoaded',initParticles);
+</script>
 
 </body>
 </html>

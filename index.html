@@ -1,112 +1,137 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiesta de Disfraces 31/10</title>
 <style>
-/* --- (tu CSS intacto, no borré nada) --- */
-:root{ --halloween:#ff6b35; --violet:#a45de6; --ink:#0b0613; --glass:rgba(255,255,255,.12); --soft:rgba(255,255,255,.08); }
-/* ... todo tu CSS como lo pasaste arriba ... */
-/* cierro hasta el final */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #000, #2a2a2a);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-top: 30px;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 2em;
+    margin: 40px 0;
+    animation: fadeIn 2s ease forwards 1s;
+  }
+
+  .countdown div {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 80px;
+  }
+
+  #wolfBtn {
+    font-size: 2em;
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: transparent;
+    transition: transform 0.2s ease;
+  }
+
+  #wolfBtn:hover {
+    transform: scale(1.2);
+  }
+
+  #wolfBtn.muted {
+    opacity: 0.5;
+  }
+
+  #locationItem {
+    margin-top: 30px;
+    font-size: 1.5em;
+    text-decoration: underline;
+    color: #ffcc00;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {opacity:0; transform: translateY(-30px);}
+    to {opacity:1; transform: translateY(0);}
+  }
 </style>
 </head>
 <body>
-<div class="stage">
-  <div class="moon" aria-hidden="true"></div>
-  <div class="castle" aria-hidden="true"></div>
 
-  <!-- Niebla -->
-  <div class="fog" aria-hidden="true">
-    <div class="layer l1"></div>
-    <div class="layer l2"></div>
-    <div class="layer l3"></div>
-  </div>
+<h1>🎃 Fiesta de Disfraces 31/10 🎭</h1>
 
-  <!-- Partículas y destellos -->
-  <div class="sparks" id="sparks" aria-hidden="true"></div>
-  <div class="particles" id="particles" aria-hidden="true"></div>
-
-  <!-- Capa de cielo para bats/ghosts/skulls/madhat -->
-  <div class="sky-layer" id="sky" aria-hidden="true"></div>
-
-  <!-- TARJETA -->
-  <article class="card" role="region" aria-label="Invitación de Halloween">
-    <header class="header">
-      <div class="badge">👑 Invitación Cinematográfica 👑</div>
-      <h1 class="title">HALLOWEEN <span>FEST</span></h1>
-      <p class="subtitle">Una celebración de ensueño</p>
-    </header>
-
-    <section class="block">
-      <h2 class="names">DANIEL &amp; SABRINA</h2>
-      <p class="type">🎂 Fiesta de Disfraces</p>
-      <div class="grid" role="list">
-        <div class="item" role="listitem"><span class="i">🎭</span> Gala de disfraces</div>
-        <div class="item" role="listitem"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <!-- Dirección con Google Maps -->
-        <div class="item" role="listitem" id="locationItem">
-         <span class="i">📍</span> Santos Saya Norte 138
-        </div>
-        <div class="item" role="listitem"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
-      </div>
-    </section>
-
-    <!-- Contador -->
-    <section class="countdown-container">
-      <h3 class="countdown-title">Cuenta regresiva para la fiesta</h3>
-      <div class="countdown-grid">
-        <div class="countdown-item"><div id="days" class="countdown-number">00</div><div class="countdown-label">Días</div></div>
-        <div class="countdown-item"><div id="hours" class="countdown-number">00</div><div class="countdown-label">Horas</div></div>
-        <div class="countdown-item"><div id="minutes" class="countdown-number">00</div><div class="countdown-label">Min</div></div>
-        <div class="countdown-item"><div id="seconds" class="countdown-number">00</div><div class="countdown-label">Seg</div></div>
-      </div>
-    </section>
-
-    <!-- Botones -->
-    <div class="cta">
-      <a href="https://wa.me/543525455314" target="_blank" class="btn whatsapp">💬 Confirmar por WhatsApp<div class="shine"></div></a>
-    </div>
-  </article>
+<div class="countdown">
+  <div><span id="days">00</span><br>Days</div>
+  <div><span id="hours">00</span><br>Hours</div>
+  <div><span id="minutes">00</span><br>Minutes</div>
+  <div><span id="seconds">00</span><br>Seconds</div>
 </div>
 
-<!-- Botón de sonido (aullido de lobo) -->
-<button class="music-btn" id="wolfBtn">🐺</button>
+<button id="wolfBtn" aria-label="Aullido de lobo">🐺</button>
 <audio id="wolfHowl" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
 
+<div id="locationItem">📍 Santos Saya Norte 138</div>
+
 <script>
-// Google Maps en la dirección
-document.getElementById("locationItem").addEventListener("click", () => {
-  window.open("https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138", "_blank");
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-// Aullido de lobo
-const wolfBtn = document.getElementById("wolfBtn");
-const wolfHowl = document.getElementById("wolfHowl");
-wolfBtn.addEventListener("click", () => {
-  if (wolfHowl.paused) {
-    wolfHowl.currentTime = 0;
-    wolfHowl.play();
-    wolfBtn.classList.remove("muted");
-  } else {
-    wolfHowl.pause();
-    wolfBtn.classList.add("muted");
+  // ---------- CUENTA REGRESIVA ----------
+  function updateCountdown() {
+    const now = new Date();
+    let targetDate = new Date(`${now.getFullYear()}-10-31T21:00:00`);
+    if (now > targetDate) targetDate = new Date(`${now.getFullYear()+1}-10-31T21:00:00`);
+
+    const diff = targetDate - now;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+    document.getElementById('days').textContent = String(days).padStart(2,'0');
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
   }
-});
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-// Cuenta regresiva hasta 31 de octubre 21:00
-const countdownDate = new Date("October 31, 2025 21:00:00").getTime();
-setInterval(() => {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-  if(distance < 0) return;
-  document.getElementById("days").innerText = Math.floor(distance/(1000*60*60*24));
-  document.getElementById("hours").innerText = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutes").innerText = Math.floor((distance%(1000*60*60))/(1000*60));
-  document.getElementById("seconds").innerText = Math.floor((distance%(1000*60))/1000);
-},1000);
+  // ---------- AUDIO DEL LOBO ----------
+  const wolfBtn = document.getElementById("wolfBtn");
+  const wolfHowl = document.getElementById("wolfHowl");
+
+  wolfBtn.addEventListener("click", () => {
+    if (wolfHowl.paused) {
+      wolfHowl.currentTime = 0;
+      wolfHowl.play();
+      wolfBtn.classList.remove("muted");
+      wolfBtn.textContent = "🐺";
+    } else {
+      wolfHowl.pause();
+      wolfBtn.classList.add("muted");
+      wolfBtn.textContent = "🔇";
+    }
+  });
+
+  // ---------- UBICACIÓN GOOGLE MAPS ----------
+  const locationItem = document.getElementById('locationItem');
+  locationItem.addEventListener('click', () => {
+    window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank');
+  });
+
+});
 </script>
+
 </body>
 </html>

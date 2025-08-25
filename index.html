@@ -22,166 +22,60 @@ body{
   color:#fff;
   overflow-x:hidden;
 }
-
-/* ---------- ESCENA CINEMATOGRÁFICA ---------- */
-.stage{
-  position:relative;min-height:100dvh;display:grid;place-items:center;overflow:hidden;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(180,120,255,.20), transparent 60%),
-    radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
-    #000;
-}
-.moon{
-  position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
+.stage{position:relative;min-height:100dvh;display:grid;place-items:center;overflow:hidden;background:
+  radial-gradient(1200px 600px at 50% -10%, rgba(180,120,255,.20), transparent 60%),
+  radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
+  #000;}
+.moon{position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
   background:
     radial-gradient(circle at 35% 35%, #fff, #ddd 40%, #aaa 60%, #777 75%, #666 85%, transparent 86%),
     radial-gradient(60px 60px at 70% 60%, rgba(255,255,255,.08), transparent 60%),
     radial-gradient(40px 40px at 50% 40%, rgba(255,255,255,.09), transparent 60%);
   box-shadow:0 0 120px 40px rgba(255,255,255,.15);
   filter:saturate(.9) contrast(1.1);
-  z-index:1;
-}
-.castle{
-  position:absolute;bottom:18vh;left:8vw;width:0;height:0;border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:160px solid #1a1028;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6));opacity:.9;z-index:1;
-}
-.castle:after{
-  content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:
-    140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;
-}
-
-/* Niebla */
+  z-index:1;}
+.castle{position:absolute;bottom:18vh;left:8vw;width:0;height:0;border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:160px solid #1a1028;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6));opacity:.9;z-index:1;}
+.castle:after{content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:
+  140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;}
 .fog{position:absolute;inset:-10% -30%; pointer-events:none; z-index:2;}
-.fog layer{display:block}
-.fog .layer{
-  position:absolute;left:-20%;right:-20%;height:35vh;background:
-    radial-gradient(50% 60% at 50% 50%, rgba(200,200,255,.08), transparent 65%);
-  filter:blur(14px);animation:drift 38s linear infinite;
-}
+.fog .layer{position:absolute;left:-20%;right:-20%;height:35vh;background:radial-gradient(50% 60% at 50% 50%, rgba(200,200,255,.08), transparent 65%); filter:blur(14px);animation:drift 38s linear infinite;}
 .fog .layer.l2{top:20vh;animation-duration:55s;opacity:.7}
 .fog .layer.l3{top:40vh;animation-duration:70s;opacity:.5}
-@keyframes drift{
-  0%{transform:translateX(-10%)} 100%{transform:translateX(10%)}
-}
-
-/* Partículas y destellos */
+@keyframes drift{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
 .particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3}
-.spark{
-  position:absolute;width:2px;height:2px;border-radius:50%;
-  background:#fff;box-shadow:0 0 10px #fff, 0 0 25px var(--violet);
-  animation:rise 6s linear infinite;
-}
-@keyframes rise{
-  from{transform:translateY(20vh) scale(.6);opacity:.0}
-  10%{opacity:.9}
-  to{transform:translateY(-110vh) scale(1.2);opacity:0}
-}
-
-/* Murciélagos y Fantasmas */
+.spark{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff, 0 0 25px var(--violet);animation:rise 6s linear infinite;}
+@keyframes rise{from{transform:translateY(20vh) scale(.6);opacity:.0}10%{opacity:.9}to{transform:translateY(-110vh) scale(1.2);opacity:0}}
 .sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
-.bat, .ghost, .skull, .madhat{
-  position:fixed; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
-  animation-timing-function:linear;
-}
+.bat, .ghost, .skull, .madhat{position:fixed; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5)); animation-timing-function:linear;}
 .bat{animation:batfly 10s linear forwards}
 .ghost{animation:ghostFloat 12s ease-in-out forwards}
 .skull{animation:skullFloat 15s ease-in-out forwards}
 .madhat{animation:madhatFloat 18s ease-in-out forwards}
-
-/* ---------- TARJETA ---------- */
-.card{
-  position:relative; z-index:6;
-  width:min(92vw,420px);
-  background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);
-  border-radius:28px; padding:22px; border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.85),
-    0 0 120px rgba(255,107,53,.25),
-    inset 0 0 40px rgba(255,255,255,.05);
-  backdrop-filter: blur(10px);
-}
+@keyframes batfly{0%{transform:translateX(-10vw) translateY(0) rotate(0)}25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}50%{transform:translateX(55vw) translateY(1vh) rotate(6deg)}75%{transform:translateX(85vw) translateY(-1.5vh) rotate(-4deg)}100%{transform:translateX(120vw) translateY(0) rotate(0)}}
+@keyframes ghostFloat{0%{transform:translate(-10vw,15vh) scale(1); opacity:0}10%{opacity:.9}50%{transform:translate(40vw,10vh) scale(1.04)}100%{transform:translate(110vw,18vh) scale(1); opacity:0}}
+@keyframes skullFloat{0%{transform:translate(-10vw,20vh) scale(0.8); opacity:0}15%{opacity:.9}50%{transform:translate(45vw,15vh) scale(1.1) rotate(10deg)}100%{transform:translate(110vw,22vh) scale(0.9); opacity:0}}
+@keyframes madhatFloat{0%{transform:translate(-10vw,30vh) scale(0.7); opacity:0}15%{opacity:.9}50%{transform:translate(50vw,25vh) scale(1.2) rotate(-5deg)}100%{transform:translate(110vw,32vh) scale(0.8); opacity:0}}
+.card{position:relative; z-index:6;width:min(92vw,420px);background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);border-radius:28px; padding:22px; border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 120px rgba(255,107,53,.25),inset 0 0 40px rgba(255,255,255,.05);backdrop-filter: blur(10px);}
 .header{ text-align:center; margin-bottom:12px }
-.badge{
-  display:inline-flex; gap:8px; align-items:center; padding:8px 18px; border-radius:999px;
-  border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55);
-  letter-spacing:2px; font-weight:800; font-size:.72rem; color:#ffd7c6; text-transform:uppercase;
-  text-shadow:0 0 10px rgba(255,107,53,.55);
-}
+.badge{display:inline-flex; gap:8px; align-items:center; padding:8px 18px; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55); letter-spacing:2px; font-weight:800; font-size:.72rem; color:#ffd7c6; text-transform:uppercase; text-shadow:0 0 10px rgba(255,107,53,.55);}
 .title{font-family:'Cinzel',serif; font-size:clamp(28px,7vw,40px); letter-spacing:1px; margin:.3rem 0 .1rem}
 .title span{ color:var(--halloween); text-shadow:0 0 25px rgba(255,107,53,.5)}
 .subtitle{font-family:'Great Vibes',cursive; font-size:clamp(18px,5.2vw,26px); color:#d8b3ff; opacity:.95}
-
-/* Bloque de datos */
-.block{
-  margin:16px 0; padding:16px; border-radius:18px; background:var(--soft);
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow: inset 0 0 30px rgba(255,255,255,.05);
-}
+.block{margin:16px 0; padding:16px; border-radius:18px; background:var(--soft);border:1px solid rgba(255,255,255,.15);box-shadow: inset 0 0 30px rgba(255,255,255,.05);}
 .names{font-family:'Cinzel',serif; font-weight:700; font-size:clamp(20px,6vw,28px); color:#ffcaa8; text-align:center; text-shadow:0 2px 14px rgba(255,107,53,.35)}
 .type{ text-align:center; font-weight:700; opacity:.95; margin-top:4px }
 .grid{ display:grid; gap:10px; margin-top:12px }
-.item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;
-  background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; cursor:pointer; transition:transform 0.3s ease; }
+.item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; cursor:pointer; transition:transform 0.3s ease; }
 .item:hover{ transform:scale(1.03); }
 .item .i{font-size:18px}
-
-/* CTA Botones */
-.cta{
-  display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px
-}
-.btn{
-  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2);
-  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-  color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none;
-  box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06);
-  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
-}
+.cta{display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px}
+.btn{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2); background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none; box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06); transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;}
 .btn:active{transform:translateY(1px) scale(.99)}
-.btn.whatsapp{ grid-column:1 / -1; background:linear-gradient(180deg, rgba(37,211,102,.25), rgba(37,211,102,.08)); border-color:rgba(37,211,102,.35)}
-.btn.light{ border-color:rgba(180,210,255,.35)}
-.btn.fire{ border-color:rgba(255,120,70,.35)}
-.btn.smoke{ border-color:rgba(200,200,200,.35)}
-.btn .shine{ position:absolute; inset:-2px; border-radius:inherit; pointer-events:none; background:
-  radial-gradient(600px 90px at 50% -20%, rgba(255,255,255,.22), transparent 60%),
-  radial-gradient(200px 60px at -20% 50%, rgba(255,255,255,.14), transparent 60%),
-  radial-gradient(200px 60px at 120% 50%, rgba(255,255,255,.14), transparent 60%); mix-blend-mode:screen; opacity:.8}
-
-/* Botón de música */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 107, 53, 0.8);
-  border: 2px solid rgba(255,255,255,0.25);
-  display: flex; align-items:center; justify-content:center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-}
-.music-btn:hover{transform:scale(1.1);}
-
-/* Firma creador */
-.signature {
-  text-align: center;
-  margin-top: 18px;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  font-size: clamp(16px, 4vw, 20px);
-  color: #ffd7c6;
-  text-shadow: 0 0 12px rgba(255,107,53,0.6), 0 0 20px rgba(180,90,255,0.4);
-  animation: glowPulse 2.2s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0%, 100% {
-    text-shadow: 0 0 12px rgba(255,107,53,0.6), 0 0 20px rgba(180,90,255,0.4);
-  }
-  50% {
-    text-shadow: 0 0 18px rgba(255,107,53,0.9), 0 0 28px rgba(180,90,255,0.6);
-  }
-}
+.countdown-container{margin-top: 20px;text-align: center;padding: 15px;background: rgba(255, 107, 53, 0.1);border-radius: 18px;border: 1px solid rgba(255, 107, 53, 0.3);box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.2);}
+.countdown-title{font-family: 'Cinzel', serif;font-size: clamp(18px, 4vw, 24px);margin-bottom: 8px;color: #ffcaa8;}
+.countdown{font-family: 'Cinzel', serif;font-size: clamp(20px, 5vw, 28px);color:#fff;}
+.footer{margin-top:22px; text-align:center;font-size:.65rem; color:#aaa;opacity:.7}
+.music-btn{position:fixed; bottom:20px; right:20px; z-index:9; cursor:pointer; font-size:28px; background:rgba(0,0,0,.25); padding:10px 12px; border-radius:50%; border:1px solid rgba(255,255,255,.2);}
 </style>
 </head>
 <body>
@@ -189,45 +83,44 @@ body{
   <div class="moon"></div>
   <div class="castle"></div>
   <div class="fog">
-    <div class="layer"></div>
+    <div class="layer l1"></div>
     <div class="layer l2"></div>
     <div class="layer l3"></div>
   </div>
 
-  <article class="card">
+  <div class="card">
     <div class="header">
-      <div class="badge">Halloween Cinematográfico</div>
-      <h1 class="title">Daniel & <span>Sabrina</span></h1>
-      <div class="subtitle">¡Estás invitado!</div>
+      <div class="badge">Invitación Especial</div>
+      <h1 class="title">Halloween <span>Party</span></h1>
+      <div class="subtitle">Daniel & Sabrina</div>
     </div>
 
     <div class="block">
-      <div class="names">31 de Octubre, desde las 21hs</div>
-      <div class="type">Fiesta de disfraces</div>
+      <div class="names">¡Estás Invitado!</div>
+      <div class="type">Trae tu bebida favorita 🍹</div>
     </div>
 
-    <div class="block grid">
-      <div class="item whatsapp" onclick="window.open('https://wa.me/5491123456789','_blank')">
-        <div class="i">💬</div> Confirmar asistencia
+    <div class="cta">
+      <div class="item" onclick="window.open('https://wa.me/543525455314','_blank')">
+        <span class="i">📱</span> WhatsApp
       </div>
-      <div class="item light" onclick="window.open('https://goo.gl/maps/ejemplo','_blank')">
-        <div class="i">📍</div> Ver ubicación
-      </div>
-      <div class="item fire">
-        <div class="i">🍹</div> Trae tu bebida favorita
+      <div class="item" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank')">
+        <span class="i">📍</span> Ubicación
       </div>
     </div>
 
-    <!-- Firma del creador -->
-    <div class="signature">
-      👑 Diseño y creación por David Díaz
+    <div class="countdown-container">
+      <div class="countdown-title">Cuenta regresiva para la fiesta</div>
+      <div class="countdown" id="countdown">Cargando...</div>
     </div>
-  </article>
+
+    <div class="footer">Diseño / Creación David Díaz</div>
+  </div>
 </div>
 
 <!-- Música de fondo -->
 <audio id="bg-music" loop>
-  <source src="audio/lobo.mp3" type="audio/mpeg">
+  <source src="audio/wolf-howl-6310.mp3" type="audio/mpeg">
 </audio>
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
@@ -237,6 +130,25 @@ function toggleMusic(){
   if(music.paused){music.play();}
   else{music.pause();}
 }
+
+// Cuenta regresiva
+const countdownElement = document.getElementById('countdown');
+const targetDate = new Date('2025-10-31T21:00:00'); // Ajusta la fecha
+function updateCountdown(){
+  const now = new Date();
+  const diff = targetDate - now;
+  if(diff <= 0){
+    countdownElement.innerHTML = "¡La fiesta comenzó!";
+    return;
+  }
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/1000/60)%60);
+  const s = Math.floor((diff/1000)%60);
+  countdownElement.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
 </script>
 </body>
 </html>

@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com    " crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -274,6 +275,38 @@ body{
   font-weight: 600;
 }
 
+/* Botón de silenciar */
+.mute-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 107, 53, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite alternate;
+}
+
+.mute-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+}
+
+.mute-btn.muted {
+  background: rgba(100, 100, 100, 0.6);
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.4);
+}
+
 /* Responsive ajustes finos */
 @media (max-width:480px){
   .btn{font-size:.95rem}
@@ -356,7 +389,7 @@ body{
 </div>
 
 <!-- AUDIO -->
-<audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop playsinline></audio>
+<audio id="bgm" src="    https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3    " preload="auto" loop playsinline></audio>
 <div class="audio-overlay" id="audioOverlay" role="dialog" aria-modal="true" aria-label="Activar audio">
   <div class="audio-box">
     <div class="audio-title">¿Listo para la experiencia completa?</div>
@@ -364,6 +397,11 @@ body{
     <button class="audio-btn" id="btnAudio">🔊 Activar audio</button>
   </div>
 </div>
+
+<!-- Botón de silenciar -->
+<button id="muteBtn" class="mute-btn" aria-label="Silenciar música">
+  🔊
+</button>
 
 <!-- Capas de efectos -->
 <div class="fx-layer" id="fx"></div>
@@ -381,14 +419,18 @@ document.getElementById('btnAudio').addEventListener('click', async()=>{
   }finally{
     audioOverlay.style.display='none';
     // sube suavemente el volumen
-    audio.volume=0; const step=()=>{if(audio.volume<1){audio.volume=Math.min(1, audio.volume+0.08); requestAnimationFrame(step)}};
+    audio.volume=0; 
+    const step=()=>{if(audio.volume<1){audio.volume=Math.min(1, audio.volume+0.08); requestAnimationFrame(step)}};
     step();
   }
 });
 // extra: si el usuario toca cualquier parte y aún no inició, intentamos arrancar
 window.addEventListener('pointerdown', async()=>{
   if(audio.paused){
-    try{ await audio.play(); audioOverlay.style.display='none'; }catch{}
+    try{ 
+      await audio.play(); 
+      audioOverlay.style.display='none'; 
+    }catch{}
   }
 },{once:true});
 
@@ -452,7 +494,7 @@ const fxTop = document.getElementById('fxTop');
 document.getElementById('btnWA').addEventListener('click', (e)=>{
   epicConfetti(e);
   lensFlash();
-  setTimeout(()=>{ window.open('https://wa.me/543525455314','_blank'); }, 650);
+  setTimeout(()=>{ window.open('https://wa.me/543525455314    ','_blank'); }, 650);
 });
 
 /* Relámpago */
@@ -482,6 +524,35 @@ document.getElementById('btnHumo').addEventListener('click', (e)=>{
     s.style.left=px+'px'; s.style.top=py+'px';
     fxTop.appendChild(s);
     setTimeout(()=>s.remove(), 2300);
+  }
+});
+
+/* Botón de silenciar */
+const muteBtn = document.getElementById('muteBtn');
+let isMuted = false;
+
+muteBtn.addEventListener('click', () => {
+  if (audio) {
+    isMuted = !isMuted;
+    if (isMuted) {
+      audio.volume = 0;
+      muteBtn.innerHTML = '🔇';
+      muteBtn.classList.add('muted');
+      muteBtn.setAttribute('aria-label', 'Activar música');
+    } else {
+      audio.volume = 1;
+      muteBtn.innerHTML = '🔊';
+      muteBtn.classList.remove('muted');
+      muteBtn.setAttribute('aria-label', 'Silenciar música');
+    }
+  }
+});
+
+/* Asegurar que el botón de silenciar funcione incluso si la página se carga lentamente */
+window.addEventListener('load', () => {
+  const audio = document.getElementById('bgm');
+  if (audio) {
+    audio.volume = 1;
   }
 });
 

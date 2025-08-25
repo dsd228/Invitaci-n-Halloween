@@ -131,7 +131,24 @@ document.getElementById('btnWA').addEventListener('click', ()=>{
 document.getElementById('btnLoc').addEventListener('click', ()=>{
   window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank');
 });
+ <footer class="site-footer" role="contentinfo">
+    <div class="map-card" aria-hidden="false">
+      <div class="map-embed" title="Mapa - Santos Saya Norte 138">
+        <!-- Google Maps embed (consulta por dirección) -->
+        <iframe
+          src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed"
+          style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
 
+      <div class="map-info">
+        <h4>📍 Lugar</h4>
+        <p>Santos Saya Norte 138 — Entrada principal. Llegar con tiempo para recepción y fotos.</p>
+        <div style="display:flex; gap:.6rem; margin-top:6px;">
+          <a id="openMapsBtn" class="btn map" style="padding:.6rem .9rem; font-weight:700">Abrir en Google Maps</a>
+          <a id="callBtn" class="btn whatsapp" style="padding:.6rem .9rem; font-weight:700">Llamar • +54 3525 45 5314</a>
+        </div>
+      </div>
+    </div>
 // Partículas básicas
 const sparks=document.getElementById('sparks');
 function spawnSpark(){const s=document.createElement('div');s.className='spark';s.style.left=Math.random()*100+'%';s.style.bottom='-10vh';sparks.appendChild(s);setTimeout(()=>s.remove(),8000);}

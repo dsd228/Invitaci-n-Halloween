@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,6 +11,10 @@
   --ink:#0b0613;
   --glass:rgba(255,255,255,.12);
   --soft:rgba(255,255,255,.08);
+  --neon-red: #ff0033;
+  --neon-purple: #9d4edd;
+  --dark-bg: #0a0310;
+  --blood-red: #8b0000;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;font-family:'Montserrat',sans-serif;overflow-x:hidden;background:#000;color:#fff;}
@@ -60,12 +63,225 @@ box-shadow:0 0 120px 40px rgba(255,255,255,.15);filter:saturate(.9) contrast(1.1
 .btn.fire{border-color:rgba(255,120,70,.35);}
 .btn.smoke{border-color:rgba(200,200,200,.35);}
 .btn .shine{position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;background:radial-gradient(600px 90px at 50% -20%, rgba(255,255,255,.22), transparent 60%),radial-gradient(200px 60px at -20% 50%, rgba(255,255,255,.14), transparent 60%),radial-gradient(200px 60px at 120% 50%, rgba(255,255,255,.14), transparent 60%);mix-blend-mode:screen;opacity:.8;}
+
+/* Estilo terrorífico futurista para sección inferior */
+.horror-section {
+  position: relative;
+  padding: 30px 20px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0a0310 0%, #1a0820 50%, #2a0c08 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  box-shadow: 
+    0 0 30px rgba(255, 107, 53, 0.2),
+    0 0 60px rgba(164, 93, 230, 0.15),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+.horror-title {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  color: var(--halloween);
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(255, 107, 53, 0.7), 0 0 30px rgba(255, 107, 53, 0.4);
+  letter-spacing: 2px;
+  position: relative;
+  padding: 10px 0;
+}
+
+.horror-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--halloween), transparent);
+}
+
+.horror-grid {
+  display: grid;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.horror-card {
+  background: rgba(20, 10, 32, 0.6);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.horror-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+  animation: pulse 2s infinite;
+}
+
+.horror-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(164, 93, 230, 0.3);
+  border-color: var(--neon-purple);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.horror-card h4 {
+  font-family: 'Cinzel', serif;
+  color: #d8b3ff;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.horror-card p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.horror-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.horror-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.horror-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+
+.horror-btn.map {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: 1px solid rgba(0, 123, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+}
+
+.horror-btn.map:hover {
+  background: linear-gradient(135deg, #2a2a4e 0%, #26315e 50%, #1f4480 100%);
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+}
+
+.horror-btn.whatsapp {
+  background: linear-gradient(135deg, #1a3a1e 0%, #164e27 50%, #0f6b34 100%);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+}
+
+.horror-btn.whatsapp:hover {
+  background: linear-gradient(135deg, #2a4a2e 0%, #265e37 50%, #1f8b44 100%);
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+}
+
+.horror-btn:hover {
+  transform: translateY(-2px);
+}
+
+.countdown-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.countdown-title {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  color: var(--neon-red);
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(255, 0, 51, 0.7);
+  letter-spacing: 2px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.num {
+  width: 60px;
+  height: 60px;
+  background: rgba(139, 0, 0, 0.3);
+  border: 2px solid var(--neon-red);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff3366;
+  text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+  box-shadow: 0 0 15px rgba(255, 0, 51, 0.3);
+  animation: pulse-number 2s infinite;
+}
+
+@keyframes pulse-number {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 51, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(255, 0, 51, 0.6); }
+}
+
+.lab {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #ff6b35;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
 .audio-overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.65);z-index:999;}
 .audio-box{background:#0f0a16;border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:16px 18px;width:min(92vw,420px);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6);}
 .audio-title{font-weight:800;letter-spacing:.5px;margin-bottom:6px;}
 .audio-btn{margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05));font-weight:900;cursor:pointer;}
 @media (max-width:480px){.btn{font-size:.95rem}.grid .item{font-size:.95rem;}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="stage">
@@ -114,30 +330,49 @@ box-shadow:0 0 120px 40px rgba(255,255,255,.15);filter:saturate(.9) contrast(1.1
 </div>
 
 <footer class="site-footer" role="contentinfo">
-  <div class="map-card" aria-hidden="false">
-    <div class="map-embed" title="Mapa - Santos Saya Norte 138">
-      <!-- Google Maps embed (consulta por dirección) -->
-      <iframe
-        src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed"
-        style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <div class="map-info">
-      <h4>📍 Lugar</h4>
-      <p>Santos Saya Norte 138 — Entrada principal. Llegar con tiempo para recepción y fotos.</p>
-      <div style="display:flex; gap:.6rem; margin-top:6px;">
-        <a id="openMapsBtn" class="btn map" style="padding:.6rem .9rem; font-weight:700">Abrir en Google Maps</a>
-        <a id="callBtn" class="btn whatsapp" style="padding:.6rem .9rem; font-weight:700">Llamar • +54 3525 45 5314</a>
+  <div class="horror-section">
+    <h3 class="horror-title">INFORMACIÓN ADICIONAL</h3>
+    
+    <div class="horror-grid">
+      <div class="horror-card">
+        <h4>📍 ZONA DE ACCESO</h4>
+        <p>Santos Saya Norte 138 — Entrada principal con control de acceso. Llegar con tiempo para recepción y fotos temáticas.</p>
+        <div class="horror-buttons">
+          <button id="openMapsBtn" class="horror-btn map">🗺️ Abrir en Google Maps</button>
+          <button id="callBtn" class="horror-btn whatsapp">📞 Llamar • +54 3525 45 5314</button>
+        </div>
+      </div>
+      
+      <div class="horror-card">
+        <h4>🗺️ MAPA DE LA ZONA</h4>
+        <div class="map-embed" title="Mapa - Santos Saya Norte 138">
+          <iframe
+            src="https://www.google.com/maps?q=Santos+Saya+Norte+138&output=embed"
+            style="border:0; width:100%; height:180px; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="countdown" aria-live="polite">
-    <h3>Cuenta regresiva para la fiesta</h3>
-    <div class="timer" id="timerBoxes" role="timer" aria-atomic="true">
-      <div class="time"><div class="num" id="days">--</div><div class="lab">DÍAS</div></div>
-      <div class="time"><div class="num" id="hours">--</div><div class="lab">HORAS</div></div>
-      <div class="time"><div class="num" id="minutes">--</div><div class="lab">MIN</div></div>
-      <div class="time"><div class="num" id="seconds">--</div><div class="lab">SEG</div></div>
+    
+    <div class="countdown-container">
+      <h3 class="countdown-title">CUENTA REGRESIVA</h3>
+      <div class="timer" id="timerBoxes" role="timer" aria-atomic="true">
+        <div class="time">
+          <div class="num" id="days">--</div>
+          <div class="lab">DÍAS</div>
+        </div>
+        <div class="time">
+          <div class="num" id="hours">--</div>
+          <div class="lab">HRS</div>
+        </div>
+        <div class="time">
+          <div class="num" id="minutes">--</div>
+          <div class="lab">MIN</div>
+        </div>
+        <div class="time">
+          <div class="num" id="seconds">--</div>
+          <div class="lab">SEG</div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

@@ -4,183 +4,26 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --halloween:#ff6b35;
-  --violet:#a45de6;
-  --ink:#0b0613;
-  --glass:rgba(255,255,255,.12);
-  --soft:rgba(255,255,255,.08);
+  --halloween:#ff6b35; --violet:#a45de6; --ink:#0b0613;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family:'Montserrat',system-ui,Segoe UI,Roboto,Arial;
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* ---------- ESCENA CINEMATOGRÁFICA ---------- */
-.stage{
-  position:relative;min-height:100dvh;display:grid;place-items:center;overflow:hidden;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(180,120,255,.20), transparent 60%),
-    radial-gradient(800px 400px at 80% 10%, rgba(255,107,53,.12), transparent 60%),
-    #000;
-}
-/* Luna y castillo */
-.moon{
-  position:absolute;top:6vh;right:10vw;width:min(30vw,220px);aspect-ratio:1;border-radius:50%;
-  background:
-    radial-gradient(circle at 35% 35%, #fff, #ddd 40%, #aaa 60%, #777 75%, #666 85%, transparent 86%),
-    radial-gradient(60px 60px at 70% 60%, rgba(255,255,255,.08), transparent 60%),
-    radial-gradient(40px 40px at 50% 40%, rgba(255,255,255,.09), transparent 60%);
-  box-shadow:0 0 120px 40px rgba(255,255,255,.15);
-  filter:saturate(.9) contrast(1.1);
-  z-index:1;
-}
-.castle{
-  position:absolute;bottom:18vh;left:8vw;width:0;height:0;border-left:100px solid transparent;border-right:100px solid transparent;border-bottom:160px solid #1a1028;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6));opacity:.9;z-index:1;
-}
-.castle:after{
-  content:"";position:absolute;left:-60px;bottom:-200px;width:120px;height:200px;background:#150c21;border-radius:6px 6px 0 0;box-shadow:
-    140px 0 0 #150c21, 70px -40px 0 #1a1028, -70px -40px 0 #1a1028;
-}
-
-/* Niebla */
-.fog{position:absolute;inset:-10% -30%; pointer-events:none; z-index:2;}
-.fog layer{display:block}
-.fog .layer{
-  position:absolute;left:-20%;right:-20%;height:35vh;background:
-    radial-gradient(50% 60% at 50% 50%, rgba(200,200,255,.08), transparent 65%);
-  filter:blur(14px);animation:drift 38s linear infinite;
-}
-.fog .layer.l2{top:20vh;animation-duration:55s;opacity:.7}
-.fog .layer.l3{top:40vh;animation-duration:70s;opacity:.5}
-@keyframes drift{
-  0%{transform:translateX(-10%)} 100%{transform:translateX(10%)}
-}
-
-/* Partículas y destellos */
-.particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3}
-.spark{
-  position:absolute;width:2px;height:2px;border-radius:50%;
-  background:#fff;box-shadow:0 0 10px #fff, 0 0 25px var(--violet);
-  animation:rise 6s linear infinite;
-}
-@keyframes rise{
-  from{transform:translateY(20vh) scale(.6);opacity:.0}
-  10%{opacity:.9}
-  to{transform:translateY(-110vh) scale(1.2);opacity:0}
-}
-
-/* Murciélagos y Fantasmas */
-.sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
-.bat, .ghost{
-  position:fixed; top:-30px; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));
-  animation-timing-function:linear;
-}
-.bat{animation:batfly 10s linear forwards}
-.ghost{animation:ghostFloat 12s ease-in-out forwards}
-@keyframes batfly{
-  0%{transform:translateX(-10vw) translateY(0) rotate(0)} 
-  25%{transform:translateX(25vw) translateY(-2vh) rotate(-6deg)}
-  50%{transform:translateX(55vw) translateY(1vh) rotate(6deg)}
-  75%{transform:translateX(85vw) translateY(-1.5vh) rotate(-4deg)}
-  100%{transform:translateX(120vw) translateY(0) rotate(0)}
-}
-@keyframes ghostFloat{
-  0%{transform:translate(-10vw,15vh) scale(1); opacity:0}
-  10%{opacity:.9}
-  50%{transform:translate(40vw,10vh) scale(1.04)}
-  100%{transform:translate(110vw,18vh) scale(1); opacity:0}
-}
-
-/* TARJETA */
-.card{
-  position:relative; z-index:6;
-  width:min(92vw,420px);
-  background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);
-  border-radius:28px; padding:22px; border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.85),
-    0 0 120px rgba(255,107,53,.25),
-    inset 0 0 40px rgba(255,255,255,.05);
-  backdrop-filter: blur(10px);
-}
-.header{ text-align:center; margin-bottom:12px }
-.badge{
-  display:inline-flex; gap:8px; align-items:center; padding:8px 18px; border-radius:999px;
-  border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55);
-  letter-spacing:2px; font-weight:800; font-size:.72rem; color:#ffd7c6; text-transform:uppercase;
-  text-shadow:0 0 10px rgba(255,107,53,.55);
-}
-.title{font-family:'Cinzel',serif; font-size:clamp(28px,7vw,40px); letter-spacing:1px; margin:.3rem 0 .1rem}
-.title span{ color:var(--halloween); text-shadow:0 0 25px rgba(255,107,53,.5)}
-.subtitle{font-family:'Great Vibes',cursive; font-size:clamp(18px,5.2vw,26px); color:#d8b3ff; opacity:.95}
-
-/* Bloque de datos */
-.block{
-  margin:16px 0; padding:16px; border-radius:18px; background:var(--soft);
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow: inset 0 0 30px rgba(255,255,255,.05);
-}
-.names{font-family:'Cinzel',serif; font-weight:700; font-size:clamp(20px,6vw,28px); color:#ffcaa8; text-align:center; text-shadow:0 2px 14px rgba(255,107,53,.35)}
-.type{ text-align:center; font-weight:700; opacity:.95; margin-top:4px }
-.grid{ display:grid; gap:10px; margin-top:12px }
-.item{ display:flex; gap:10px; align-items:center; justify-content:center; padding:10px 12px; border-radius:12px;
-  background:var(--glass); border:1px solid rgba(255,255,255,.15); font-weight:600; }
-.item .i{font-size:18px}
-
-/* CTA Botones */
-.cta{
-  display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px
-}
-.btn{
-  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2);
-  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-  color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none;
-  box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06);
-  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
-}
-.btn:active{transform:translateY(1px) scale(.99)}
-.btn.whatsapp{ grid-column:1 / -1; background:linear-gradient(180deg, rgba(37,211,102,.25), rgba(37,211,102,.08)); border-color:rgba(37,211,102,.35)}
-.btn.ubicacion{grid-column:1 / -1; background:linear-gradient(180deg, rgba(255,180,70,.25), rgba(255,180,70,.08)); border-color:rgba(255,180,70,.35)}
-.btn.light{ border-color:rgba(180,210,255,.35)}
-.btn.fire{ border-color:rgba(255,120,70,.35)}
-.btn.smoke{ border-color:rgba(200,200,200,.35)}
-.btn .shine{ position:absolute; inset:-2px; border-radius:inherit; pointer-events:none; background:
-  radial-gradient(600px 90px at 50% -20%, rgba(255,255,255,.22), transparent 60%),
-  radial-gradient(200px 60px at -20% 50%, rgba(255,255,255,.14), transparent 60%),
-  radial-gradient(200px 60px at 120% 50%, rgba(255,255,255,.14), transparent 60%); mix-blend-mode:screen; opacity:.8}
-
-/* AUDIO */
-.audio-overlay{
-  position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.65);
-  z-index:999;
-}
-.audio-box{
-  background:#0f0a16; border:1px solid rgba(255,255,255,.2); border-radius:18px; padding:16px 18px; width:min(92vw,420px);
-  text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.6)
-}
-.audio-title{font-weight:800; letter-spacing:.5px; margin-bottom:6px}
-.audio-btn{
-  margin-top:10px; display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.25);
-  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05)); font-weight:900; cursor:pointer
-}
-
-/* Mini juego: dulces */
-#gameCanvas{position:absolute; inset:0; z-index:7; pointer-events:none;}
-
-/* Responsive */
-@media (max-width:480px){
-  .btn{font-size:.95rem}
-  .grid .item{font-size:.95rem}
-}
+body{margin:0; padding:0; font-family:'Montserrat',sans-serif; background:#000; color:#fff; overflow:hidden;}
+.stage{position:relative; width:100vw; height:100vh; overflow:hidden; display:grid; place-items:center;}
+.moon{position:absolute;top:5vh;right:10vw;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #fff, #666);}
+.castle{position:absolute;bottom:15vh;left:5vw;width:200px;height:160px;background:#1a1028; border-radius:6px;box-shadow:0 12px 10px rgba(0,0,0,.6);}
+.fog{position:absolute;inset:0; pointer-events:none;}
+.fog .layer{position:absolute;width:200%;height:50%;background:radial-gradient(ellipse, rgba(255,255,255,.08), transparent); filter:blur(14px);}
+.sky-layer{position:absolute;inset:0;pointer-events:none;}
+.bat, .ghost{position:absolute; font-size:clamp(16px,3vw,28px); opacity:.85;}
+.card{position:relative; z-index:10; width:min(92vw,420px); background:rgba(20,10,30,.9); border-radius:20px; padding:20px; text-align:center;}
+.card h1{font-family:'Cinzel',serif; color:var(--halloween);}
+.card button{margin:5px;padding:12px 16px;border:none;border-radius:12px;font-weight:bold; cursor:pointer; transition:.2s; user-select:none;}
+#flash{position:absolute;inset:0;background:#fff;opacity:0; z-index:50; pointer-events:none;}
+.fire{position:absolute;width:100px;height:150px;border-radius:50%; background:radial-gradient(ellipse at bottom, orange, red, transparent); pointer-events:none; z-index:45;}
+.smoke{position:absolute;width:50px;height:80px;border-radius:50%; background:radial-gradient(circle, rgba(200,200,200,.5), transparent); pointer-events:none; z-index:40;}
+#gameCanvas{position:absolute;top:0;left:0;width:100%;height:100%; z-index:5;}
 </style>
 </head>
 <body>
@@ -188,97 +31,89 @@ body{
   <div class="moon"></div>
   <div class="castle"></div>
   <div class="fog">
-    <div class="layer l1"></div>
-    <div class="layer l2"></div>
-    <div class="layer l3"></div>
+    <div class="layer" style="top:0;"></div>
+    <div class="layer" style="top:30%;"></div>
   </div>
-  <div class="sparks" id="sparks"></div>
-  <div class="particles" id="particles"></div>
   <div class="sky-layer" id="sky"></div>
-
+  
   <canvas id="gameCanvas"></canvas>
-
-  <article class="card">
-    <header class="header">
-      <div class="badge">👑 Invitación Cinematográfica 👑</div>
-      <h1 class="title">HALLOWEEN <span>FEST</span></h1>
-      <p class="subtitle">Una celebración de ensueño</p>
-    </header>
-
-    <section class="block">
-      <h2 class="names">DANIEL & SABRINA</h2>
-      <p class="type">🎂 Fiesta de Disfraces</p>
-      <div class="grid">
-        <div class="item"><span class="i">🎭</span> Gala de disfraces</div>
-        <div class="item"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <div class="item"><span class="i">📍</span> Santos Saya Norte 138</div>
-        <div class="item"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
-      </div>
-      <div class="cta">
-        <button class="btn whatsapp" id="btnWA">WhatsApp 💬 <span class="shine"></span></button>
-        <button class="btn ubicacion" id="btnUbicacion">📍 Ubicación <span class="shine"></span></button>
-        <button class="btn light" id="btnRayos">⚡ Relámpago <span class="shine"></span></button>
-        <button class="btn fire" id="btnFuego">🔥 Llamas <span class="shine"></span></button>
-        <button class="btn smoke" id="btnHumo">💨 Humo <span class="shine"></span></button>
-      </div>
-    </section>
-    <p class="subtitle" style="text-align:center;margin-top:10px">✨ Los misterios de la noche te convocan… ✨</p>
-  </article>
-</div>
-
-<audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop playsinline></audio>
-<div class="audio-overlay" id="audioOverlay">
-  <div class="audio-box">
-    <div class="audio-title">¿Listo para la experiencia completa?</div>
-    <div>Activa el sonido para música épica de terror.</div>
-    <button class="audio-btn" id="btnAudio">🔊 Activar audio</button>
+  
+  <div class="card">
+    <h1>HALLOWEEN FEST 🎃</h1>
+    <p>Daniel & Sabrina – Fiesta de Disfraces</p>
+    <button id="btnWA">WhatsApp 💬</button>
+    <button id="btnUbicacion">📍 Ubicación</button>
+    <button id="btnRayos">⚡ Relámpago</button>
+    <button id="btnFuego">🔥 Fuego</button>
+    <button id="btnHumo">💨 Humo</button>
   </div>
 </div>
 
-<div class="fx-layer" id="fx"></div>
-<div class="fx-top" id="fxTop"></div>
+<div id="flash"></div>
+<audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto" loop></audio>
 
 <script>
-// ---------- Audio ----------
-const audio = document.getElementById('bgm');
-const audioOverlay = document.getElementById('audioOverlay');
-document.getElementById('btnAudio').addEventListener('click', async()=>{
-  try{await audio.play();}catch(e){console.warn(e);}
-  audioOverlay.style.display='none';
-  audio.volume=0; const step=()=>{if(audio.volume<1){audio.volume=Math.min(1,audio.volume+0.08); requestAnimationFrame(step)}};
-  step();
-});
-window.addEventListener('pointerdown', async()=>{
-  if(audio.paused){try{await audio.play(); audioOverlay.style.display='none';}catch{}}
-},{once:true});
+// ---------- AUDIO ----------
+const audio=document.getElementById('bgm');
+window.addEventListener('click', ()=>audio.play(), {once:true});
 
-// ---------- Botones ----------
+// ---------- BOTONES ----------
 document.getElementById('btnWA').addEventListener('click', ()=>{window.open('https://wa.me/5493512345678?text=Confirmo%20asistencia','_blank');});
 document.getElementById('btnUbicacion').addEventListener('click', ()=>{window.open('https://www.google.com/maps?q=Santos+Saya+Norte+138,+Colonia+Caroya','_blank');});
 
-// ---------- Efectos especiales ----------
-const fxTop=document.getElementById('fxTop');
-function flash(){const f=document.createElement('div'); f.className='flash'; fxTop.appendChild(f); setTimeout(()=>f.remove(),500);}
-document.getElementById('btnRayos').addEventListener('click', flash);
+// ---------- EFECTOS ----------
+const flashDiv=document.getElementById('flash');
+document.getElementById('btnRayos').addEventListener('click', ()=>{
+  flashDiv.style.opacity='0.8';
+  setTimeout(()=>flashDiv.style.opacity='0',100);
+});
+
 document.getElementById('btnFuego').addEventListener('click', ()=>{
-  const r=document.createElement('div'); r.className='fire-ring';
-  r.style.left='50%'; r.style.top='50%'; fxTop.appendChild(r); setTimeout(()=>r.remove(),1800);
+  const fire=document.createElement('div'); fire.className='fire';
+  fire.style.left='50%'; fire.style.top='60%'; fire.style.transform='translateX(-50%)';
+  document.body.appendChild(fire);
+  setTimeout(()=>fire.remove(),1000);
 });
+
 document.getElementById('btnHumo').addEventListener('click', ()=>{
-  for(let i=0;i<8;i++){const s=document.createElement('div'); s.className='smoke-plume'; s.style.left=(Math.random()*100)+'vw'; fxTop.appendChild(s); setTimeout(()=>s.remove(),3000);}
+  for(let i=0;i<5;i++){
+    const smoke=document.createElement('div'); smoke.className='smoke';
+    smoke.style.left=(40+i*10)+'%'; smoke.style.top='60%';
+    document.body.appendChild(smoke);
+    let top=60; const anim=setInterval(()=>{
+      top-=1; smoke.style.top=top+'%'; smoke.style.opacity=(top-50)/10;
+      if(top<50){clearInterval(anim); smoke.remove();}
+    },50);
+  }
 });
 
-// ---------- Partículas ----------
-const particles=document.getElementById('particles');
-for(let i=0;i<40;i++){
-  const p=document.createElement('div'); p.className='spark'; p.style.left=Math.random()*100+'vw'; p.style.top=Math.random()*100+'vh'; particles.appendChild(p);
-}
+// ---------- MURCIÉLAGOS & FANTASMAS ----------
+const sky=document.getElementById('sky');
+const bats=['🦇','🦇','🦇']; const ghosts=['👻','👻'];
+setInterval(()=>{
+  const b=document.createElement('div'); b.className='bat'; b.textContent=bats[Math.floor(Math.random()*bats.length)];
+  b.style.left='-10vw'; b.style.top=(10+Math.random()*40)+'vh'; b.style.fontSize=(18+Math.random()*10)+'px'; sky.appendChild(b);
+  const move=setInterval(()=>{
+    let left=parseFloat(b.style.left); left+=1.2; b.style.left=left+'vw';
+    if(left>120){clearInterval(move); b.remove();}
+  },20);
+},1000);
 
-// ---------- Mini juego: atrapar dulces ----------
+setInterval(()=>{
+  const g=document.createElement('div'); g.className='ghost'; g.textContent=ghosts[Math.floor(Math.random()*ghosts.length)];
+  g.style.left='-10vw'; g.style.top=(15+Math.random()*35)+'vh'; g.style.fontSize=(18+Math.random()*10)+'px'; sky.appendChild(g);
+  const move=setInterval(()=>{
+    let left=parseFloat(g.style.left); left+=0.8; g.style.left=left+'vw';
+    if(left>120){clearInterval(move); g.remove();}
+  },20);
+},1500);
+
+// ---------- MINI JUEGO: atrapar dulces ----------
 const canvas=document.getElementById('gameCanvas'); const ctx=canvas.getContext('2d');
-let cw, ch; function resize(){cw=canvas.width=window.innerWidth; ch=canvas.height=window.innerHeight;} window.addEventListener('resize',resize); resize();
+let cw=canvas.width=window.innerWidth; let ch=canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{cw=canvas.width=window.innerWidth; ch=canvas.height=window.innerHeight;});
 
-const sweets=[]; const colors=['#ff0','#f06','#0ff','#0f0']; 
+const sweets=[]; const colors=['#ff0','#f06','#0ff','#0f0'];
 function spawnSweet(){sweets.push({x:Math.random()*cw, y:0, r:12+Math.random()*8, color:colors[Math.floor(Math.random()*colors.length)]});}
 setInterval(spawnSweet,700);
 
@@ -297,11 +132,6 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
-
-// ---------- Murciélagos y fantasmas ----------
-const sky=document.getElementById('sky'); const bats=['🦇','🦇','🦇']; const ghosts=['👻','👻','👻'];
-for(const b of bats){const el=document.createElement('div'); el.className='bat'; el.textContent=b; sky.appendChild(el);}
-for(const g of ghosts){const el=document.createElement('div'); el.className='ghost'; el.textContent=g; sky.appendChild(el);}
 </script>
 </body>
 </html>

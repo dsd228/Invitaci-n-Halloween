@@ -347,7 +347,10 @@ body{
       <div class="grid" role="list">
         <div class="item" role="listitem"><span class="i">🎭</span> Gala de disfraces</div>
         <div class="item" role="listitem"><span class="i">📅</span> 31 de Octubre – 21:00 hs</div>
-        <div class="item" role="listitem" id="locationItem"><span class="i">📍</span> Santos Saya Norte 138</div>
+        <div class="item" role="listitem" id="locationItem">
+         <span class="i">📍</span> Santos Saya Norte 138
+        </div>
+
         <div class="item" role="listitem"><span class="i">🌟</span> Experiencia inolvidable garantizada</div>
       </div>
       <div class="cta" aria-label="Acciones">
@@ -400,38 +403,26 @@ body{
 <div class="fx-layer" id="fx"></div>
 <div class="fx-top" id="fxTop"></div>
 
+<!-- Botón de música / sonido -->
+<button class="music-btn" id="wolfBtn">🐺</button>
+<audio id="wolfHowl" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
 <script>
-/* ---------- BOTÓN DE MÚSICA ---------- */
-const audio = document.getElementById('bgm');
-const musicBtn = document.getElementById('musicBtn');
-let isPlaying = false;
+const wolfBtn = document.getElementById("wolfBtn");
+const wolfHowl = document.getElementById("wolfHowl");
 
-// Inicializar el botón en silencio
-audio.volume = 0;
-audio.pause();
+wolfBtn.addEventListener("click", () => {
+  if (wolfHowl.paused) {
+    wolfHowl.currentTime = 0;
+    wolfHowl.play();
+    wolfBtn.classList.remove("muted");
+  } else {
+    wolfHowl.pause();
+    wolfBtn.classList.add("muted");
+  }
+});
+</script>
 
-musicBtn.addEventListener('click', () => {
-  if (!isPlaying) {
-    // Activar música
-    audio.play().then(() => {
-      // Subir volumen gradualmente
-      let volume = 0;
-      const fadeIn = setInterval(() => {
-        if (volume < 1) {
-          volume += 0.05;
-          audio.volume = volume;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 100);
-      
-      musicBtn.innerHTML = '🔊';
-      musicBtn.classList.remove('muted');
-      musicBtn.setAttribute('aria-label', 'Silenciar música');
-      isPlaying = true;
-    }).catch(e => {
-      console.warn('Reproducción bloqueada:', e);
-    });
   } else {
     // Silenciar música
     // Bajar volumen gradualmente
@@ -671,6 +662,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+  <script>
+// Dirección Google Maps
+document.getElementById("locationItem").addEventListener("click", () => {
+  window.open("https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138", "_blank");
+});
 </script>
+
+</script>
+  
 </body>
 </html>

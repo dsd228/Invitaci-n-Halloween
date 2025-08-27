@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Invitación Cinematográfica Halloween – Daniel & Sabrina</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com  " crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;500;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -42,9 +43,16 @@ body{
 .fog .layer.l2{top:20vh;animation-duration:55s;opacity:.7}
 .fog .layer.l3{top:40vh;animation-duration:70s;opacity:.5}
 @keyframes drift{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
-.particles, .sparks{position:absolute;inset:0;pointer-events:none;z-index:3}
-.spark{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff, 0 0 25px var(--violet);animation:rise 6s linear infinite;}
-@keyframes rise{from{transform:translateY(20vh) scale(.6);opacity:.0}10%{opacity:.9}to{transform:translateY(-110vh) scale(1.2);opacity:0}}
+
+/* Humo adicional */
+.smoke{position:absolute; pointer-events:none; z-index:3; opacity:0.7; filter:blur(2px);}
+.smoke::before{content:""; position:absolute; width:60px; height:60px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.3), rgba(255,255,255,0.1), transparent); animation:smokeRise 8s ease-out infinite;}
+.smoke:nth-child(1){top:70vh; left:10vw; animation-delay:0s;}
+.smoke:nth-child(2){top:65vh; left:20vw; animation-delay:2s;}
+.smoke:nth-child(3){top:75vh; left:80vw; animation-delay:1s;}
+.smoke:nth-child(4){top:68vh; left:70vw; animation-delay:3s;}
+@keyframes smokeRise{0%{transform:translateY(0) scale(0.5); opacity:0}20%{opacity:0.8}80%{opacity:0.4}100%{transform:translateY(-100px) scale(1.5); opacity:0}}
+
 .sky-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
 .bat, .ghost, .skull, .madhat{position:fixed; font-size:clamp(16px,4vw,28px); opacity:.85; filter:drop-shadow(0 2px 2px rgba(0,0,0,.5)); animation-timing-function:linear;}
 .bat{animation:batfly 10s linear forwards}
@@ -55,6 +63,22 @@ body{
 @keyframes ghostFloat{0%{transform:translate(-10vw,15vh) scale(1); opacity:0}10%{opacity:.9}50%{transform:translate(40vw,10vh) scale(1.04)}100%{transform:translate(110vw,18vh) scale(1); opacity:0}}
 @keyframes skullFloat{0%{transform:translate(-10vw,20vh) scale(0.8); opacity:0}15%{opacity:.9}50%{transform:translate(45vw,15vh) scale(1.1) rotate(10deg)}100%{transform:translate(110vw,22vh) scale(0.9); opacity:0}}
 @keyframes madhatFloat{0%{transform:translate(-10vw,30vh) scale(0.7); opacity:0}15%{opacity:.9}50%{transform:translate(50vw,25vh) scale(1.2) rotate(-5deg)}100%{transform:translate(110vw,32vh) scale(0.8); opacity:0}}
+
+/* Fantasmas flotando al frente */
+.ghost-front{position:fixed; pointer-events:none; z-index:10; opacity:0.9; filter:drop-shadow(0 0 10px rgba(255,255,255,0.8)); animation-timing-function:ease-in-out;}
+.ghost-front:nth-child(1){font-size:24px; animation:ghostFront1 25s ease-in-out infinite; animation-delay:0s;}
+.ghost-front:nth-child(2){font-size:20px; animation:ghostFront2 32s ease-in-out infinite; animation-delay:5s;}
+.ghost-front:nth-child(3){font-size:28px; animation:ghostFront3 28s ease-in-out infinite; animation-delay:10s;}
+@keyframes ghostFront1{0%{transform:translate(-10vw,30vh) scale(0.8); opacity:0}10%{opacity:0.9}50%{transform:translate(45vw,25vh) scale(1.1)}100%{transform:translate(110vw,30vh) scale(0.9); opacity:0}}
+@keyframes ghostFront2{0%{transform:translate(-10vw,50vh) scale(0.7); opacity:0}12%{opacity:0.9}50%{transform:translate(50vw,45vh) scale(1.2)}100%{transform:translate(110vw,50vh) scale(0.8); opacity:0}}
+@keyframes ghostFront3{0%{transform:translate(-10vw,70vh) scale(0.9); opacity:0}8%{opacity:0.9}50%{transform:translate(40vw,65vh) scale(1.15)}100%{transform:translate(110vw,70vh) scale(0.95); opacity:0}}
+
+/* Confeti */
+.confetti{position:fixed; top:0; left:0; width:10px; height:10px; pointer-events:none; z-index:7; background:var(--halloween); opacity:1; animation:fall linear forwards;}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg); opacity:1}100%{transform:translateY(110vh) rotate(720deg); opacity:0}}
+.confetti:nth-child(3n){background:var(--violet); width:8px; height:8px;}
+.confetti:nth-child(3n+1){background:#fff; width:6px; height:6px;}
+
 .card{position:relative; z-index:6;width:min(92vw,420px);background:linear-gradient(135deg,#140a20 0%, #1b0f2e 40%, #2c0f2b 60%, #2a0c08 100%);border-radius:28px; padding:22px; border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 120px rgba(255,107,53,.25),inset 0 0 40px rgba(255,255,255,.05);backdrop-filter: blur(10px);}
 .header{ text-align:center; margin-bottom:12px }
 .badge{display:inline-flex; gap:8px; align-items:center; padding:8px 18px; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55); letter-spacing:2px; font-weight:800; font-size:.72rem; color:#ffd7c6; text-transform:uppercase; text-shadow:0 0 10px rgba(255,107,53,.55);}
@@ -70,12 +94,14 @@ body{
 .item .i{font-size:18px}
 .cta{display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:10px}
 .btn{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.2); background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); color:#fff; font-weight:800; letter-spacing:.5px; text-decoration:none; cursor:pointer; user-select:none; box-shadow:0 10px 25px rgba(0,0,0,.45), inset 0 0 18px rgba(255,255,255,.06); transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;}
-.btn:active{transform:translateY(1px) scale(.99)}
+.btn:active{transform:translateY(1px) scale(.99);}
+.btn:hover{box-shadow:0 10px 35px rgba(0,0,0,.5), inset 0 0 18px rgba(255,255,255,.08), 0 0 30px rgba(255,107,53,0.4);}
 .countdown-container{margin-top: 20px;text-align: center;padding: 15px;background: rgba(255, 107, 53, 0.1);border-radius: 18px;border: 1px solid rgba(255, 107, 53, 0.3);box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.2);}
 .countdown-title{font-family: 'Cinzel', serif;font-size: clamp(18px, 4vw, 24px);margin-bottom: 8px;color: #ffcaa8;}
 .countdown{font-family: 'Cinzel', serif;font-size: clamp(20px, 5vw, 28px);color:#fff;}
 .footer{margin-top:22px; text-align:center;font-size:.65rem; color:#aaa;opacity:.7}
-.music-btn{position:fixed; bottom:20px; right:20px; z-index:9; cursor:pointer; font-size:28px; background:rgba(0,0,0,.25); padding:10px 12px; border-radius:50%; border:1px solid rgba(255,255,255,.2);}
+.music-btn{position:fixed; bottom:20px; right:20px; z-index:9; cursor:pointer; font-size:28px; background:rgba(0,0,0,.25); padding:10px 12px; border-radius:50%; border:1px solid rgba(255,255,255,.2); transition:all 0.3s ease;}
+.music-btn:hover{transform:scale(1.1); background:rgba(255,107,53,0.3); box-shadow:0 0 20px rgba(255,107,53,0.5);}
 </style>
 </head>
 <body>
@@ -87,6 +113,20 @@ body{
     <div class="layer l2"></div>
     <div class="layer l3"></div>
   </div>
+
+  <!-- Humo adicional -->
+  <div class="smoke"></div>
+  <div class="smoke"></div>
+  <div class="smoke"></div>
+  <div class="smoke"></div>
+
+  <!-- Fantasmas flotando al frente -->
+  <div class="ghost-front">👻</div>
+  <div class="ghost-front">👻</div>
+  <div class="ghost-front">👻</div>
+
+  <!-- Confeti -->
+  <div class="confetti"></div>
 
   <div class="card">
     <div class="header">
@@ -103,8 +143,8 @@ body{
     </div>
 
     <div class="cta">
-      <div class="item" onclick="window.open('https://wa.me/543525455314','_blank')">
-        <span class="i">📱</span> Presiona aquí para confirmar asistencia
+      <div class="item" onclick="confirmAttendance()">
+        <span class="i">✅</span> Confirmar Asistencia
       </div>
       <div class="item" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Santos+Saya+Norte+138','_blank')">
         <span class="i">📍</span> Ubicación
@@ -129,8 +169,51 @@ body{
 <script>
 function toggleMusic(){
   const music = document.getElementById('bg-music');
-  if(music.paused){music.play();}
-  else{music.pause();}
+  const btn = document.querySelector('.music-btn');
+  if(music.paused){
+    music.play();
+    btn.style.background = 'rgba(255,107,53,0.4)';
+    btn.style.boxShadow = '0 0 20px rgba(255,107,53,0.6)';
+  }
+  else{
+    music.pause();
+    btn.style.background = 'rgba(0,0,0,.25)';
+    btn.style.boxShadow = 'none';
+  }
+}
+
+// Efecto de confeti
+function createConfetti(){
+  for(let i = 0; i < 50; i++){
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      confetti.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(confetti);
+      
+      // Remover confeti después de la animación
+      setTimeout(() => { confetti.remove(); }, 5000);
+    }, i * 100);
+  }
+}
+
+// Confirmar asistencia con efectos especiales
+function confirmAttendance(){
+  // Abrir WhatsApp
+  window.open('https://wa.me/543525455314', '_blank');
+  
+  // Efecto de confeti
+  createConfetti();
+  
+  // Más fantasmas
+  const ghost = document.createElement('div');
+  ghost.classList.add('ghost-front');
+  ghost.textContent = '👻';
+  ghost.style.fontSize = (Math.random() * 10 + 20) + 'px';
+  document.body.appendChild(ghost);
+  setTimeout(() => { ghost.remove(); }, 32000);
 }
 
 // Cuenta regresiva
@@ -151,6 +234,17 @@ function updateCountdown(){
 }
 setInterval(updateCountdown,1000);
 updateCountdown();
+
+// Iniciar efectos periódicos
+setInterval(() => {
+  const ghost = document.createElement('div');
+  ghost.classList.add('ghost-front');
+  ghost.textContent = '👻';
+  ghost.style.fontSize = (Math.random() * 8 + 20) + 'px';
+  document.body.appendChild(ghost);
+  setTimeout(() => { ghost.remove(); }, 32000);
+}, 15000);
 </script>
 </body>
 </html>
+```
